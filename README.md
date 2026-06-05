@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LogikaMobile Web
 
-## Getting Started
+Plataforma corporativa y landing page principal para **LogikaMobile**, una agencia de desarrollo de software de alto rendimiento y consultoría estratégica B2B.
 
-First, run the development server:
+## 🚀 Características Principales
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Estética Tech/Terminal (Deep Tech):** Diseño visual audaz, corporativo y moderno utilizando una paleta de colores de alto contraste (Negro Zinc, Naranja Conversión, Morado Corporativo y acentos Cyan).
+- **Cotizador Interactivo ("Triángulo de Hierro"):** Un modal dinámico de 6 pasos que gamifica y filtra la captura de leads, calculando un presupuesto estimado (Gross-Up RESICO) con base en la complejidad, origen, diseño, integraciones y urgencia del proyecto.
+- **Automatización de Leads:** Integración de un backend Serverless (Route Handlers) conectado vía `nodemailer` para enviar resúmenes técnicos de cotizaciones directamente al correo del CEO.
+- **Social Proof Dinámico:** Carrusel infinito de clientes ("Trusted By") integrado con logos vectoriales reales en escala de grises que toman vida al interactuar.
+
+## 🛠 Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) (App Router, versión 16)
+- **UI Library:** [React 19](https://react.dev/)
+- **Estilos:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Lenguaje:** [TypeScript](https://www.typescriptlang.org/)
+- **Email Delivery:** [Nodemailer](https://nodemailer.com/about/)
+
+## ⚙️ Configuración del Entorno (.env.local)
+
+Para que el cotizador y el formulario de contacto puedan enviar correos electrónicos exitosamente, debes crear un archivo `.env.local` en la raíz del proyecto con las siguientes credenciales SMTP:
+
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=tu_correo@gmail.com
+SMTP_PASS=tu_contraseña_de_aplicacion
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+*(Nota: Si usas Gmail, asegúrate de habilitar la verificación en dos pasos y generar una "Contraseña de Aplicación" para `SMTP_PASS`).*
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💻 Desarrollo Local
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Para correr la plataforma en tu máquina de forma local:
 
-## Learn More
+1. Instala las dependencias:
+   ```bash
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Configura tu archivo `.env.local` (ver sección anterior).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Levanta el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la página en vivo.
 
-## Deploy on Vercel
+## 🚀 Construcción y Producción
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Para compilar y preparar la aplicación para producción:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm start
+```
+
+## 📐 Estructura Clave del Proyecto
+
+- `src/app/page.tsx`: Landing page principal, orquestación de layout, semblanza corporativa, carruseles y secciones de servicios.
+- `src/components/QuoteModal.tsx`: Lógica de React (estados, steps) y UI del cotizador interactivo.
+- `src/app/api/contact/route.ts`: Endpoint backend para procesar el payload del formulario y disparar el envío SMTP por Nodemailer.
+- `src/app/globals.css`: Archivo de configuración CSS global donde reside la animación `@keyframes marquee`.
+- `public/logos/`: Activos gráficos, vectores y SVGs.
+
+---
+*Desarrollado para la visión técnica y ejecutiva de Luis Daniel Michel.*
