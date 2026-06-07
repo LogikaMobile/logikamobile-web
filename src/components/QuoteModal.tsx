@@ -32,6 +32,21 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
   const [projectDescription, setProjectDescription] = useState("");
   const [contactPreference, setContactPreference] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [emailError, setEmailError] = useState("");
+
+  const validateEmail = (email: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email) {
+      setEmailError("");
+      return false;
+    }
+    if (!regex.test(email)) {
+      setEmailError("Por favor ingresa un correo válido.");
+      return false;
+    }
+    setEmailError("");
+    return true;
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -110,11 +125,13 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
       setContactPreference("");
       setProjectDescription("");
       setIsSending(false);
+      setEmailError("");
     }, 300);
   };
 
   const handleSendEmail = async () => {
     if (!contactName || !contactEmail) return;
+    if (!validateEmail(contactEmail)) return;
     setIsSending(true);
 
     const typesMap: Record<string, string> = { app: "App Móvil", web: "Sitio Web", cloud: "Cloud" };
@@ -477,10 +494,18 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                     <input 
                       type="email" 
                       value={contactEmail}
-                      onChange={(e) => setContactEmail(e.target.value)}
-                      className="w-full bg-black border border-zinc-800 text-white p-4 focus:border-orange-500 focus:outline-none transition-colors"
+                      onChange={(e) => {
+                        setContactEmail(e.target.value);
+                        if (emailError) {
+                          const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                          if (regex.test(e.target.value)) setEmailError("");
+                        }
+                      }}
+                      onBlur={(e) => validateEmail(e.target.value)}
+                      className={`w-full bg-black border ${emailError ? 'border-red-500' : 'border-zinc-800'} text-white p-4 focus:border-orange-500 focus:outline-none transition-colors`}
                       placeholder="ana@empresa.com"
                     />
+                    {emailError && <p className="text-red-500 font-mono text-xs mt-2">{emailError}</p>}
                   </div>
                   <div>
                     <label className="block text-orange-500 font-mono text-sm tracking-widest uppercase mb-2">Teléfono</label>
