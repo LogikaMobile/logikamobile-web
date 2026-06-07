@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+export const maxDuration = 60; // Extend maximum execution time
+export const dynamic = 'force-dynamic'; // Ensure it's not statically optimized
+
 export async function POST(req: Request) {
   try {
     const data = await req.json();
