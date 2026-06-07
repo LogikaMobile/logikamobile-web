@@ -38,8 +38,9 @@ export async function POST(req: Request) {
     // Se añade 'family: 4' ignorando types, para forzar IPv4 y evitar error ENETUNREACH en Droplets
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 465,
-      secure: true, // true para 465, false para otros puertos (como 587)
+      port: Number(process.env.SMTP_PORT) || 587,
+      secure: false, // false para 587 (usa STARTTLS)
+      requireTLS: true,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
