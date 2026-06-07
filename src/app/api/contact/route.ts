@@ -1,16 +1,14 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
-import dns from "dns";
-
-// Fuerza a Node.js a preferir siempre direcciones IPv4 (soluciona ENETUNREACH en Droplets sin IPv6)
-dns.setDefaultResultOrder('ipv4first');
+import { Resend } from "resend";
 
 export const maxDuration = 60; // Extend maximum execution time
 export const dynamic = 'force-dynamic'; // Ensure it's not statically optimized
 
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 export async function POST(req: Request) {
   try {
-    console.log("=== INICIANDO PETICIÓN DE CONTACTO ===");
+    console.log("=== INICIANDO PETICIÓN DE CONTACTO (RESEND) ===");
     const data = await req.json();
     console.log("Datos recibidos:", data);
     
@@ -37,29 +35,16 @@ export async function POST(req: Request) {
       );
     }
 
-    console.log("Configurando transporter de Nodemailer...");
-    // Configuración de Nodemailer usando variables de entorno
-    // Se añade 'family: 4' ignorando types, para forzar IPv4 y evitar error ENETUNREACH en Droplets
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: false, // false para 587 (usa STARTTLS)
-      requireTLS: true,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-      ...{ family: 4 }
-    } as any);
+    // Usaremos el SMTP_USER original o el correo al que quieres que lleguen los leads.
+    // Ojo: Resend solo te deja enviarte correos a ti mismo cuando usas el dominio gratuito onboarding@resend.dev
+    const toEmail = process.env.SMTP_USER || "luisda.michel@gmail.com"; 
 
-    console.log("Verificando conexión SMTP...");
-    await transporter.verify();
-    console.log("Conexión SMTP exitosa.");
-
-    const mailOptions = {
-      from: `"${contactName}" <${process.env.SMTP_USER}>`, // El 'from' suele ser tu mismo correo autenticado
-      replyTo: contactEmail, // Para poder responderle al lead directamente
-      to: process.env.SMTP_USER, // Te envías el correo a ti mismo o al correo de la agencia
+    console.log("Enviando correo vía Resend API...");
+    
+    const { data: resendData, error } = await resend.emails.send({
+      from: "LogikaMobile <onboarding@resend.dev>", // Dominio de prueba gratuito de Resend
+      to: [toEmail],
+      replyTo: contactEmail,
       subject: `Nuevo Lead: ${contactName} - Cotización desde Landing Page`,
       text: `Hola equipo,\n\nSe ha recibido una nueva solicitud de cotización.\n\nDatos de Contacto:\nNombre: ${contactName}\nCorreo: ${contactEmail}\nTeléfono: ${contactPhone}\nPreferencia de Contacto: ${contactPreference || "No especificada"}\n\nDescripción del Proyecto:\n${projectDescription || "No proporcionada"}\n\nDetalles de la cotización calculada:\nRango de Inversión Estimado: ${rangeText}\n\nEspecificaciones:\n- Origen: ${originText}\n- Tipo de Proyecto: ${typesText}\n- Complejidad: ${complexityText}\n- UX/UI: ${uxuiText}\n- Integraciones: ${integrationsText}\n- Urgencia: ${urgencyText}\n\nEste es un correo autogenerado desde LogikaMobileWeb.`,
       html: `
@@ -91,11 +76,17 @@ export async function POST(req: Request) {
         <hr/>
         <p><small>Este correo fue generado automáticamente desde la Landing Page de LogikaMobile.</small></p>
       `,
-    };
+    });
 
-    console.log("Enviando correo...");
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Correo enviado con éxito. MessageId:", info.messageId);
+    if (error) {
+      console.error("=== ERROR DE RESEND ===", error);
+      return NextResponse.json(
+        { error: "Error de API al enviar el correo" },
+        { status: 500 }
+      );
+    }
+
+    console.log("Correo enviado con éxito vía Resend. ID:", resendData?.id);
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
