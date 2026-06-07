@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import dns from "dns";
+
+// Fuerza a Node.js a preferir siempre direcciones IPv4 (soluciona ENETUNREACH en Droplets sin IPv6)
+dns.setDefaultResultOrder('ipv4first');
 
 export const maxDuration = 60; // Extend maximum execution time
 export const dynamic = 'force-dynamic'; // Ensure it's not statically optimized
