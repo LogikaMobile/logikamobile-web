@@ -6,7 +6,10 @@ export const dynamic = 'force-dynamic'; // Ensure it's not statically optimized
 
 export async function POST(req: Request) {
   try {
+    console.log("=== INICIANDO PETICIÓN DE CONTACTO ===");
     const data = await req.json();
+    console.log("Datos recibidos:", data);
+    
     const {
       contactName,
       contactEmail,
@@ -23,12 +26,14 @@ export async function POST(req: Request) {
     } = data;
 
     if (!contactName || !contactEmail) {
+      console.warn("Faltan datos requeridos (nombre o correo).");
       return NextResponse.json(
         { error: "Nombre y correo son requeridos" },
         { status: 400 }
       );
     }
 
+    console.log("Configurando transporter de Nodemailer...");
     // Configuración de Nodemailer usando variables de entorno
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -39,6 +44,10 @@ export async function POST(req: Request) {
         pass: process.env.SMTP_PASS,
       },
     });
+
+    console.log("Verificando conexión SMTP...");
+    await transporter.verify();
+    console.log("Conexión SMTP exitosa.");
 
     const mailOptions = {
       from: `"${contactName}" <${process.env.SMTP_USER}>`, // El 'from' suele ser tu mismo correo autenticado
@@ -77,11 +86,14 @@ export async function POST(req: Request) {
       `,
     };
 
-    await transporter.sendMail(mailOptions);
+    console.log("Enviando correo...");
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Correo enviado con éxito. MessageId:", info.messageId);
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error("=== ERROR CRÍTICO AL ENVIAR CORREO ===");
+    console.error(error);
     return NextResponse.json(
       { error: "Error interno al enviar el correo" },
       { status: 500 }
