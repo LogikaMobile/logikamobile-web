@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 
 type ProjectOrigin = "scratch" | "legacy" | null;
+type CompanySize = "startup" | "sme" | "enterprise" | null;
 type ProjectType = "app" | "web" | "cloud";
 type Complexity = "basic" | "intermediate" | "advanced" | null;
 type UxUiStatus = "ready" | "from_scratch" | null;
@@ -15,9 +16,10 @@ interface QuoteModalProps {
 
 export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
   const [isOpen, setIsOpen] = useState(false);
-  const [step, setStep] = useState<1 | 2 | 3 | 4 | 5 | 6 | "result" | "contact" | "success">(1);
+  const [step, setStep] = useState<1 | 2 | 3 | 4 | 5 | 6 | 7 | "result" | "contact" | "success">(1);
   
   const [origin, setOrigin] = useState<ProjectOrigin>(null);
+  const [companySize, setCompanySize] = useState<CompanySize>(null);
   const [types, setTypes] = useState<ProjectType[]>([]);
   const [complexity, setComplexity] = useState<Complexity>(null);
   const [uxui, setUxui] = useState<UxUiStatus>(null);
@@ -76,9 +78,14 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
     
     if (uxui === "from_scratch") base += 1500;
 
-    // 2. Cálculo del Factor de Riesgo
+    // 2. Cálculo del Factor de Riesgo y Escala
     const originMult = origin === "legacy" ? 1.4 : 1.0;
     
+    let sizeMult = 1.0;
+    if (companySize === "startup") sizeMult = 0.5;
+    if (companySize === "sme") sizeMult = 0.7;
+    if (companySize === "enterprise") sizeMult = 1.25;
+
     let compMult = 1.0;
     if (complexity === "basic") compMult = 1.0;
     if (complexity === "intermediate") compMult = 1.5;
@@ -91,7 +98,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
 
     const intMult = integrations === "critical" ? 1.2 : 1.0;
 
-    const riskTotal = originMult * compMult * urgMult * intMult;
+    const riskTotal = originMult * sizeMult * compMult * urgMult * intMult;
 
     // 3. Costo Proyectado (Ingreso Neto Deseado)
     const projected = base * riskTotal;
@@ -113,6 +120,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
     setTimeout(() => {
       setStep(1);
       setOrigin(null);
+      setCompanySize(null);
       setTypes([]);
       setComplexity(null);
       setUxui(null);
@@ -136,6 +144,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
 
     const typesMap: Record<string, string> = { app: "App Móvil", web: "Sitio Web", cloud: "Cloud" };
     const originMap: Record<string, string> = { scratch: "Proyecto Nuevo", legacy: "Proyecto Existente" };
+    const sizeMap: Record<string, string> = { startup: "Emprendimiento (1-10)", sme: "PYME (11-50)", enterprise: "Corporativo (50+)" };
     const compMap: Record<string, string> = { basic: "Básica", intermediate: "Intermedia", advanced: "Avanzada" };
     const uxuiMap: Record<string, string> = { ready: "Diseño Listo", from_scratch: "Desde Cero" };
     const intMap: Record<string, string> = { isolated: "Sistema Aislado", critical: "Integraciones Externas" };
@@ -156,6 +165,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
           projectDescription,
           typesText: selectedTypes,
           originText: origin ? originMap[origin] : "",
+          companySizeText: companySize ? sizeMap[companySize] : "",
           complexityText: complexity ? compMap[complexity] : "",
           uxuiText: uxui ? uxuiMap[uxui] : "",
           integrationsText: integrations ? intMap[integrations] : "",
@@ -211,10 +221,10 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
               <>
                 <div className="mb-12">
                   <h3 className="text-orange-500  font-mono text-sm tracking-widest uppercase mb-4">
-                    Paso {step} de 6
+                    Paso {step} de 7
                   </h3>
                   <div className="w-full h-1 bg-zinc-900">
-                    <div className="h-full bg-orange-500 transition-all duration-500" style={{ width: `${(step as number / 6) * 100}%` }}></div>
+                    <div className="h-full bg-orange-500 transition-all duration-500" style={{ width: `${(step as number / 7) * 100}%` }}></div>
                   </div>
                 </div>
 
@@ -251,6 +261,45 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                 {step === 2 && (
                   <div className="animate-in fade-in slide-in-from-right-8 duration-500">
                     <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#7B2CBF]  mb-8">
+                      Tamaño de la Empresa
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {[
+                        { id: "startup", title: "Emprendimiento", desc: "1 a 10 personas. Enfoque en validar rápido el MVP." },
+                        { id: "sme", title: "PYME", desc: "11 a 50 personas. Procesos establecidos y bases sólidas." },
+                        { id: "enterprise", title: "Corporativo", desc: "50+ personas. Alta disponibilidad, SLAs y compliance." }
+                      ].map((item) => (
+                        <button
+                          key={item.id}
+                          onClick={() => setCompanySize(item.id as CompanySize)}
+                          className={`p-6 border text-left transition-all duration-300 ${companySize === item.id ? "border-orange-500 bg-orange-500/10 scale-105" : "border-zinc-800 bg-black hover:border-zinc-600"}`}
+                        >
+                          <div className={`text-xl font-bold mb-2 ${companySize === item.id ? "text-orange-500 " : "text-zinc-300"}`}>{item.title}</div>
+                          <div className="text-sm font-mono text-zinc-500">{item.desc}</div>
+                        </button>
+                      ))}
+                    </div>
+                    <div className="flex gap-4 mt-12">
+                      <button 
+                        onClick={() => setStep(1)}
+                        className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest hover:border-zinc-500 transition-all"
+                      >
+                        Atrás
+                      </button>
+                      <button 
+                        onClick={() => setStep(3)}
+                        disabled={!companySize}
+                        className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
+                      >
+                        Continuar
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {step === 3 && (
+                  <div className="animate-in fade-in slide-in-from-right-8 duration-500">
+                    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#7B2CBF]  mb-8">
                       ¿Qué tipo de proyecto necesitas?
                     </h2>
                     <p className="text-zinc-400 mb-6 font-mono text-sm uppercase tracking-widest">Puedes seleccionar múltiples opciones:</p>
@@ -272,13 +321,13 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                     </div>
                     <div className="flex gap-4 mt-12">
                       <button 
-                        onClick={() => setStep(1)}
+                        onClick={() => setStep(2)}
                         className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest hover:border-zinc-500 transition-all"
                       >
                         Atrás
                       </button>
                       <button 
-                        onClick={() => setStep(3)}
+                        onClick={() => setStep(4)}
                         disabled={types.length === 0}
                         className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
                       >
@@ -288,7 +337,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                   </div>
                 )}
 
-                {step === 3 && (
+                {step === 4 && (
                   <div className="animate-in fade-in slide-in-from-right-8 duration-500">
                     <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#7B2CBF]  mb-8">
                       Complejidad Técnica
@@ -311,13 +360,13 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                     </div>
                     <div className="flex gap-4 mt-12">
                       <button 
-                        onClick={() => setStep(2)}
+                        onClick={() => setStep(3)}
                         className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest hover:border-zinc-500 transition-all"
                       >
                         Atrás
                       </button>
                       <button 
-                        onClick={() => setStep(4)}
+                        onClick={() => setStep(5)}
                         disabled={!complexity}
                         className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
                       >
@@ -327,7 +376,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                   </div>
                 )}
 
-                {step === 4 && (
+                {step === 5 && (
                   <div className="animate-in fade-in slide-in-from-right-8 duration-500">
                     <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#7B2CBF]  mb-8">
                       Estado del Diseño UX/UI
@@ -349,13 +398,13 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                     </div>
                     <div className="flex gap-4 mt-12">
                       <button 
-                        onClick={() => setStep(3)}
+                        onClick={() => setStep(4)}
                         className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest hover:border-zinc-500 transition-all"
                       >
                         Atrás
                       </button>
                       <button 
-                        onClick={() => setStep(5)}
+                        onClick={() => setStep(6)}
                         disabled={!uxui}
                         className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
                       >
@@ -365,7 +414,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                   </div>
                 )}
 
-                {step === 5 && (
+                {step === 6 && (
                   <div className="animate-in fade-in slide-in-from-right-8 duration-500">
                     <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#7B2CBF]  mb-8">
                       Integraciones Externas
@@ -387,13 +436,13 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                     </div>
                     <div className="flex gap-4 mt-12">
                       <button 
-                        onClick={() => setStep(4)}
+                        onClick={() => setStep(5)}
                         className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest hover:border-zinc-500 transition-all"
                       >
                         Atrás
                       </button>
                       <button 
-                        onClick={() => setStep(6)}
+                        onClick={() => setStep(7)}
                         disabled={!integrations}
                         className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
                       >
@@ -403,7 +452,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                   </div>
                 )}
 
-                {step === 6 && (
+                {step === 7 && (
                   <div className="animate-in fade-in slide-in-from-right-8 duration-500">
                     <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#7B2CBF]  mb-8">
                       La Urgencia (Triángulo de Hierro)
@@ -426,7 +475,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                     </div>
                     <div className="flex gap-4 mt-12">
                       <button 
-                        onClick={() => setStep(5)}
+                        onClick={() => setStep(6)}
                         className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest hover:border-zinc-500 transition-all"
                       >
                         Atrás

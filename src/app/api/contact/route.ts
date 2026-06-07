@@ -20,6 +20,7 @@ export async function POST(req: Request) {
       projectDescription,
       typesText,
       originText,
+      companySizeText,
       complexityText,
       uxuiText,
       integrationsText,
@@ -46,7 +47,7 @@ export async function POST(req: Request) {
       to: [toEmail],
       replyTo: contactEmail,
       subject: `Nuevo Lead: ${contactName} - Cotización desde Landing Page`,
-      text: `Hola equipo,\n\nSe ha recibido una nueva solicitud de cotización.\n\nDatos de Contacto:\nNombre: ${contactName}\nCorreo: ${contactEmail}\nTeléfono: ${contactPhone}\nPreferencia de Contacto: ${contactPreference || "No especificada"}\n\nDescripción del Proyecto:\n${projectDescription || "No proporcionada"}\n\nDetalles de la cotización calculada:\nRango de Inversión Estimado: ${rangeText}\n\nEspecificaciones:\n- Origen: ${originText}\n- Tipo de Proyecto: ${typesText}\n- Complejidad: ${complexityText}\n- UX/UI: ${uxuiText}\n- Integraciones: ${integrationsText}\n- Urgencia: ${urgencyText}\n\nEste es un correo autogenerado desde LogikaMobileWeb.`,
+      text: `Hola equipo,\n\nSe ha recibido una nueva solicitud de cotización.\n\nDatos de Contacto:\nNombre: ${contactName}\nCorreo: ${contactEmail}\nTeléfono: ${contactPhone}\nPreferencia de Contacto: ${contactPreference || "No especificada"}\n\nDescripción del Proyecto:\n${projectDescription || "No proporcionada"}\n\nDetalles de la cotización calculada:\nRango de Inversión Estimado: ${rangeText}\n\nEspecificaciones:\n- Origen: ${originText}\n- Tamaño de Empresa: ${companySizeText}\n- Tipo de Proyecto: ${typesText}\n- Complejidad: ${complexityText}\n- UX/UI: ${uxuiText}\n- Integraciones: ${integrationsText}\n- Urgencia: ${urgencyText}\n\nEste es un correo autogenerado desde LogikaMobileWeb.`,
       html: `
         <h2>Nueva Solicitud de Cotización</h2>
         <h3>Datos de Contacto:</h3>
@@ -67,6 +68,7 @@ export async function POST(req: Request) {
         
         <ul>
           <li><strong>Origen:</strong> ${originText}</li>
+          <li><strong>Tamaño de Empresa:</strong> ${companySizeText}</li>
           <li><strong>Tipo de Proyecto:</strong> ${typesText}</li>
           <li><strong>Complejidad:</strong> ${complexityText}</li>
           <li><strong>UX/UI:</strong> ${uxuiText}</li>
