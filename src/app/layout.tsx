@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import FirebaseAnalytics from "@/components/FirebaseAnalytics";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} antialiased dark`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col font-sans text-zinc-300 tracking-tight bg-fixed bg-gradient-to-br from-black via-zinc-900 to-[#3b1a00]">
+        <FirebaseAnalytics />
         {children}
       </body>
     </html>

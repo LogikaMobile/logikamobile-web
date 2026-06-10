@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { trackUserEvent } from "@/lib/trackEvent";
 
 type ProjectOrigin = "scratch" | "legacy" | null;
 type CompanySize = "startup" | "sme" | "enterprise" | null;
@@ -61,6 +62,20 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
     };
   }, [isOpen]);
 
+  const handleOpenModal = () => {
+    trackUserEvent("begin_quote", { source: trigger ? "footer_link" : "hero_button" });
+    setIsOpen(true);
+  };
+
+  const advanceStep = (currentStepNum: number, nextStep: any, stepName: string, selectionValue: any) => {
+    trackUserEvent("quote_step_complete", { 
+      step: currentStepNum, 
+      step_name: stepName, 
+      selection: Array.isArray(selectionValue) ? selectionValue.join(",") : selectionValue 
+    });
+    setStep(nextStep);
+  };
+
   const toggleType = (type: ProjectType) => {
     if (types.includes(type)) {
       setTypes(types.filter(t => t !== type));
@@ -110,6 +125,8 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
 
     const min = Math.round(grossMin / 100) * 100;
     const max = Math.round(grossMax / 100) * 100;
+
+    trackUserEvent("quote_calculated", { min_price: min, max_price: max, urgency: urgency });
 
     setQuoteBand({ min, max });
     setStep("result");
@@ -175,6 +192,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
       });
 
       if (res.ok) {
+        trackUserEvent("lead_generated", { preference: contactPreference });
         setStep("success");
       } else {
         alert("Hubo un error al enviar la solicitud. Intenta de nuevo.");
@@ -190,12 +208,12 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
   return (
     <>
       {trigger ? (
-        <div className="inline-block cursor-pointer" onClick={() => setIsOpen(true)}>
+        <div className="inline-block cursor-pointer" onClick={handleOpenModal}>
           {trigger}
         </div>
       ) : (
         <button 
-          onClick={() => setIsOpen(true)}
+          onClick={handleOpenModal}
           className="w-full sm:w-auto px-12 py-6 bg-orange-600 hover:bg-orange-500 text-[#7B2CBF]  text-xl font-bold uppercase tracking-widest rounded-none transition-all duration-300 shadow-[0_0_40px_rgba(234,88,12,0.3)] hover:shadow-[0_0_60px_rgba(234,88,12,0.5)] hover:-translate-y-1"
         >
           Iniciar Cotización
@@ -249,7 +267,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                       ))}
                     </div>
                     <button 
-                      onClick={() => setStep(2)}
+                      onClick={() => advanceStep(1, 2, "origen", origin)}
                       disabled={!origin}
                       className="mt-12 px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all w-full md:w-auto"
                     >
@@ -287,7 +305,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                         Atrás
                       </button>
                       <button 
-                        onClick={() => setStep(3)}
+                        onClick={() => advanceStep(2, 3, "tamano", companySize)}
                         disabled={!companySize}
                         className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
                       >
@@ -327,7 +345,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                         Atrás
                       </button>
                       <button 
-                        onClick={() => setStep(4)}
+                        onClick={() => advanceStep(3, 4, "tipo", types)}
                         disabled={types.length === 0}
                         className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
                       >
@@ -366,7 +384,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                         Atrás
                       </button>
                       <button 
-                        onClick={() => setStep(5)}
+                        onClick={() => advanceStep(4, 5, "complejidad", complexity)}
                         disabled={!complexity}
                         className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
                       >
@@ -404,7 +422,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                         Atrás
                       </button>
                       <button 
-                        onClick={() => setStep(6)}
+                        onClick={() => advanceStep(5, 6, "uxui", uxui)}
                         disabled={!uxui}
                         className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
                       >
@@ -442,7 +460,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                         Atrás
                       </button>
                       <button 
-                        onClick={() => setStep(7)}
+                        onClick={() => advanceStep(6, 7, "integraciones", integrations)}
                         disabled={!integrations}
                         className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
                       >
@@ -504,7 +522,10 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
                   <button 
-                    onClick={() => setStep("contact")}
+                    onClick={() => {
+                      trackUserEvent("quote_intent_contact");
+                      setStep("contact");
+                    }}
                     className="w-full sm:w-auto px-12 py-5 bg-[#7B2CBF] hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest border border-[#7B2CBF] transition-all"
                   >
                     Contactar Equipo

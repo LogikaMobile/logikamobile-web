@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import TrackedLink from '@/components/TrackedLink';
 import QuoteModal from '@/components/QuoteModal';
 
 export default function Home() {
@@ -16,9 +17,9 @@ export default function Home() {
           
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-10 text-base font-bold uppercase tracking-widest text-zinc-400">
-            <Link href="#about" className="hover:text-orange-500 hover: transition-colors duration-300">Acerca de</Link>
-            <Link href="#services" className="hover:text-orange-500 hover: transition-colors duration-300">Servicios</Link>
-            <Link href="#contact" className="hover:text-orange-500 hover: transition-colors duration-300">Contacto</Link>
+            <TrackedLink href="#about" targetName="about" className="hover:text-orange-500 hover: transition-colors duration-300">Acerca de</TrackedLink>
+            <TrackedLink href="#services" targetName="services" className="hover:text-orange-500 hover: transition-colors duration-300">Servicios</TrackedLink>
+            <TrackedLink href="#contact" targetName="contact" className="hover:text-orange-500 hover: transition-colors duration-300">Contacto</TrackedLink>
           </nav>
 
           {/* Mobile Menu Icon */}
