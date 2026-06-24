@@ -195,19 +195,25 @@ export default function Home() {
               Con la confianza de:
             </h3>
             
-            <div className="relative flex overflow-hidden">
+            <div className="relative flex overflow-hidden py-12 -my-12">
               <div className="flex w-max animate-marquee gap-16 md:gap-32 pr-16 md:pr-32 opacity-70 grayscale hover:grayscale-0 transition-all duration-700">
                 {/* Original Items */}
-                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-transform duration-500 cursor-default w-80 md:w-96 h-32 md:h-40">
+                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-all duration-500 cursor-default w-80 md:w-96 h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.8)]">
                   <img src="/logos/roche_logo.svg" alt="Roche Logo" className="max-w-full max-h-full object-contain" />
                 </div>
-                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-transform duration-500 cursor-default w-80 md:w-96 h-32 md:h-40">
+                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-all duration-500 cursor-default w-80 md:w-96 h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.8)]">
                   <img src="/logos/irn_logo_complete.svg" alt="Iberoamerican Research Network Logo" className="max-w-full max-h-full object-contain" />
                 </div>
-                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-transform duration-500 cursor-default w-80 md:w-96 h-32 md:h-40">
+                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-all duration-500 cursor-default w-80 md:w-96 h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.8)]">
                   <img src="/logos/asesoria_certificada_logo.svg" alt="Asesoría Certificada Logo" className="max-w-full max-h-full object-contain" />
                 </div>
-                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-transform duration-500 cursor-default w-80 md:w-96 h-32 md:h-40">
+                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-all duration-500 cursor-default w-80 md:w-96 h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.8)]">
+                  <img src="/logos/ClinveltLogo.svg" alt="Clinvelt Logo" className="max-w-full max-h-full object-contain" />
+                </div>
+                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-all duration-500 cursor-default w-80 md:w-96 h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.8)]">
+                  <img src="/logos/P-J_LEGAL_Y_CONTABLE_logo.svg" alt="P&J Legal y Contable Logo" className="max-w-full max-h-full object-contain" />
+                </div>
+                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-all duration-500 cursor-default w-80 md:w-96 h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.8)]">
                   <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-orange-500 text-center group-hover:text-orange-400 transition-colors duration-300">Tu empresa, crece aquí</div>
                   <div className="w-64 h-24 bg-zinc-900/50 border border-orange-500/20 rounded flex items-center justify-center">
                     <span className="text-sm font-mono text-orange-600/50">Space Available</span>
@@ -215,16 +221,22 @@ export default function Home() {
                 </div>
 
                 {/* Duplicated Items for Marquee Loop */}
-                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-transform duration-500 cursor-default w-80 md:w-96 h-32 md:h-40">
+                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-all duration-500 cursor-default w-80 md:w-96 h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.8)]">
                   <img src="/logos/roche_logo.svg" alt="Roche Logo" className="max-w-full max-h-full object-contain" />
                 </div>
-                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-transform duration-500 cursor-default w-80 md:w-96 h-32 md:h-40">
+                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-all duration-500 cursor-default w-80 md:w-96 h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.8)]">
                   <img src="/logos/irn_logo_complete.svg" alt="Iberoamerican Research Network Logo" className="max-w-full max-h-full object-contain" />
                 </div>
-                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-transform duration-500 cursor-default w-80 md:w-96 h-32 md:h-40">
+                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-all duration-500 cursor-default w-80 md:w-96 h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.8)]">
                   <img src="/logos/asesoria_certificada_logo.svg" alt="Asesoría Certificada Logo" className="max-w-full max-h-full object-contain" />
                 </div>
-                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-transform duration-500 cursor-default w-80 md:w-96 h-32 md:h-40">
+                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-all duration-500 cursor-default w-80 md:w-96 h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.8)]">
+                  <img src="/logos/ClinveltLogo.svg" alt="Clinvelt Logo" className="max-w-full max-h-full object-contain" />
+                </div>
+                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-all duration-500 cursor-default w-80 md:w-96 h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.8)]">
+                  <img src="/logos/P-J_LEGAL_Y_CONTABLE_logo.svg" alt="P&J Legal y Contable Logo" className="max-w-full max-h-full object-contain" />
+                </div>
+                <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-all duration-500 cursor-default w-80 md:w-96 h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.8)]">
                   <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-orange-500 text-center group-hover:text-orange-400 transition-colors duration-300">Tu empresa, crece aquí</div>
                   <div className="w-64 h-24 bg-zinc-900/50 border border-orange-500/20 rounded flex items-center justify-center">
                     <span className="text-sm font-mono text-orange-600/50">Space Available</span>
