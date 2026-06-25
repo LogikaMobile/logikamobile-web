@@ -39,7 +39,7 @@ export default function Home() {
           {/* Subtle radial glow behind hero */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-orange-600/5 blur-[150px] pointer-events-none rounded-full"></div>
           
-          <img src="/logos/Logo.svg" alt="LogikaMobile Logo" className="h-56 md:h-96 mb-14 w-auto relative z-10" />
+          <img src="/logos/computerLogo.svg" alt="LogikaMobile Logo" className="h-56 md:h-96 mb-14 w-auto relative z-10" />
           <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter text-[#7B2CBF]  mb-8 relative z-10">
             Logika<span className="text-orange-500 ">Mobile</span><span className="text-[#6CD3D3]">.</span>
           </h1>
