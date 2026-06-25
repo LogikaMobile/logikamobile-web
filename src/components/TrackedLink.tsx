@@ -1,10 +1,10 @@
 "use client";
 import Link, { LinkProps } from "next/link";
+import { AnchorHTMLAttributes } from "react";
 import { trackUserEvent } from "@/lib/trackEvent";
 
-interface TrackedLinkProps extends LinkProps {
+interface TrackedLinkProps extends LinkProps, Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps> {
   children: React.ReactNode;
-  className?: string;
   targetName: string;
 }
 
