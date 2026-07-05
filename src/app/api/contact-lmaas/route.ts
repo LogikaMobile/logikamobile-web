@@ -4,15 +4,14 @@ import nodemailer from "nodemailer";
 export const maxDuration = 60; // Extend maximum execution time
 export const dynamic = 'force-dynamic'; // Ensure it's not statically optimized
 
-// Configuración de MXRoute mediante Nodemailer (LMaaS)
 const transporter = nodemailer.createTransport({
-  host: "chocobo.mxrouting.net",
-  port: 2525,
+  host: process.env.SMTP_HOST,
+  port: parseInt(process.env.SMTP_PORT || "2525"),
   secure: false, // STARTTLS
   requireTLS: true,
   auth: {
-    user: "leads.lmaas@logikamobile.com.mx",
-    pass: "Mexico20",
+    user: process.env.SMTP_USER_LMAAS,
+    pass: process.env.SMTP_PASS_LMAAS,
   },
 });
 
@@ -46,7 +45,7 @@ export async function POST(req: Request) {
     console.log("Enviando correo vía Nodemailer (MXRoute) para LMaaS...");
     
     const info = await transporter.sendMail({
-      from: '"LMaaS by LogikaMobile" <leads.lmaas@logikamobile.com.mx>', 
+      from: `"LMaaS by LogikaMobile" <${process.env.SMTP_USER_LMAAS}>`, 
       to: toEmail,
       replyTo: contactEmail,
       subject: `🔥 Nuevo Lead LMaaS: ${contactName}`,

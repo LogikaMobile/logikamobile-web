@@ -4,15 +4,14 @@ import nodemailer from "nodemailer";
 export const maxDuration = 60; // Extend maximum execution time
 export const dynamic = 'force-dynamic'; // Ensure it's not statically optimized
 
-// Configuración de MXRoute mediante Nodemailer
 const transporter = nodemailer.createTransport({
-  host: "chocobo.mxrouting.net",
-  port: 2525,
+  host: process.env.SMTP_HOST,
+  port: parseInt(process.env.SMTP_PORT || "2525"),
   secure: false, // Se usa STARTTLS en 2525/587
   requireTLS: true,
   auth: {
-    user: "leads@logikamobile.com.mx",
-    pass: "Mexico40",
+    user: process.env.SMTP_USER_MAIN,
+    pass: process.env.SMTP_PASS_MAIN,
   },
 });
 
@@ -52,7 +51,7 @@ export async function POST(req: Request) {
     console.log("Enviando correo vía Nodemailer (MXRoute)...");
     
     const info = await transporter.sendMail({
-      from: '"LogikaMobile Web" <leads@logikamobile.com.mx>', 
+      from: `"LogikaMobile Web" <${process.env.SMTP_USER_MAIN}>`, 
       to: toEmail,
       replyTo: contactEmail,
       subject: `Nuevo Lead: ${contactName} - Cotización General`,
