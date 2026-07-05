@@ -1,14 +1,24 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
 export const maxDuration = 60; // Extend maximum execution time
 export const dynamic = 'force-dynamic'; // Ensure it's not statically optimized
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Configuración de MXRoute mediante Nodemailer
+const transporter = nodemailer.createTransport({
+  host: "chocobo.mxrouting.net",
+  port: 2525,
+  secure: false, // Se usa STARTTLS en 2525/587
+  requireTLS: true,
+  auth: {
+    user: "leads@logikamobile.com.mx",
+    pass: "Mexico40",
+  },
+});
 
 export async function POST(req: Request) {
   try {
-    console.log("=== INICIANDO PETICIÓN DE CONTACTO (RESEND) ===");
+    console.log("=== INICIANDO PETICIÓN DE CONTACTO (NODEMAILER MXROUTE) ===");
     const data = await req.json();
     console.log("Datos recibidos:", data);
     
@@ -36,20 +46,19 @@ export async function POST(req: Request) {
       );
     }
 
-    // Usaremos el SMTP_USER original o el correo al que quieres que lleguen los leads.
-    // Ojo: Resend solo te deja enviarte correos a ti mismo cuando usas el dominio gratuito onboarding@resend.dev
+    // A quién queremos notificar (tu correo personal o el que prefieras)
     const toEmail = process.env.SMTP_USER || "luisda.michel@gmail.com"; 
 
-    console.log("Enviando correo vía Resend API...");
+    console.log("Enviando correo vía Nodemailer (MXRoute)...");
     
-    const { data: resendData, error } = await resend.emails.send({
-      from: "LogikaMobile <onboarding@resend.dev>", // Dominio de prueba gratuito de Resend
-      to: [toEmail],
+    const info = await transporter.sendMail({
+      from: '"LogikaMobile Web" <leads@logikamobile.com.mx>', 
+      to: toEmail,
       replyTo: contactEmail,
-      subject: `Nuevo Lead: ${contactName} - Cotización desde Landing Page`,
+      subject: `Nuevo Lead: ${contactName} - Cotización General`,
       text: `Hola equipo,\n\nSe ha recibido una nueva solicitud de cotización.\n\nDatos de Contacto:\nNombre: ${contactName}\nCorreo: ${contactEmail}\nTeléfono: ${contactPhone}\nPreferencia de Contacto: ${contactPreference || "No especificada"}\n\nDescripción del Proyecto:\n${projectDescription || "No proporcionada"}\n\nDetalles de la cotización calculada:\nRango de Inversión Estimado: ${rangeText}\n\nEspecificaciones:\n- Origen: ${originText}\n- Tamaño de Empresa: ${companySizeText}\n- Tipo de Proyecto: ${typesText}\n- Complejidad: ${complexityText}\n- UX/UI: ${uxuiText}\n- Integraciones: ${integrationsText}\n- Urgencia: ${urgencyText}\n\nEste es un correo autogenerado desde LogikaMobileWeb.`,
       html: `
-        <h2>Nueva Solicitud de Cotización</h2>
+        <h2>Nueva Solicitud de Cotización (General)</h2>
         <h3>Datos de Contacto:</h3>
         <ul>
           <li><strong>Nombre:</strong> ${contactName}</li>
@@ -80,15 +89,7 @@ export async function POST(req: Request) {
       `,
     });
 
-    if (error) {
-      console.error("=== ERROR DE RESEND ===", error);
-      return NextResponse.json(
-        { error: "Error de API al enviar el correo" },
-        { status: 500 }
-      );
-    }
-
-    console.log("Correo enviado con éxito vía Resend. ID:", resendData?.id);
+    console.log("Correo enviado con éxito vía MXRoute. Message ID:", info.messageId);
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {

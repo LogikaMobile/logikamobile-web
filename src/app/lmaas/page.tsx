@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import LmaasQuoteModal from '@/components/LmaasQuoteModal';
 
 export const metadata: Metadata = {
   title: 'LMaaS - LogikaMobile as a Service',
@@ -209,9 +210,11 @@ export default function LMaasPage() {
         
         {/* Call to action */}
         <div className="text-center">
-          <Link href="/#contact" className="inline-flex items-center justify-center px-8 py-4 bg-[#7B2CBF] text-white font-bold rounded-lg hover:bg-orange-500 transition-colors shadow-[0_0_20px_rgba(123,44,191,0.5)] hover:shadow-[0_0_20px_rgba(249,115,22,0.5)]">
-            Inicia tu Suscripción
-          </Link>
+          <LmaasQuoteModal trigger={
+            <div className="inline-flex items-center justify-center px-8 py-4 bg-[#7B2CBF] text-white font-bold rounded-lg hover:bg-orange-500 transition-colors shadow-[0_0_20px_rgba(123,44,191,0.5)] hover:shadow-[0_0_20px_rgba(249,115,22,0.5)]">
+              Inicia tu Suscripción
+            </div>
+          } />
         </div>
       </main>
     </div>
