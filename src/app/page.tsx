@@ -122,16 +122,13 @@ export default function Home() {
               <div className="border border-zinc-800/80 bg-zinc-950/50 p-12 hover:border-orange-500/50 hover:bg-black transition-all duration-500 group relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-orange-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                 
-                <div className="w-20 h-20 bg-black border border-zinc-800 flex items-center justify-center mb-10 group-hover:border-orange-500/50 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-orange-500  group-hover:scale-110 transition-transform duration-500">
-                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                  </svg>
+                <div className="mb-10 w-28 h-28 md:w-32 md:h-32 transition-transform duration-500 group-hover:scale-110">
+                  <img src="/logos/computerLogo.svg" alt="Arquitectura y Desarrollo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.1)] group-hover:drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight">Ingeniería <br/>Móvil</h3>
-                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">Native / Cross-Platform</span>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight">Arquitectura & <br/>Desarrollo</h3>
+                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">Web / Cloud / Mobile</span>
                 <p className="text-zinc-400 text-justify text-lg md:text-xl font-light leading-relaxed">
-                  Desarrollamos aplicaciones móviles robustas a la medida. Seleccionamos la mejor tecnología para asegurar que tu producto ofrezca una experiencia impecable y cumpla con tus objetivos de negocio.
+                  Arquitectura y desarrollo de software con soluciones web, en la nube, móviles y soluciones integrales de alto rendimiento.
                 </p>
               </div>
 
@@ -139,15 +136,13 @@ export default function Home() {
               <div className="border border-zinc-800/80 bg-zinc-950/50 p-12 hover:border-orange-500/50 hover:bg-black transition-all duration-500 group relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-orange-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                 
-                <div className="w-20 h-20 bg-black border border-zinc-800 flex items-center justify-center mb-10 group-hover:border-orange-500/50 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-orange-500  group-hover:scale-110 transition-transform duration-500">
-                    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
-                  </svg>
+                <div className="mb-10 w-28 h-28 md:w-32 md:h-32 transition-transform duration-500 group-hover:scale-110">
+                  <img src="/logos/Audit.svg" alt="Auditoría de Código" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.1)] group-hover:drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight">Arquitecturas <br/>Cloud</h3>
-                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">AWS / GCP / Azure</span>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight">Auditoría de <br/>Código</h3>
+                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">Security / Performance</span>
                 <p className="text-zinc-400 text-justify text-lg md:text-xl font-light leading-relaxed">
-                  Diseñamos e implementamos soluciones en la nube altamente disponibles. Preparamos tu sistema para crecer de forma inteligente, optimizando costos y garantizando disponibilidad ante altas demandas.
+                  Evaluación profunda de tus repositorios para identificar deuda técnica, vulnerabilidades y cuellos de botella antes de escalar.
                 </p>
               </div>
 
@@ -155,36 +150,42 @@ export default function Home() {
               <div className="border border-zinc-800/80 bg-zinc-950/50 p-12 hover:border-orange-500/50 hover:bg-black transition-all duration-500 group relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-orange-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                 
-                <div className="w-20 h-20 bg-black border border-zinc-800 flex items-center justify-center mb-10 group-hover:border-orange-500/50 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-orange-500  group-hover:scale-110 transition-transform duration-500">
-                    <polyline points="16 18 22 12 16 6"></polyline>
-                    <polyline points="8 6 2 12 8 18"></polyline>
-                  </svg>
+                <div className="mb-10 w-28 h-28 md:w-32 md:h-32 transition-transform duration-500 group-hover:scale-110">
+                  <img src="/logos/LM_NBG.svg" alt="Software a la Medida" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.1)] group-hover:drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight">Refactorización & <br/>Escalabilidad</h3>
-                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">Legacy to Modern</span>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight">Software a <br/>la Medida</h3>
+                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">SaaS / B2B</span>
                 <p className="text-zinc-400 text-justify text-lg md:text-xl font-light leading-relaxed">
-                  Actualizamos y optimizamos sistemas existentes para asegurar su viabilidad futura. Reducimos la deuda técnica y mejoramos el rendimiento para que tu tecnología nunca sea un límite.
+                  Diseño y desarrollo end-to-end de plataformas SaaS (Software as a Service) perfectamente alineadas a la lógica de tu negocio.
                 </p>
               </div>
 
-              {/* Card 4 */}
-              <div className="border border-zinc-800/80 bg-zinc-950/50 p-12 hover:border-orange-500/50 hover:bg-black transition-all duration-500 group relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-orange-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+              {/* Card 4 - LMaaS (Estrella) */}
+              <TrackedLink href="/lmaas" targetName="service_lmaas_card" className="border border-[#7B2CBF]/50 bg-black p-12 hover:border-[#7B2CBF] hover:bg-zinc-950/80 transition-all duration-500 group relative overflow-hidden shadow-[0_0_30px_rgba(123,44,191,0.2)] hover:shadow-[0_0_50px_rgba(123,44,191,0.5)]">
+                <div className="absolute top-0 left-0 w-full h-1 bg-[#7B2CBF] scale-x-100 origin-left"></div>
                 
-                <div className="w-20 h-20 bg-black border border-zinc-800 flex items-center justify-center mb-10 group-hover:border-orange-500/50 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-orange-500  group-hover:scale-110 transition-transform duration-500">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                    <line x1="8" y1="21" x2="16" y2="21"></line>
-                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                <div className="flex justify-between items-start mb-10">
+                  <div className="w-28 h-28 md:w-32 md:h-32 transition-transform duration-500 group-hover:scale-110">
+                    <img src="/logos/LMaaSLogo.svg" alt="LMaaS Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(123,44,191,0.2)] group-hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.6)]" />
+                  </div>
+                </div>
+                
+                <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-6 leading-tight group-hover:text-[#6CD3D3] transition-colors">
+                  <strong>LMaaS</strong>
+                </h3>
+                <span className="inline-block px-4 py-2 bg-[#7B2CBF]/10 text-[#7B2CBF] font-mono text-sm mb-8 border border-[#7B2CBF]/30 font-bold">LogikaMobile as a Service</span>
+                <p className="text-zinc-300 text-justify text-lg md:text-xl font-light leading-relaxed mb-6">
+                  Tu departamento de ingeniería bajo demanda. Un equipo de tecnología a tu disposición por una tarifa plana, sin procesos lentos de contratación.
+                </p>
+                
+                <div className="flex items-center text-[#7B2CBF] font-bold group-hover:text-[#6CD3D3] transition-colors">
+                  <span>Conoce más</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 group-hover:translate-x-2 transition-transform">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight">Presencia Digital <br/>Estratégica</h3>
-                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">Web / SEO / CRO</span>
-                <p className="text-zinc-400 text-justify text-lg md:text-xl font-light leading-relaxed">
-                  Creamos plataformas corporativas y portales orientados a la conversión. Combinamos diseño atractivo con optimización técnica para posicionar tu marca y potenciar tus ventas en línea.
-                </p>
-              </div>
+              </TrackedLink>
             </div>
           </div>
         </section>
