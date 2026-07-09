@@ -263,11 +263,18 @@ export default function Home() {
           </p>
           <QuoteModal trigger={
             <span 
-              className="inline-block text-orange-500  hover:text-orange-400 hover: text-3xl md:text-5xl font-extrabold underline underline-offset-[16px] decoration-orange-500/40 hover:decoration-orange-400 transition-all duration-300"
+              className="inline-block text-orange-500  hover:text-orange-400 hover: text-3xl md:text-5xl font-extrabold underline underline-offset-[16px] decoration-orange-500/40 hover:decoration-orange-400 transition-all duration-300 cursor-pointer"
             >
               contacto@logikamobile.com
             </span>
           } />
+        </div>
+        
+        {/* Discreet Admin Link */}
+        <div className="absolute bottom-4 right-6 z-20">
+          <Link href="https://logikamobile.com.mx/login" className="text-xs text-zinc-800 hover:text-zinc-500 transition-colors">
+            Administración
+          </Link>
         </div>
       </footer>
     </div>
