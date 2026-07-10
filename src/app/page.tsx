@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import TrackedLink from '@/components/TrackedLink';
 import QuoteModal from '@/components/QuoteModal';
+import AdminLogo from '@/components/AdminLogo';
 
 export default function Home() {
   return (
@@ -39,7 +40,7 @@ export default function Home() {
           {/* Subtle radial glow behind hero */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-orange-600/5 blur-[150px] pointer-events-none rounded-full"></div>
           
-          <img src="/logos/computerLogo.svg" alt="LogikaMobile Logo" className="h-56 md:h-96 mb-14 w-auto relative z-10" />
+          <AdminLogo />
           <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter text-[#7B2CBF]  mb-8 relative z-10">
             Logika<span className="text-orange-500 ">Mobile</span><span className="text-[#6CD3D3]">.</span>
           </h1>
@@ -160,8 +161,22 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Card 4 - LMaaS (Estrella) */}
-              <TrackedLink href="/lmaas" targetName="service_lmaas_card" className="border border-[#7B2CBF]/50 bg-black p-12 hover:border-[#7B2CBF] hover:bg-zinc-950/80 transition-all duration-500 group relative overflow-hidden shadow-[0_0_30px_rgba(123,44,191,0.2)] hover:shadow-[0_0_50px_rgba(123,44,191,0.5)]">
+              {/* Card 4 - HaaS */}
+              <div className="border border-zinc-800/80 bg-zinc-950/50 p-12 hover:border-orange-500/50 hover:bg-black transition-all duration-500 group relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-orange-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                
+                <div className="mb-10 w-28 h-28 md:w-32 md:h-32 transition-transform duration-500 group-hover:scale-110 text-orange-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_0_15px_rgba(249,115,22,0.1)] group-hover:drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight">Hardware as <br/>a Service</h3>
+                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">Infra / HaaS</span>
+                <p className="text-zinc-400 text-justify text-lg md:text-xl font-light leading-relaxed">
+                  Provisión, mantenimiento y gestión de infraestructura tecnológica y equipos de alto rendimiento bajo un modelo de suscripción.
+                </p>
+              </div>
+
+              {/* Card 5 - LMaaS (Estrella) */}
+              <TrackedLink href="/lmaas" targetName="service_lmaas_card" className="border border-[#7B2CBF]/50 bg-black p-12 hover:border-[#7B2CBF] hover:bg-zinc-950/80 transition-all duration-500 group relative overflow-hidden shadow-[0_0_30px_rgba(123,44,191,0.2)] hover:shadow-[0_0_50px_rgba(123,44,191,0.5)] md:col-span-2">
                 <div className="absolute top-0 left-0 w-full h-1 bg-[#7B2CBF] scale-x-100 origin-left"></div>
                 
                 <div className="flex justify-between items-start mb-10">
@@ -268,13 +283,6 @@ export default function Home() {
               contacto@logikamobile.com
             </span>
           } />
-        </div>
-        
-        {/* Discreet Admin Link */}
-        <div className="absolute bottom-4 right-6 z-20">
-          <Link href="https://logikamobile.com.mx/login" className="text-xs text-zinc-800 hover:text-zinc-500 transition-colors">
-            Administración
-          </Link>
         </div>
       </footer>
     </div>

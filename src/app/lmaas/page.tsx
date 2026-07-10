@@ -44,14 +44,18 @@ export default function LMaasPage() {
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-4">
               <span className="text-[#7B2CBF]">Logika</span><span className="text-orange-500">Mobile</span><span className="text-[#6CD3D3]">.</span>
             </h2>
-            <p className="text-2xl md:text-3xl font-mono text-zinc-500 tracking-widest uppercase">
+            <p className="text-2xl md:text-3xl font-mono text-zinc-500 tracking-widest uppercase mb-12">
               presenta:
             </p>
           </div>
           
-          <div className="w-full max-w-2xl mx-auto mb-12 drop-shadow-[0_0_30px_rgba(123,44,191,0.4)]">
+          <div className="w-full max-w-2xl mx-auto mb-8 drop-shadow-[0_0_30px_rgba(123,44,191,0.4)]">
             <img src="/logos/LMaaSLogo.svg" alt="LMaaS Logo" className="w-full h-auto object-contain" />
           </div>
+
+          <h1 className="text-7xl md:text-9xl font-black tracking-tighter drop-shadow-2xl mb-8">
+            <span className="text-[#7B2CBF]">L</span><span className="text-orange-500">M</span><span className="text-[#6CD3D3]">aaS</span>
+          </h1>
 
           <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-8">
             Tu departamento de <span className="text-[#7B2CBF]">ingeniería</span> bajo demanda<span className="text-[#6CD3D3]">.</span>
