@@ -2,6 +2,12 @@ import Link from 'next/link';
 import TrackedLink from '@/components/TrackedLink';
 import QuoteModal from '@/components/QuoteModal';
 import AdminLogo from '@/components/AdminLogo';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'LogikaMobile | Desarrollo de Software a la Medida',
+  description: 'Impulsa tu negocio con soluciones de software estratégico, arquitectura escalable y aplicaciones móviles de alto rendimiento. Conoce LogikaMobile.',
+};
 
 export default function Home() {
   return (
@@ -11,7 +17,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 h-24 flex items-center justify-between">
           <div className="flex items-center">
             {/* Logo Text */}
-            <Link href="/" className="flex items-center gap-2 font-extrabold text-3xl md:text-4xl tracking-widest text-[#7B2CBF] " aria-label="LogikaMobile Home">
+            <Link id="nav-logo" href="/" className="flex items-center gap-2 font-extrabold text-3xl md:text-4xl tracking-widest text-[#7B2CBF] " aria-label="LogikaMobile Home">
               LOGIKA<span className="text-orange-500 ">MOBILE</span>
             </Link>
           </div>
@@ -24,7 +30,7 @@ export default function Home() {
           </nav>
 
           {/* Mobile Menu Icon */}
-          <button className="md:hidden text-zinc-400 hover:text-[#7B2CBF] hover:" aria-label="Abrir menú">
+          <button id="mobile-menu-btn" className="md:hidden text-zinc-400 hover:text-[#7B2CBF] hover:" aria-label="Abrir menú">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -207,9 +213,9 @@ export default function Home() {
         {/* Trusted By */}
         <section className="py-24 border-y border-zinc-900/50 bg-black/40 backdrop-blur-sm relative z-10 overflow-hidden">
           <div className="max-w-full mx-auto">
-            <h3 className="text-center text-lg md:text-xl font-bold text-zinc-500 mb-16 uppercase tracking-[0.2em] px-6">
+            <h2 className="text-center text-lg md:text-xl font-bold text-zinc-500 mb-16 uppercase tracking-[0.2em] px-6">
               Con la confianza de:
-            </h3>
+            </h2>
             
             <div className="relative flex overflow-hidden py-12 -my-12">
               <div className="flex w-max animate-marquee gap-16 md:gap-32 pr-16 md:pr-32 opacity-70 grayscale hover:grayscale-0 transition-all duration-700">

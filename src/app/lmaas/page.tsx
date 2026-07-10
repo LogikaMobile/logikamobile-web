@@ -5,7 +5,7 @@ import LmaasQuoteModal from '@/components/LmaasQuoteModal';
 
 export const metadata: Metadata = {
   title: 'LMaaS - LogikaMobile as a Service',
-  description: 'Tu departamento de ingeniería bajo demanda. Escala tu negocio con un equipo de tecnología a tu disposición.',
+  description: 'Contrata a un equipo élite de ingeniería de software bajo demanda por una tarifa plana. Elimina la fricción de contratación y acelera el desarrollo de tu producto con LMaaS.',
   icons: {
     icon: '/logos/LMaaSLogo.svg',
   }
@@ -41,9 +41,9 @@ export default function LMaasPage() {
           </div>
           
           <div className="flex flex-col items-center mb-16">
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-4">
+            <div className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-4">
               <span className="text-[#7B2CBF]">Logika</span><span className="text-orange-500">Mobile</span><span className="text-[#6CD3D3]">.</span>
-            </h2>
+            </div>
             <p className="text-2xl md:text-3xl font-mono text-zinc-500 tracking-widest uppercase mb-12">
               presenta:
             </p>
@@ -57,9 +57,9 @@ export default function LMaasPage() {
             <span className="text-[#7B2CBF]">L</span><span className="text-orange-500">M</span><span className="text-[#6CD3D3]">aaS</span>
           </h1>
 
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-8">
+          <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-8">
             Tu departamento de <span className="text-[#7B2CBF]">ingeniería</span> bajo demanda<span className="text-[#6CD3D3]">.</span>
-          </h1>
+          </h2>
           
           <p className="text-xl md:text-2xl text-zinc-400 max-w-3xl font-light leading-relaxed">
             Escala tu negocio con un equipo de tecnología a tu disposición por una tarifa plana mensual o anual. 
