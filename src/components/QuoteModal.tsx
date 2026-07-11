@@ -63,12 +63,12 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
   }, [isOpen]);
 
   const handleOpenModal = () => {
-    trackUserEvent("begin_quote", { source: trigger ? "footer_link" : "hero_button" });
+    trackUserEvent("custom_funnel_started", { source: trigger ? "footer_link" : "hero_button" });
     setIsOpen(true);
   };
 
   const advanceStep = (currentStepNum: number, nextStep: any, stepName: string, selectionValue: any) => {
-    trackUserEvent("quote_step_complete", { 
+    trackUserEvent("custom_funnel_step_completed", { 
       step: currentStepNum, 
       step_name: stepName, 
       selection: Array.isArray(selectionValue) ? selectionValue.join(",") : selectionValue 
@@ -126,10 +126,10 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
     const min = Math.round(grossMin / 100) * 100;
     const max = Math.round(grossMax / 100) * 100;
 
-    trackUserEvent("quote_calculated", { min_price: min, max_price: max, urgency: urgency });
+    trackUserEvent("custom_quote_calculated", { min_price: min, max_price: max, urgency: urgency });
 
     setQuoteBand({ min, max });
-    setStep("result");
+    setStep("contact");
   };
 
   const resetAndClose = () => {
@@ -192,8 +192,8 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
       });
 
       if (res.ok) {
-        trackUserEvent("lead_generated", { preference: contactPreference });
-        setStep("success");
+        trackUserEvent("generate_lead", { product: "custom_software", preference: contactPreference });
+        window.location.href = '/informationSent?type=custom&min=' + (quoteBand?.min || '') + '&max=' + (quoteBand?.max || '');
       } else {
         alert("Hubo un error al enviar la solicitud. Intenta de nuevo.");
       }
@@ -523,7 +523,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                 <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
                   <button 
                     onClick={() => {
-                      trackUserEvent("quote_intent_contact");
+                      trackUserEvent("custom_funnel_contact_intent");
                       setStep("contact");
                     }}
                     className="w-full sm:w-auto px-12 py-5 bg-[#7B2CBF] hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest border border-[#7B2CBF] transition-all"

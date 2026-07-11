@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { app } from "@/lib/firebase";
 import { getAnalytics, isSupported } from "firebase/analytics";
+import { trackUserEvent } from "@/lib/trackEvent";
 
 export default function FirebaseAnalytics() {
   useEffect(() => {
@@ -13,6 +14,35 @@ export default function FirebaseAnalytics() {
           getAnalytics(app);
         }
       });
+
+      const handleGlobalClick = (e: MouseEvent) => {
+        const target = e.target as HTMLElement;
+        const interactiveElement = target.closest("button, a");
+        
+        if (interactiveElement) {
+          let label = interactiveElement.textContent?.trim() || interactiveElement.getAttribute("aria-label") || "";
+          
+          // Clean up string
+          label = label.replace(/\s+/g, ' ');
+
+          // Truncate if it's too long
+          if (label.length > 50) {
+             label = label.substring(0, 50) + "...";
+          }
+          
+          const tagName = interactiveElement.tagName.toLowerCase();
+          
+          if (label) {
+            trackUserEvent(tagName === "button" ? "button_clicked" : "link_clicked", {
+               label: label,
+               id: interactiveElement.id || undefined
+            });
+          }
+        }
+      };
+
+      document.addEventListener("click", handleGlobalClick);
+      return () => document.removeEventListener("click", handleGlobalClick);
     }
   }, []);
 

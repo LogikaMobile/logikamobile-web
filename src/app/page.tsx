@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'LogikaMobile | Desarrollo de Software a la Medida',
-  description: 'Impulsa tu negocio con soluciones de software estratégico, arquitectura escalable y aplicaciones móviles de alto rendimiento. Conoce LogikaMobile.',
+  description: 'Especialistas en desarrollo de software a la medida y modernización de sistemas legacy. Arquitectura escalable y apps móviles de alto rendimiento.',
 };
 
 export default function Home() {

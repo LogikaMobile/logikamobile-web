@@ -10,7 +10,7 @@ interface TrackedLinkProps extends LinkProps, Omit<AnchorHTMLAttributes<HTMLAnch
 
 export default function TrackedLink({ children, targetName, ...props }: TrackedLinkProps) {
   const handleClick = () => {
-    trackUserEvent("nav_click", { target: targetName });
+    trackUserEvent("navigation_link_clicked", { target: targetName });
   };
 
   return (

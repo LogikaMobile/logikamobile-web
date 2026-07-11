@@ -10,6 +10,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://logikamobile.com.mx'),
+  alternates: {
+    canonical: '/',
+  },
   title: "LogikaMobile | Ingeniería de Software",
   description: "Ingeniería de software para escalar tu negocio. Desarrollo móvil y web con arquitecturas robustas y orientadas a resultados.",
 };
@@ -23,6 +27,23 @@ export default function RootLayout({
     <html lang="es" className={`${inter.variable} antialiased dark`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col font-sans text-zinc-300 tracking-tight bg-fixed bg-gradient-to-br from-black via-zinc-900 to-[#3b1a00]">
         <FirebaseAnalytics />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareBusiness",
+              "name": "LogikaMobile",
+              "url": "https://logikamobile.com.mx",
+              "logo": "https://logikamobile.com.mx/logos/Logo.svg",
+              "description": "Especialistas en desarrollo de software a la medida y modernización de sistemas legacy.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "MX"
+              }
+            })
+          }}
+        />
         {children}
       </body>
     </html>

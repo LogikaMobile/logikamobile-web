@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import { trackUserEvent } from '@/lib/trackEvent';
 
 export default function AdminLogo() {
   const [clicks, setClicks] = useState(0);
@@ -8,6 +9,7 @@ export default function AdminLogo() {
     const newClicks = clicks + 1;
     setClicks(newClicks);
     if (newClicks >= 5) {
+      trackUserEvent("easter_egg_activated", { name: "admin_login" });
       window.location.href = 'https://logikamobile.com.mx/login';
       setClicks(0); // reset if they come back
     }

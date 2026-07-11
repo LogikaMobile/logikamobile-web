@@ -53,12 +53,12 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
   }, [isOpen]);
 
   const handleOpenModal = () => {
-    trackUserEvent("begin_lmaas_quote", { source: "lmaas_landing" });
+    trackUserEvent("lmaas_funnel_started", { source: "lmaas_landing" });
     setIsOpen(true);
   };
 
   const advanceStep = (currentStepNum: number | string, nextStep: any, stepName: string, selectionValue: any) => {
-    trackUserEvent("lmaas_quote_step", { 
+    trackUserEvent("lmaas_funnel_step_completed", { 
       step: currentStepNum, 
       step_name: stepName, 
       selection: selectionValue 
@@ -123,8 +123,8 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
       });
 
       if (response.ok) {
-        trackUserEvent("lmaas_lead_captured", { value: realTimeTotal });
-        setStep("result"); // Avanzar a mostrar el precio
+        trackUserEvent("generate_lead", { product: "lmaas", value: realTimeTotal });
+        window.location.href = '/informationSent?type=lmaas&price=' + realTimeTotal + '&billing=' + billingCycle;
       } else {
         alert("Ocurrió un error al enviar tu información. Por favor intenta de nuevo.");
       }
