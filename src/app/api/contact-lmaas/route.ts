@@ -29,13 +29,30 @@ export async function POST(req: Request) {
       companySizeText,
       infraAddon,
       billingCycle,
-      finalPrice
+      finalPrice,
+      websiteUrl
     } = data;
+
+    // 1. Honeypot check
+    if (websiteUrl) {
+      console.log("Honeypot filled in LMaaS, silently dropping request.");
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
 
     if (!contactName || !contactEmail) {
       console.warn("Faltan datos requeridos (nombre o correo).");
       return NextResponse.json(
         { error: "Nombre y correo son requeridos" },
+        { status: 400 }
+      );
+    }
+
+    // 2. Stronger email validation
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(contactEmail)) {
+      console.warn("Correo con formato inválido.");
+      return NextResponse.json(
+        { error: "Formato de correo inválido" },
         { status: 400 }
       );
     }

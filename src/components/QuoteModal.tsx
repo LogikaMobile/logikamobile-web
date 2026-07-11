@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { trackUserEvent } from "@/lib/trackEvent";
+import { useTranslations } from "next-intl";
 
 type ProjectOrigin = "scratch" | "legacy" | null;
 type CompanySize = "startup" | "sme" | "enterprise" | null;
@@ -16,6 +17,8 @@ interface QuoteModalProps {
 }
 
 export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
+  const t = useTranslations('QuoteModal');
+
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState<1 | 2 | 3 | 4 | 5 | 6 | 7 | "result" | "contact" | "success">(1);
   
@@ -34,17 +37,18 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
   const [contactPhone, setContactPhone] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
   const [contactPreference, setContactPreference] = useState("");
+  const [websiteUrl, setWebsiteUrl] = useState(""); // Honeypot field
   const [isSending, setIsSending] = useState(false);
   const [emailError, setEmailError] = useState("");
 
   const validateEmail = (email: string) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!email) {
       setEmailError("");
       return false;
     }
     if (!regex.test(email)) {
-      setEmailError("Por favor ingresa un correo válido.");
+      setEmailError(t('form_email_err'));
       return false;
     }
     setEmailError("");
@@ -159,13 +163,13 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
     if (!validateEmail(contactEmail)) return;
     setIsSending(true);
 
-    const typesMap: Record<string, string> = { app: "App Móvil", web: "Sitio Web", cloud: "Cloud" };
-    const originMap: Record<string, string> = { scratch: "Proyecto Nuevo", legacy: "Proyecto Existente" };
-    const sizeMap: Record<string, string> = { startup: "Emprendimiento (1-10)", sme: "PYME (11-50)", enterprise: "Corporativo (50+)" };
-    const compMap: Record<string, string> = { basic: "Básica", intermediate: "Intermedia", advanced: "Avanzada" };
-    const uxuiMap: Record<string, string> = { ready: "Diseño Listo", from_scratch: "Desde Cero" };
-    const intMap: Record<string, string> = { isolated: "Sistema Aislado", critical: "Integraciones Externas" };
-    const urgMap: Record<string, string> = { normal: "Normal", fast: "Rápida", urgent: "Urgente" };
+    const typesMap: Record<string, string> = { app: t('step3_app'), web: t('step3_web'), cloud: t('step3_cloud') };
+    const originMap: Record<string, string> = { scratch: t('step1_new'), legacy: t('step1_legacy') };
+    const sizeMap: Record<string, string> = { startup: t('step2_startup'), sme: t('step2_sme'), enterprise: t('step2_enterprise') };
+    const compMap: Record<string, string> = { basic: t('step4_basic'), intermediate: t('step4_intermediate'), advanced: t('step4_advanced') };
+    const uxuiMap: Record<string, string> = { ready: t('step5_ready'), from_scratch: t('step5_scratch') };
+    const intMap: Record<string, string> = { isolated: t('step6_isolated'), critical: t('step6_critical') };
+    const urgMap: Record<string, string> = { normal: t('step7_normal'), fast: t('step7_fast'), urgent: t('step7_urgent') };
 
     const selectedTypes = types.map(t => typesMap[t]).join(", ");
     const rangeText = quoteBand ? `$${quoteBand.min.toLocaleString()} - $${quoteBand.max.toLocaleString()} USD` : "";
@@ -187,7 +191,8 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
           uxuiText: uxui ? uxuiMap[uxui] : "",
           integrationsText: integrations ? intMap[integrations] : "",
           urgencyText: urgency ? urgMap[urgency] : "",
-          rangeText
+          rangeText,
+          websiteUrl
         }),
       });
 
@@ -195,11 +200,11 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
         trackUserEvent("generate_lead", { product: "custom_software", preference: contactPreference });
         window.location.href = '/informationSent?type=custom&min=' + (quoteBand?.min || '') + '&max=' + (quoteBand?.max || '');
       } else {
-        alert("Hubo un error al enviar la solicitud. Intenta de nuevo.");
+        alert(t('err_send'));
       }
     } catch (error) {
       console.error(error);
-      alert("Hubo un error de conexión al enviar la solicitud.");
+      alert(t('err_conn'));
     } finally {
       setIsSending(false);
     }
@@ -216,7 +221,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
           onClick={handleOpenModal}
           className="w-full sm:w-auto px-12 py-6 bg-orange-600 hover:bg-orange-500 text-[#7B2CBF]  text-xl font-bold uppercase tracking-widest rounded-none transition-all duration-300 shadow-[0_0_40px_rgba(234,88,12,0.3)] hover:shadow-[0_0_60px_rgba(234,88,12,0.5)] hover:-translate-y-1"
         >
-          Iniciar Cotización
+          {t('start_quote')}
         </button>
       )}
 
@@ -239,7 +244,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
               <>
                 <div className="mb-12">
                   <h3 className="text-orange-500  font-mono text-sm tracking-widest uppercase mb-4">
-                    Paso {step} de 7
+                    {t('step_x_of_7', { step })}
                   </h3>
                   <div className="w-full h-1 bg-zinc-900">
                     <div className="h-full bg-orange-500 transition-all duration-500" style={{ width: `${(step as number / 7) * 100}%` }}></div>
@@ -249,12 +254,12 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                 {step === 1 && (
                   <div className="animate-in fade-in slide-in-from-right-8 duration-500">
                     <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#7B2CBF]  mb-8">
-                      Origen del Código
+                      {t('step1_title')}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {[
-                        { id: "scratch", title: "Proyecto Nuevo", desc: "Empezamos con una hoja en blanco, desde cero." },
-                        { id: "legacy", title: "Proyecto Existente", desc: "Hay que revisar, rescatar o mejorar código que ya tienes." }
+                        { id: "scratch", title: t('step1_new'), desc: t('step1_new_desc') },
+                        { id: "legacy", title: t('step1_legacy'), desc: t('step1_legacy_desc') }
                       ].map((item) => (
                         <button
                           key={item.id}
@@ -271,7 +276,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                       disabled={!origin}
                       className="mt-12 px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all w-full md:w-auto"
                     >
-                      Continuar
+                      {t('continue')}
                     </button>
                   </div>
                 )}
@@ -279,13 +284,13 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                 {step === 2 && (
                   <div className="animate-in fade-in slide-in-from-right-8 duration-500">
                     <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#7B2CBF]  mb-8">
-                      Tamaño de la Empresa
+                      {t('step2_title')}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {[
-                        { id: "startup", title: "Emprendimiento", desc: "1 a 10 personas. Enfoque en validar rápido el MVP." },
-                        { id: "sme", title: "PYME", desc: "11 a 50 personas. Procesos establecidos y bases sólidas." },
-                        { id: "enterprise", title: "Corporativo", desc: "50+ personas. Alta disponibilidad, SLAs y compliance." }
+                        { id: "startup", title: t('step2_startup'), desc: t('step2_startup_desc') },
+                        { id: "sme", title: t('step2_sme'), desc: t('step2_sme_desc') },
+                        { id: "enterprise", title: t('step2_enterprise'), desc: t('step2_enterprise_desc') }
                       ].map((item) => (
                         <button
                           key={item.id}
@@ -302,14 +307,14 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                         onClick={() => setStep(1)}
                         className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest hover:border-zinc-500 transition-all"
                       >
-                        Atrás
+                        {t('back')}
                       </button>
                       <button 
                         onClick={() => advanceStep(2, 3, "tamano", companySize)}
                         disabled={!companySize}
                         className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
                       >
-                        Continuar
+                        {t('continue')}
                       </button>
                     </div>
                   </div>
@@ -318,14 +323,14 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                 {step === 3 && (
                   <div className="animate-in fade-in slide-in-from-right-8 duration-500">
                     <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#7B2CBF]  mb-8">
-                      ¿Qué tipo de proyecto necesitas?
+                      {t('step3_title')}
                     </h2>
-                    <p className="text-zinc-400 mb-6 font-mono text-sm uppercase tracking-widest">Puedes seleccionar múltiples opciones:</p>
+                    <p className="text-zinc-400 mb-6 font-mono text-sm uppercase tracking-widest">{t('step3_subtitle')}</p>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {[
-                        { id: "app", title: "App Móvil", desc: "Desarrollo Nativo o Multiplataforma." },
-                        { id: "web", title: "Sitio Web", desc: "Plataformas Web y E-commerce." },
-                        { id: "cloud", title: "Cloud", desc: "Arquitectura e infraestructura Cloud." }
+                        { id: "app", title: t('step3_app'), desc: t('step3_app_desc') },
+                        { id: "web", title: t('step3_web'), desc: t('step3_web_desc') },
+                        { id: "cloud", title: t('step3_cloud'), desc: t('step3_cloud_desc') }
                       ].map((item) => (
                         <button
                           key={item.id}
@@ -342,14 +347,14 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                         onClick={() => setStep(2)}
                         className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest hover:border-zinc-500 transition-all"
                       >
-                        Atrás
+                        {t('back')}
                       </button>
                       <button 
                         onClick={() => advanceStep(3, 4, "tipo", types)}
                         disabled={types.length === 0}
                         className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
                       >
-                        Continuar
+                        {t('continue')}
                       </button>
                     </div>
                   </div>
@@ -358,13 +363,13 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                 {step === 4 && (
                   <div className="animate-in fade-in slide-in-from-right-8 duration-500">
                     <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#7B2CBF]  mb-8">
-                      Complejidad Técnica
+                      {t('step4_title')}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {[
-                        { id: "basic", title: "Básica", desc: "Informativo, formularios simples, sin cuentas de usuario." },
-                        { id: "intermediate", title: "Intermedia", desc: "Perfiles de usuario, panel de administración y pagos." },
-                        { id: "advanced", title: "Avanzada", desc: "Operaciones en tiempo real, miles de usuarios o logística compleja." }
+                        { id: "basic", title: t('step4_basic'), desc: t('step4_basic_desc') },
+                        { id: "intermediate", title: t('step4_intermediate'), desc: t('step4_intermediate_desc') },
+                        { id: "advanced", title: t('step4_advanced'), desc: t('step4_advanced_desc') }
                       ].map((item) => (
                         <button
                           key={item.id}
@@ -381,14 +386,14 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                         onClick={() => setStep(3)}
                         className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest hover:border-zinc-500 transition-all"
                       >
-                        Atrás
+                        {t('back')}
                       </button>
                       <button 
                         onClick={() => advanceStep(4, 5, "complejidad", complexity)}
                         disabled={!complexity}
                         className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
                       >
-                        Continuar
+                        {t('continue')}
                       </button>
                     </div>
                   </div>
@@ -397,12 +402,12 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                 {step === 5 && (
                   <div className="animate-in fade-in slide-in-from-right-8 duration-500">
                     <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#7B2CBF]  mb-8">
-                      Estado del Diseño UX/UI
+                      {t('step5_title')}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {[
-                        { id: "ready", title: "Diseño Listo", desc: "Tienen flujos y pantallas definidas en Figma." },
-                        { id: "from_scratch", title: "Desde Cero", desc: "LogikaMobile debe diseñarlo desde cero." }
+                        { id: "ready", title: t('step5_ready'), desc: t('step5_ready_desc') },
+                        { id: "from_scratch", title: t('step5_scratch'), desc: t('step5_scratch_desc') }
                       ].map((item) => (
                         <button
                           key={item.id}
@@ -419,14 +424,14 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                         onClick={() => setStep(4)}
                         className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest hover:border-zinc-500 transition-all"
                       >
-                        Atrás
+                        {t('back')}
                       </button>
                       <button 
                         onClick={() => advanceStep(5, 6, "uxui", uxui)}
                         disabled={!uxui}
                         className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
                       >
-                        Continuar
+                        {t('continue')}
                       </button>
                     </div>
                   </div>
@@ -435,12 +440,12 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                 {step === 6 && (
                   <div className="animate-in fade-in slide-in-from-right-8 duration-500">
                     <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#7B2CBF]  mb-8">
-                      Integraciones Externas
+                      {t('step6_title')}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {[
-                        { id: "isolated", title: "Sistema Aislado", desc: "Operará de manera independiente sin conectarse a otros sistemas." },
-                        { id: "critical", title: "Integraciones Externas", desc: "Requiere conectar con sistemas de tu empresa, bancos o hardware." }
+                        { id: "isolated", title: t('step6_isolated'), desc: t('step6_isolated_desc') },
+                        { id: "critical", title: t('step6_critical'), desc: t('step6_critical_desc') }
                       ].map((item) => (
                         <button
                           key={item.id}
@@ -457,14 +462,14 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                         onClick={() => setStep(5)}
                         className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest hover:border-zinc-500 transition-all"
                       >
-                        Atrás
+                        {t('back')}
                       </button>
                       <button 
                         onClick={() => advanceStep(6, 7, "integraciones", integrations)}
                         disabled={!integrations}
                         className="px-8 py-4 bg-[#7B2CBF] disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none"
                       >
-                        Continuar
+                        {t('continue')}
                       </button>
                     </div>
                   </div>
@@ -473,13 +478,13 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                 {step === 7 && (
                   <div className="animate-in fade-in slide-in-from-right-8 duration-500">
                     <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#7B2CBF]  mb-8">
-                      La Urgencia (Triángulo de Hierro)
+                      {t('step7_title')}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {[
-                        { id: "normal", title: "Normal", desc: "Tiempos estándar de desarrollo." },
-                        { id: "fast", title: "Rápida", desc: "Necesitamos meter el acelerador." },
-                        { id: "urgent", title: "Urgente", desc: "Prioridad máxima. Lo necesitas para ayer." }
+                        { id: "normal", title: t('step7_normal'), desc: t('step7_normal_desc') },
+                        { id: "fast", title: t('step7_fast'), desc: t('step7_fast_desc') },
+                        { id: "urgent", title: t('step7_urgent'), desc: t('step7_urgent_desc') }
                       ].map((item) => (
                         <button
                           key={item.id}
@@ -496,14 +501,14 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                         onClick={() => setStep(6)}
                         className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest hover:border-zinc-500 transition-all"
                       >
-                        Atrás
+                        {t('back')}
                       </button>
                       <button 
                         onClick={calculateQuote}
                         disabled={!urgency}
                         className="px-8 py-4 bg-orange-600 disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-orange-500 text-[#7B2CBF]  font-bold uppercase tracking-widest transition-all flex-1 md:flex-none shadow-[0_0_20px_rgba(234,88,12,0.3)] disabled:shadow-none"
                       >
-                        Cotizar
+                        {t('quote_btn')}
                       </button>
                     </div>
                   </div>
@@ -513,12 +518,12 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
 
             {step === "result" && quoteBand && (
               <div className="animate-in zoom-in-95 duration-700 flex flex-col items-center text-center">
-                <span className="text-zinc-500 font-mono text-sm tracking-widest uppercase mb-6">Estimado de Inversión</span>
+                <span className="text-zinc-500 font-mono text-sm tracking-widest uppercase mb-6">{t('result_title')}</span>
                 <div className="text-5xl md:text-7xl font-extrabold text-[#7B2CBF]  mb-10 tracking-tighter leading-tight break-all md:break-normal">
-                  ${quoteBand.min.toLocaleString()} - ${quoteBand.max.toLocaleString()} <span className="text-2xl text-orange-500 tracking-normal block mt-2 md:inline md:mt-0">USD</span>
+                  ${quoteBand.min.toLocaleString()} - ${quoteBand.max.toLocaleString()} <span className="text-2xl text-orange-500 tracking-normal block mt-2 md:inline md:mt-0">{t('result_currency')}</span>
                 </div>
                 <p className="text-zinc-400 text-justify mb-12 max-w-lg font-light text-lg">
-                  Ten en cuenta que esta es una estimación rápida. Como aún no conocemos los detalles exactos de tu operación, el precio final podría variar. Cuéntanos tu visión y armaremos una propuesta a tu medida.
+                  {t('result_desc')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
                   <button 
@@ -528,13 +533,13 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                     }}
                     className="w-full sm:w-auto px-12 py-5 bg-[#7B2CBF] hover:bg-purple-700 text-orange-400  font-bold uppercase tracking-widest border border-[#7B2CBF] transition-all"
                   >
-                    Contactar Equipo
+                    {t('contact_team')}
                   </button>
                   <button 
                     onClick={resetAndClose}
                     className="w-full sm:w-auto px-12 py-5 border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 font-bold uppercase tracking-widest transition-all"
                   >
-                    Cerrar
+                    {t('close')}
                   </button>
                 </div>
               </div>
@@ -543,24 +548,24 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
             {step === "contact" && (
               <div className="animate-in fade-in slide-in-from-right-8 duration-500">
                 <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#7B2CBF]  mb-8">
-                  Hagámoslo realidad
+                  {t('contact_title')}
                 </h2>
                 <p className="text-zinc-400 text-justify mb-8 font-light text-lg">
-                  Déjanos tus datos. Generaremos un correo con los detalles técnicos de tu cotización listo para ser enviado.
+                  {t('contact_desc')}
                 </p>
                 <div className="flex flex-col gap-6 mb-10">
                   <div>
-                    <label className="block text-orange-500 font-mono text-sm tracking-widest uppercase mb-2">Nombre</label>
+                    <label className="block text-orange-500 font-mono text-sm tracking-widest uppercase mb-2">{t('form_name')}</label>
                     <input 
                       type="text" 
                       value={contactName}
                       onChange={(e) => setContactName(e.target.value)}
                       className="w-full bg-black border border-zinc-800 text-white p-4 focus:border-orange-500 focus:outline-none transition-colors"
-                      placeholder="Ej. Ana Pérez"
+                      placeholder={t('form_name_ph')}
                     />
                   </div>
                   <div>
-                    <label className="block text-orange-500 font-mono text-sm tracking-widest uppercase mb-2">Correo Electrónico</label>
+                    <label className="block text-orange-500 font-mono text-sm tracking-widest uppercase mb-2">{t('form_email')}</label>
                     <input 
                       type="email" 
                       value={contactEmail}
@@ -573,12 +578,25 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                       }}
                       onBlur={(e) => validateEmail(e.target.value)}
                       className={`w-full bg-black border ${emailError ? 'border-red-500' : 'border-zinc-800'} text-white p-4 focus:border-orange-500 focus:outline-none transition-colors`}
-                      placeholder="ana@empresa.com"
+                      placeholder={t('form_email_ph')}
                     />
                     {emailError && <p className="text-red-500 font-mono text-xs mt-2">{emailError}</p>}
                   </div>
+                  
+                  {/* Honeypot Field */}
+                  <div style={{ opacity: 0, position: 'absolute', top: '-9999px', left: '-9999px' }} aria-hidden="true">
+                    <label>Website</label>
+                    <input 
+                      type="text" 
+                      value={websiteUrl}
+                      onChange={(e) => setWebsiteUrl(e.target.value)}
+                      tabIndex={-1} 
+                      autoComplete="off" 
+                    />
+                  </div>
+
                   <div>
-                    <label className="block text-orange-500 font-mono text-sm tracking-widest uppercase mb-2">Teléfono</label>
+                    <label className="block text-orange-500 font-mono text-sm tracking-widest uppercase mb-2">{t('form_phone')}</label>
                     <input 
                       type="tel" 
                       value={contactPhone}
@@ -588,26 +606,34 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                     />
                   </div>
                   <div>
-                    <label className="block text-orange-500 font-mono text-sm tracking-widest uppercase mb-2">Medio de Contacto Preferido</label>
+                    <label className="block text-orange-500 font-mono text-sm tracking-widest uppercase mb-2">{t('form_pref')}</label>
                     <select
                       value={contactPreference}
                       onChange={(e) => setContactPreference(e.target.value)}
                       className="w-full bg-black border border-zinc-800 text-zinc-300 p-4 focus:border-orange-500 focus:outline-none transition-colors appearance-none cursor-pointer"
                     >
-                      <option value="" disabled>Selecciona una opción</option>
-                      <option value="WhatsApp">WhatsApp</option>
-                      <option value="Correo">Correo Electrónico</option>
-                      <option value="Llamada">Llamada Telefónica</option>
+                      <option value="" disabled>{t('form_pref_opt_default')}</option>
+                      <option value="WhatsApp">{t('form_pref_opt_whatsapp')}</option>
+                      <option value="Correo">{t('form_pref_opt_email')}</option>
+                      <option value="Llamada">{t('form_pref_opt_call')}</option>
                     </select>
                   </div>
                   <div>
-                    <label className="block text-orange-500 font-mono text-sm tracking-widest uppercase mb-2">Breve Descripción del Proyecto</label>
+                    <label className="block text-orange-500 font-mono text-sm tracking-widest uppercase mb-2">
+                      {t('form_desc')} <span className="text-zinc-500 text-xs ml-2">(Mínimo 50 caracteres)</span>
+                    </label>
                     <textarea 
                       value={projectDescription}
                       onChange={(e) => setProjectDescription(e.target.value)}
+                      minLength={50}
                       className="w-full bg-black border border-zinc-800 text-white p-4 focus:border-orange-500 focus:outline-none transition-colors min-h-[120px] resize-y"
-                      placeholder="Cuéntanos un poco de tu idea, objetivos o requerimientos principales..."
+                      placeholder={t('form_desc_ph')}
                     />
+                    <div className="text-right mt-1">
+                      <span className={`text-xs font-mono ${projectDescription.trim().length >= 50 ? 'text-green-500' : 'text-zinc-500'}`}>
+                        {projectDescription.trim().length} / 50
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -615,14 +641,14 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                     onClick={() => setStep("result")}
                     className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest hover:border-zinc-500 transition-all"
                   >
-                    Atrás
+                    {t('back')}
                   </button>
                   <button 
                     onClick={handleSendEmail}
-                    disabled={!contactName || !contactEmail || isSending}
-                    className={`px-8 py-4 font-bold uppercase tracking-widest transition-all flex-1 md:flex-none text-center ${(!contactName || !contactEmail || isSending) ? "bg-zinc-800 text-zinc-600 cursor-not-allowed" : "bg-orange-600 hover:bg-orange-500 text-[#7B2CBF] [text-shadow:-1px_-1px_0_#6CD3D3,1px_-1px_0_#6CD3D3,-1px_1px_0_#6CD3D3,1px_1px_0_#6CD3D3] shadow-[0_0_20px_rgba(234,88,12,0.3)]"}`}
+                    disabled={!contactName || !contactEmail || !!emailError || projectDescription.trim().length < 50 || isSending}
+                    className={`px-8 py-4 font-bold uppercase tracking-widest transition-all flex-1 md:flex-none text-center ${(!contactName || !contactEmail || !!emailError || projectDescription.trim().length < 50 || isSending) ? "bg-zinc-800 text-zinc-600 cursor-not-allowed" : "bg-orange-600 hover:bg-orange-500 text-[#7B2CBF] [text-shadow:-1px_-1px_0_#6CD3D3,1px_-1px_0_#6CD3D3,-1px_1px_0_#6CD3D3,1px_1px_0_#6CD3D3] shadow-[0_0_20px_rgba(234,88,12,0.3)]"}`}
                   >
-                    {isSending ? "Enviando..." : "Enviar Solicitud"}
+                    {isSending ? t('btn_sending') : t('btn_send')}
                   </button>
                 </div>
               </div>
@@ -636,16 +662,16 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
                   </svg>
                 </div>
                 <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-6">
-                  ¡Solicitud Enviada!
+                  {t('success_title')}
                 </h2>
                 <p className="text-zinc-400 text-justify mb-12 max-w-lg font-light text-lg">
-                  Hemos recibido tu información y la estimación técnica de tu proyecto de manera exitosa. Nuestro equipo estratégico la revisará y te contactaremos en breve a tu correo.
+                  {t('success_desc')}
                 </p>
                 <button 
                   onClick={resetAndClose}
                   className="px-12 py-5 bg-zinc-800 hover:bg-zinc-700 text-white font-bold uppercase tracking-widest transition-all"
                 >
-                  Entendido
+                  {t('understood')}
                 </button>
               </div>
             )}

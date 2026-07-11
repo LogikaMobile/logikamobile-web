@@ -34,13 +34,39 @@ export async function POST(req: Request) {
       uxuiText,
       integrationsText,
       urgencyText,
-      rangeText
+      rangeText,
+      websiteUrl
     } = data;
+
+    // 1. Honeypot check
+    if (websiteUrl) {
+      console.log("Honeypot filled, silently dropping request.");
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
 
     if (!contactName || !contactEmail) {
       console.warn("Faltan datos requeridos (nombre o correo).");
       return NextResponse.json(
         { error: "Nombre y correo son requeridos" },
+        { status: 400 }
+      );
+    }
+
+    // 2. Stronger email validation
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(contactEmail)) {
+      console.warn("Correo con formato inválido.");
+      return NextResponse.json(
+        { error: "Formato de correo inválido" },
+        { status: 400 }
+      );
+    }
+
+    // 3. Project description min-length check
+    if (!projectDescription || projectDescription.trim().length < 50) {
+      console.warn("Descripción del proyecto muy corta.");
+      return NextResponse.json(
+        { error: "La descripción del proyecto debe tener al menos 50 caracteres." },
         { status: 400 }
       );
     }

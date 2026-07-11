@@ -2,14 +2,21 @@ import Link from 'next/link';
 import TrackedLink from '@/components/TrackedLink';
 import QuoteModal from '@/components/QuoteModal';
 import AdminLogo from '@/components/AdminLogo';
-import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
-export const metadata: Metadata = {
-  title: 'LogikaMobile | Desarrollo de Software a la Medida',
-  description: 'Especialistas en desarrollo de software a la medida y modernización de sistemas legacy. Arquitectura escalable y apps móviles de alto rendimiento.',
-};
+export async function generateMetadata({ params }: any) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Metadata' });
+  return {
+    title: t('title'),
+    description: t('description')
+  };
+}
 
 export default function Home() {
+  const t = useTranslations();
+
   return (
     <div className="min-h-screen text-zinc-300 font-sans selection:bg-orange-500/30 selection:text-orange-200">
       {/* Global Navbar */}
@@ -24,13 +31,13 @@ export default function Home() {
           
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-10 text-base font-bold uppercase tracking-widest text-zinc-400">
-            <TrackedLink href="#about" targetName="about" className="hover:text-orange-500 hover: transition-colors duration-300">Acerca de</TrackedLink>
-            <TrackedLink href="#services" targetName="services" className="hover:text-orange-500 hover: transition-colors duration-300">Servicios</TrackedLink>
-            <TrackedLink href="#contact" targetName="contact" className="hover:text-orange-500 hover: transition-colors duration-300">Contacto</TrackedLink>
+            <TrackedLink href="#about" targetName="about" className="hover:text-orange-500 hover: transition-colors duration-300">{t('Navigation.about')}</TrackedLink>
+            <TrackedLink href="#services" targetName="services" className="hover:text-orange-500 hover: transition-colors duration-300">{t('Navigation.services')}</TrackedLink>
+            <TrackedLink href="#contact" targetName="contact" className="hover:text-orange-500 hover: transition-colors duration-300">{t('Navigation.contact')}</TrackedLink>
           </nav>
 
           {/* Mobile Menu Icon */}
-          <button id="mobile-menu-btn" className="md:hidden text-zinc-400 hover:text-[#7B2CBF] hover:" aria-label="Abrir menú">
+          <button id="mobile-menu-btn" className="md:hidden text-zinc-400 hover:text-[#7B2CBF] hover:" aria-label={t('Navigation.open_menu')}>
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -51,7 +58,7 @@ export default function Home() {
             Logika<span className="text-orange-500 ">Mobile</span><span className="text-[#6CD3D3]">.</span>
           </h1>
           <p className="text-xl md:text-3xl text-zinc-300 text-justify max-w-4xl mb-16 leading-relaxed font-light relative z-10">
-            Soluciones de software estratégico para impulsar tu negocio. Construimos plataformas móviles y web escalables, enfocadas en optimizar tus operaciones y acelerar tu crecimiento.
+            {t('Hero.description')}
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto relative z-10">
             <QuoteModal />
@@ -63,7 +70,7 @@ export default function Home() {
         <section id="about" className="py-32 md:py-48 max-w-7xl mx-auto px-6">
           <div className="mb-20">
             <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight text-[#7B2CBF]  mb-6">
-              <span className="text-orange-500 ">System.Info</span> <span className="text-[#6CD3D3]">//</span> About Us
+              <span className="text-orange-500 ">{t('About.title_system_info')}</span> <span className="text-[#6CD3D3]">//</span> {t('About.title_about_us')}
             </h2>
             <div className="h-1 w-32 bg-orange-500"></div>
             <div className="h-px w-full bg-zinc-900/80 mt-1"></div>
@@ -71,22 +78,22 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 leading-relaxed">
             <div className="bg-black/40 p-10 md:p-16 border border-zinc-900/50 hover:border-zinc-700 transition-colors duration-500">
-              <h3 className="text-orange-500  font-extrabold tracking-widest uppercase mb-8 text-2xl md:text-3xl">Misión</h3>
+              <h3 className="text-orange-500  font-extrabold tracking-widest uppercase mb-8 text-2xl md:text-3xl">{t('About.mission_title')}</h3>
               <p className="text-zinc-300 text-justify text-xl md:text-2xl font-light">
-                Diseñar y desarrollar plataformas tecnológicas de <strong className="text-[#7B2CBF]  font-bold">alto rendimiento</strong>. Nos enfocamos en crear soluciones sostenibles que resuelvan problemas complejos y garanticen un retorno de inversión (ROI) claro para tu empresa.
+                {t('About.mission_text_1')}<strong className="text-[#7B2CBF]  font-bold">{t('About.mission_text_2')}</strong>{t('About.mission_text_3')}
               </p>
             </div>
             <div className="bg-black/40 p-10 md:p-16 border border-zinc-900/50 hover:border-zinc-700 transition-colors duration-500">
-              <h3 className="text-orange-500  font-extrabold tracking-widest uppercase mb-8 text-2xl md:text-3xl">Visión</h3>
+              <h3 className="text-orange-500  font-extrabold tracking-widest uppercase mb-8 text-2xl md:text-3xl">{t('About.vision_title')}</h3>
               <p className="text-zinc-300 text-justify text-xl md:text-2xl font-light">
-                Convertirnos en el <strong className="text-[#7B2CBF]  font-bold">socio tecnológico estratégico</strong> de las empresas líderes. Ayudamos a transformar la complejidad operativa en sistemas eficientes, permitiéndote escalar sin fricciones.
+                {t('About.vision_text_1')}<strong className="text-[#7B2CBF]  font-bold">{t('About.vision_text_2')}</strong>{t('About.vision_text_3')}
               </p>
             </div>
           </div>
           
           <div className="mt-16 bg-black/40 p-10 md:p-16 border border-zinc-900/50 hover:border-zinc-700 transition-colors duration-500">
             <h3 className="text-[#7B2CBF] font-extrabold tracking-widest uppercase mb-8 text-2xl md:text-3xl border-b border-zinc-900 pb-4">
-              Liderazgo Técnico<span className="text-[#6CD3D3]">_</span>
+              {t('About.leadership_title')}<span className="text-[#6CD3D3]">_</span>
             </h3>
             <div className="flex flex-col md:flex-row gap-10 items-start">
               <div className="md:w-1/3 flex flex-col gap-2 items-center text-center">
@@ -94,20 +101,20 @@ export default function Home() {
                   <img src="/logos/Vector.svg" alt="LogikaMobile Vector" className="w-32 h-32 md:w-40 md:h-40 object-contain drop-shadow-[0_0_15px_rgba(123,44,191,0.3)]" />
                 </div>
                 <strong className="text-orange-500 font-bold text-2xl uppercase tracking-wider">Luis Daniel Michel</strong>
-                <span className="text-zinc-300 font-mono text-sm tracking-widest uppercase">CEO & Fundador</span>
+                <span className="text-zinc-300 font-mono text-sm tracking-widest uppercase">{t('About.leadership_role')}</span>
                 
                 <div className="mt-6 space-y-2 text-sm font-mono text-zinc-500 flex flex-col items-center">
-                  <p className="flex items-center gap-2"><span className="text-[#6CD3D3]">/</span> Ing. en Computación (2019)</p>
-                  <p className="flex items-center gap-2"><span className="text-[#6CD3D3]">/</span> IPN</p>
-                  <p className="flex items-center gap-2"><span className="text-[#6CD3D3]">/</span> Cédula: 15683999</p>
+                  <p className="flex items-center gap-2"><span className="text-[#6CD3D3]">/</span> {t('About.leadership_edu_1')}</p>
+                  <p className="flex items-center gap-2"><span className="text-[#6CD3D3]">/</span> {t('About.leadership_edu_2')}</p>
+                  <p className="flex items-center gap-2"><span className="text-[#6CD3D3]">/</span> {t('About.leadership_edu_3')}</p>
                 </div>
               </div>
               <div className="md:w-2/3 md:border-l border-zinc-900 md:pl-10 pt-6 md:pt-0 border-t md:border-t-0">
                 <p className="text-zinc-300 text-justify text-lg md:text-xl font-light leading-relaxed mb-4">
-                  Dirigir el desarrollo de software crítico requiere más que dominio técnico; exige un profundo sentido de la responsabilidad empresarial. En LogikaMobile, entendemos que cada línea de código es una pieza fundamental para la operación diaria de nuestros clientes.
+                  {t('About.leadership_desc_1')}
                 </p>
                 <p className="text-zinc-400 text-justify text-base md:text-lg font-light leading-relaxed">
-                  Bajo un liderazgo enfocado en la arquitectura escalable y la excelencia técnica, nos aseguramos de que la tecnología que entregamos no sólo funcione hoy, sino que se convierta en un activo resiliente capaz de soportar el crecimiento futuro de su empresa con total seguridad.
+                  {t('About.leadership_desc_2')}
                 </p>
               </div>
             </div>
@@ -119,7 +126,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="mb-24">
               <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight text-[#7B2CBF]  mb-6">
-                Nuestros <span className="text-orange-500 ">Servicios</span><span className="text-[#6CD3D3] animate-pulse">_</span>
+                {t('Services.title_our')} <span className="text-orange-500 ">{t('Services.title_services')}</span><span className="text-[#6CD3D3] animate-pulse">_</span>
               </h2>
               <div className="h-1 w-32 bg-orange-500"></div>
             </div>
@@ -132,10 +139,10 @@ export default function Home() {
                 <div className="mb-10 w-28 h-28 md:w-32 md:h-32 transition-transform duration-500 group-hover:scale-110">
                   <img src="/logos/computerLogo.svg" alt="Arquitectura y Desarrollo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.1)] group-hover:drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight">Arquitectura & <br/>Desarrollo</h3>
-                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">Web / Cloud / Mobile</span>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight" dangerouslySetInnerHTML={{__html: t('Services.arch_title')}}></h3>
+                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">{t('Services.arch_tags')}</span>
                 <p className="text-zinc-400 text-justify text-lg md:text-xl font-light leading-relaxed">
-                  Arquitectura y desarrollo de software con soluciones web, en la nube, móviles y soluciones integrales de alto rendimiento.
+                  {t('Services.arch_desc')}
                 </p>
               </div>
 
@@ -146,10 +153,10 @@ export default function Home() {
                 <div className="mb-10 w-28 h-28 md:w-32 md:h-32 transition-transform duration-500 group-hover:scale-110">
                   <img src="/logos/Audit.svg" alt="Auditoría de Código" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.1)] group-hover:drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight">Auditoría de <br/>Código</h3>
-                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">Security / Performance</span>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight" dangerouslySetInnerHTML={{__html: t('Services.audit_title')}}></h3>
+                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">{t('Services.audit_tags')}</span>
                 <p className="text-zinc-400 text-justify text-lg md:text-xl font-light leading-relaxed">
-                  Evaluación profunda de tus repositorios para identificar deuda técnica, vulnerabilidades y cuellos de botella antes de escalar.
+                  {t('Services.audit_desc')}
                 </p>
               </div>
 
@@ -160,10 +167,10 @@ export default function Home() {
                 <div className="mb-10 w-28 h-28 md:w-32 md:h-32 transition-transform duration-500 group-hover:scale-110">
                   <img src="/logos/LM_NBG.svg" alt="Software a la Medida" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.1)] group-hover:drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight">Software a <br/>la Medida</h3>
-                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">SaaS / B2B</span>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight" dangerouslySetInnerHTML={{__html: t('Services.custom_title')}}></h3>
+                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">{t('Services.custom_tags')}</span>
                 <p className="text-zinc-400 text-justify text-lg md:text-xl font-light leading-relaxed">
-                  Diseño y desarrollo end-to-end de plataformas SaaS (Software as a Service) perfectamente alineadas a la lógica de tu negocio.
+                  {t('Services.custom_desc')}
                 </p>
               </div>
 
@@ -174,10 +181,10 @@ export default function Home() {
                 <div className="mb-10 w-28 h-28 md:w-32 md:h-32 transition-transform duration-500 group-hover:scale-110 text-orange-500">
                   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_0_15px_rgba(249,115,22,0.1)] group-hover:drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight">Hardware as <br/>a Service</h3>
-                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">Infra / HaaS</span>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-[#7B2CBF]  mb-6 leading-tight" dangerouslySetInnerHTML={{__html: t('Services.haas_title')}}></h3>
+                <span className="inline-block px-4 py-2 bg-orange-500/10 text-orange-400 font-mono text-sm mb-8 border border-orange-500/20">{t('Services.haas_tags')}</span>
                 <p className="text-zinc-400 text-justify text-lg md:text-xl font-light leading-relaxed">
-                  Provisión, mantenimiento y gestión de infraestructura tecnológica y equipos de alto rendimiento bajo un modelo de suscripción.
+                  {t('Services.haas_desc')}
                 </p>
               </div>
 
@@ -194,13 +201,13 @@ export default function Home() {
                 <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-6 leading-tight group-hover:text-[#6CD3D3] transition-colors">
                   <strong>LMaaS</strong>
                 </h3>
-                <span className="inline-block px-4 py-2 bg-[#7B2CBF]/10 text-[#7B2CBF] font-mono text-sm mb-8 border border-[#7B2CBF]/30 font-bold">LogikaMobile as a Service</span>
+                <span className="inline-block px-4 py-2 bg-[#7B2CBF]/10 text-[#7B2CBF] font-mono text-sm mb-8 border border-[#7B2CBF]/30 font-bold">{t('Services.lmaas_subtitle')}</span>
                 <p className="text-zinc-300 text-justify text-lg md:text-xl font-light leading-relaxed mb-6">
-                  Tu departamento de ingeniería bajo demanda. Un equipo de tecnología a tu disposición por una tarifa plana, sin procesos lentos de contratación.
+                  {t('Services.lmaas_desc')}
                 </p>
                 
                 <div className="flex items-center text-[#7B2CBF] font-bold group-hover:text-[#6CD3D3] transition-colors">
-                  <span>Conoce más</span>
+                  <span>{t('Services.learn_more')}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 group-hover:translate-x-2 transition-transform">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
@@ -214,7 +221,7 @@ export default function Home() {
         <section className="py-24 border-y border-zinc-900/50 bg-black/40 backdrop-blur-sm relative z-10 overflow-hidden">
           <div className="max-w-full mx-auto">
             <h2 className="text-center text-lg md:text-xl font-bold text-zinc-500 mb-16 uppercase tracking-[0.2em] px-6">
-              Con la confianza de:
+              {t('TrustedBy.title')}
             </h2>
             
             <div className="relative flex overflow-hidden py-12 -my-12">
@@ -236,9 +243,9 @@ export default function Home() {
                   <img src="/logos/P-J_LEGAL_Y_CONTABLE_logo.svg" alt="P&J Legal y Contable Logo" className="max-w-full max-h-full object-contain" />
                 </TrackedLink>
                 <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-all duration-500 cursor-default w-80 md:w-96 h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.8)]">
-                  <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-orange-500 text-center group-hover:text-orange-400 transition-colors duration-300">Tu empresa, crece aquí</div>
+                  <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-orange-500 text-center group-hover:text-orange-400 transition-colors duration-300">{t('TrustedBy.grow_here')}</div>
                   <div className="w-64 h-24 bg-zinc-900/50 border border-orange-500/20 rounded flex items-center justify-center">
-                    <span className="text-sm font-mono text-orange-600/50">Space Available</span>
+                    <span className="text-sm font-mono text-orange-600/50">{t('TrustedBy.space_available')}</span>
                   </div>
                 </div>
 
@@ -259,9 +266,9 @@ export default function Home() {
                   <img src="/logos/P-J_LEGAL_Y_CONTABLE_logo.svg" alt="P&J Legal y Contable Logo" className="max-w-full max-h-full object-contain" />
                 </TrackedLink>
                 <div className="flex flex-col justify-center items-center gap-6 group hover:scale-[1.15] md:hover:scale-125 transition-all duration-500 cursor-default w-80 md:w-96 h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_30px_rgba(123,44,191,0.8)]">
-                  <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-orange-500 text-center group-hover:text-orange-400 transition-colors duration-300">Tu empresa, crece aquí</div>
+                  <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-orange-500 text-center group-hover:text-orange-400 transition-colors duration-300">{t('TrustedBy.grow_here')}</div>
                   <div className="w-64 h-24 bg-zinc-900/50 border border-orange-500/20 rounded flex items-center justify-center">
-                    <span className="text-sm font-mono text-orange-600/50">Space Available</span>
+                    <span className="text-sm font-mono text-orange-600/50">{t('TrustedBy.space_available')}</span>
                   </div>
                 </div>
               </div>
@@ -277,10 +284,10 @@ export default function Home() {
         
         <div className="relative z-10 max-w-4xl mx-auto">
           <h2 className="text-6xl md:text-8xl font-extrabold tracking-tighter text-[#7B2CBF]  mb-10">
-            Hablemos <span className="text-orange-500 ">de tu Proyecto</span><span className="text-[#6CD3D3]">.</span>
+            {t('Contact.title_lets_talk')}<span className="text-orange-500 ">{t('Contact.title_your_project')}</span><span className="text-[#6CD3D3]">.</span>
           </h2>
           <p className="text-zinc-400 text-justify mb-16 text-2xl md:text-3xl font-light max-w-2xl mx-auto leading-relaxed">
-            Contacta a nuestro equipo de especialistas y descubre cómo nuestra tecnología puede escalar tu negocio al siguiente nivel.
+            {t('Contact.desc')}
           </p>
           <QuoteModal trigger={
             <span 

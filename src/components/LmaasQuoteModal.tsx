@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { trackUserEvent } from "@/lib/trackEvent";
+import { useTranslations } from "next-intl";
 
 type Tier = "STARTUP" | "PYME" | "CORP" | null;
 type BillingCycle = "MONTHLY" | "ANNUAL" | null;
@@ -11,6 +12,8 @@ interface LmaasQuoteModalProps {
 }
 
 export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) {
+  const t = useTranslations('LmaasQuoteModal');
+
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState<1 | 2 | 3 | "contact" | "result">(1);
   
@@ -22,19 +25,20 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
   const [contactEmail, setContactEmail] = useState("");
   const [contactPhone, setContactPhone] = useState("");
   const [contactPreference, setContactPreference] = useState("");
+  const [websiteUrl, setWebsiteUrl] = useState(""); // Honeypot
   const [isSending, setIsSending] = useState(false);
   const [emailError, setEmailError] = useState("");
 
   const [finalPrice, setFinalPrice] = useState<number>(0);
 
   const validateEmail = (email: string) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!email) {
       setEmailError("");
       return false;
     }
     if (!regex.test(email)) {
-      setEmailError("Por favor ingresa un correo válido.");
+      setEmailError(t('form_email_err'));
       return false;
     }
     setEmailError("");
@@ -119,6 +123,7 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
           infraAddon,
           billingCycle,
           finalPrice: realTimeTotal,
+          websiteUrl,
         }),
       });
 
@@ -126,11 +131,11 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
         trackUserEvent("generate_lead", { product: "lmaas", value: realTimeTotal });
         window.location.href = '/informationSent?type=lmaas&price=' + realTimeTotal + '&billing=' + billingCycle;
       } else {
-        alert("Ocurrió un error al enviar tu información. Por favor intenta de nuevo.");
+        alert(t('err_send'));
       }
     } catch (error) {
       console.error(error);
-      alert("Error de red. Intenta nuevamente.");
+      alert(t('err_conn'));
     } finally {
       setIsSending(false);
     }
@@ -143,7 +148,7 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
       </div>
     ) : (
       <button onClick={handleOpenModal} className="px-6 py-3 bg-[#7B2CBF] text-white rounded-lg hover:bg-[#6CD3D3] transition-colors font-semibold">
-        Cotiza LMaaS
+        {t('trigger_btn')}
       </button>
     );
   }
@@ -177,27 +182,27 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
           {step === 1 && (
             <div className="animate-in slide-in-from-right-4 fade-in duration-300">
               <div className="mb-2">
-                <span className="text-[#6CD3D3] font-mono text-sm tracking-widest uppercase">Paso 1 de 3</span>
+                <span className="text-[#6CD3D3] font-mono text-sm tracking-widest uppercase">{t('step_x_of_3', { step: 1 })}</span>
               </div>
-              <h2 className="text-3xl font-bold text-white mb-4">¿Cuál es el tamaño de tu empresa?</h2>
-              <p className="text-zinc-400 mb-8">Esto nos ayuda a dimensionar el equipo y los procesos (SLAs) que necesitas.</p>
+              <h2 className="text-3xl font-bold text-white mb-4">{t('step1_title')}</h2>
+              <p className="text-zinc-400 mb-8">{t('step1_desc')}</p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {[
-                  { id: "STARTUP", label: "Startup", desc: "1 - 15 empleados" },
-                  { id: "PYME", label: "PyME", desc: "16 - 50 empleados" },
-                  { id: "CORP", label: "Corporativo", desc: "51+ empleados" },
-                ].map((t) => (
+                  { id: "STARTUP", label: t('step1_startup'), desc: t('step1_startup_desc') },
+                  { id: "PYME", label: t('step1_pyme'), desc: t('step1_pyme_desc') },
+                  { id: "CORP", label: t('step1_corp'), desc: t('step1_corp_desc') },
+                ].map((tierItem) => (
                   <button
-                    key={t.id}
+                    key={tierItem.id}
                     onClick={() => {
-                      setTier(t.id as Tier);
-                      advanceStep(1, 2, "Company Size", t.id);
+                      setTier(tierItem.id as Tier);
+                      advanceStep(1, 2, "Company Size", tierItem.id);
                     }}
-                    className={`p-6 border rounded-xl text-left transition-all duration-300 ${tier === t.id ? 'bg-[#7B2CBF]/10 border-[#7B2CBF] shadow-[0_0_15px_rgba(123,44,191,0.2)]' : 'border-zinc-800 bg-zinc-950 hover:border-zinc-600 hover:bg-zinc-900'}`}
+                    className={`p-6 border rounded-xl text-left transition-all duration-300 ${tier === tierItem.id ? 'bg-[#7B2CBF]/10 border-[#7B2CBF] shadow-[0_0_15px_rgba(123,44,191,0.2)]' : 'border-zinc-800 bg-zinc-950 hover:border-zinc-600 hover:bg-zinc-900'}`}
                   >
-                    <div className={`font-bold text-lg mb-2 ${tier === t.id ? 'text-[#7B2CBF]' : 'text-zinc-300'}`}>{t.label}</div>
-                    <div className="text-zinc-500 text-sm font-mono">{t.desc}</div>
+                    <div className={`font-bold text-lg mb-2 ${tier === tierItem.id ? 'text-[#7B2CBF]' : 'text-zinc-300'}`}>{tierItem.label}</div>
+                    <div className="text-zinc-500 text-sm font-mono">{tierItem.desc}</div>
                   </button>
                 ))}
               </div>
@@ -212,10 +217,10 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
                 <button onClick={() => setStep(1)} className="text-zinc-500 hover:text-white transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                 </button>
-                <span className="text-[#6CD3D3] font-mono text-sm tracking-widest uppercase">Paso 2 de 3</span>
+                <span className="text-[#6CD3D3] font-mono text-sm tracking-widest uppercase">{t('step_x_of_3', { step: 2 })}</span>
               </div>
-              <h2 className="text-3xl font-bold text-white mb-4">Infraestructura y Soporte</h2>
-              <p className="text-zinc-400 mb-8">¿Necesitas que nosotros administremos tus servidores, bases de datos y monitoreo (DevOps)?</p>
+              <h2 className="text-3xl font-bold text-white mb-4">{t('step2_title')}</h2>
+              <p className="text-zinc-400 mb-8">{t('step2_desc')}</p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <button
@@ -225,8 +230,8 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
                   }}
                   className={`p-6 border rounded-xl text-left transition-all duration-300 ${infraAddon === true ? 'bg-orange-500/10 border-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.2)]' : 'border-zinc-800 bg-zinc-950 hover:border-zinc-600 hover:bg-zinc-900'}`}
                 >
-                  <div className="font-bold text-lg mb-2 text-white">Sí, inclúyanlo</div>
-                  <div className="text-zinc-500 text-sm">Gestionen nuestra infraestructura de inicio a fin.</div>
+                  <div className="font-bold text-lg mb-2 text-white">{t('step2_yes')}</div>
+                  <div className="text-zinc-500 text-sm">{t('step2_yes_desc')}</div>
                 </button>
                 <button
                   onClick={() => {
@@ -235,8 +240,8 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
                   }}
                   className={`p-6 border rounded-xl text-left transition-all duration-300 ${infraAddon === false && tier !== null ? 'bg-zinc-800/50 border-zinc-500' : 'border-zinc-800 bg-zinc-950 hover:border-zinc-600 hover:bg-zinc-900'}`}
                 >
-                  <div className="font-bold text-lg mb-2 text-white">No por ahora</div>
-                  <div className="text-zinc-500 text-sm">Nosotros nos encargamos del alojamiento y soporte.</div>
+                  <div className="font-bold text-lg mb-2 text-white">{t('step2_no')}</div>
+                  <div className="text-zinc-500 text-sm">{t('step2_no_desc')}</div>
                 </button>
               </div>
               {renderProgressBar(2)}
@@ -250,10 +255,10 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
                 <button onClick={() => setStep(2)} className="text-zinc-500 hover:text-white transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                 </button>
-                <span className="text-[#6CD3D3] font-mono text-sm tracking-widest uppercase">Paso 3 de 3</span>
+                <span className="text-[#6CD3D3] font-mono text-sm tracking-widest uppercase">{t('step_x_of_3', { step: 3 })}</span>
               </div>
-              <h2 className="text-3xl font-bold text-white mb-4">Plan de Pago</h2>
-              <p className="text-zinc-400 mb-8">El pago anual te otorga un 15% de descuento directo.</p>
+              <h2 className="text-3xl font-bold text-white mb-4">{t('step3_title')}</h2>
+              <p className="text-zinc-400 mb-8">{t('step3_desc')}</p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <button
@@ -263,8 +268,8 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
                   }}
                   className={`p-6 border rounded-xl text-center transition-all duration-300 ${billingCycle === 'MONTHLY' ? 'bg-[#6CD3D3]/10 border-[#6CD3D3] shadow-[0_0_15px_rgba(108,211,211,0.2)]' : 'border-zinc-800 bg-zinc-950 hover:border-zinc-600 hover:bg-zinc-900'}`}
                 >
-                  <div className="font-bold text-2xl mb-2 text-white">Mensual</div>
-                  <div className="text-zinc-500 text-sm">Flexibilidad total. Cancela cuando quieras.</div>
+                  <div className="font-bold text-2xl mb-2 text-white">{t('step3_monthly')}</div>
+                  <div className="text-zinc-500 text-sm">{t('step3_monthly_desc')}</div>
                 </button>
                 
                 <button
@@ -274,9 +279,9 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
                   }}
                   className={`p-6 border rounded-xl text-center transition-all duration-300 relative overflow-hidden ${billingCycle === 'ANNUAL' ? 'bg-[#7B2CBF]/20 border-[#7B2CBF] shadow-[0_0_20px_rgba(123,44,191,0.4)]' : 'border-[#7B2CBF]/30 bg-[#7B2CBF]/5 hover:border-[#7B2CBF]/80 hover:bg-[#7B2CBF]/10'}`}
                 >
-                  <div className="absolute top-0 right-0 bg-[#7B2CBF] text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg tracking-wider">Ahorra 15%</div>
-                  <div className="font-bold text-2xl mb-2 text-white">Anual</div>
-                  <div className="text-zinc-400 text-sm">Compromiso a largo plazo, mejor precio garantizado.</div>
+                  <div className="absolute top-0 right-0 bg-[#7B2CBF] text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg tracking-wider">{t('step3_save')}</div>
+                  <div className="font-bold text-2xl mb-2 text-white">{t('step3_annual')}</div>
+                  <div className="text-zinc-400 text-sm">{t('step3_annual_desc')}</div>
                 </button>
               </div>
               {renderProgressBar(3)}
@@ -295,24 +300,24 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
                 <div className="w-16 h-16 bg-[#7B2CBF]/10 border border-[#7B2CBF]/50 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#7B2CBF]"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                 </div>
-                <h2 className="text-3xl font-extrabold text-white mb-2">Revelar Cotización</h2>
-                <p className="text-zinc-400 max-w-md mx-auto">Ingresa tus datos para ver el cálculo exacto de tu suscripción LMaaS al instante y enviarte una copia.</p>
+                <h2 className="text-3xl font-extrabold text-white mb-2">{t('contact_title')}</h2>
+                <p className="text-zinc-400 max-w-md mx-auto">{t('contact_desc')}</p>
               </div>
 
               <div className="space-y-4 max-w-md mx-auto">
                 <div>
-                  <label className="block text-sm font-medium text-zinc-400 mb-1">Nombre o Empresa *</label>
+                  <label className="block text-sm font-medium text-zinc-400 mb-1">{t('form_name')}</label>
                   <input
                     type="text"
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value)}
                     className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#7B2CBF] focus:ring-1 focus:ring-[#7B2CBF] transition-all"
-                    placeholder="Ej. Acme Corp"
+                    placeholder={t('form_name_ph')}
                     disabled={isSending}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-zinc-400 mb-1">Correo Electrónico *</label>
+                  <label className="block text-sm font-medium text-zinc-400 mb-1">{t('form_email')}</label>
                   <input
                     type="email"
                     value={contactEmail}
@@ -322,19 +327,32 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
                     }}
                     onBlur={(e) => validateEmail(e.target.value)}
                     className={`w-full bg-zinc-950 border ${emailError ? 'border-red-500' : 'border-zinc-800'} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#7B2CBF] focus:ring-1 focus:ring-[#7B2CBF] transition-all`}
-                    placeholder="hola@empresa.com"
+                    placeholder={t('form_email_ph')}
                     disabled={isSending}
                   />
                   {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
                 </div>
+                
+                {/* Honeypot Field */}
+                <div style={{ opacity: 0, position: 'absolute', top: '-9999px', left: '-9999px' }} aria-hidden="true">
+                  <label>Website</label>
+                  <input 
+                    type="text" 
+                    value={websiteUrl}
+                    onChange={(e) => setWebsiteUrl(e.target.value)}
+                    tabIndex={-1} 
+                    autoComplete="off" 
+                  />
+                </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-zinc-400 mb-1">Teléfono (Opcional)</label>
+                  <label className="block text-sm font-medium text-zinc-400 mb-1">{t('form_phone')}</label>
                   <input
                     type="tel"
                     value={contactPhone}
                     onChange={(e) => setContactPhone(e.target.value)}
                     className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#7B2CBF] focus:ring-1 focus:ring-[#7B2CBF] transition-all"
-                    placeholder="+52 55 1234 5678"
+                    placeholder={t('form_phone_ph')}
                     disabled={isSending}
                   />
                 </div>
@@ -347,10 +365,10 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
                   {isSending ? (
                     <>
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                      Generando...
+                      {t('btn_generating')}
                     </>
                   ) : (
-                    "Ver mi cotización"
+                    t('btn_submit')
                   )}
                 </button>
               </div>
@@ -363,20 +381,20 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
               <div className="w-20 h-20 bg-green-500/10 border border-green-500/50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(34,197,94,0.3)]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-400"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </div>
-              <h2 className="text-4xl font-extrabold text-white mb-4">Cotización Generada</h2>
+              <h2 className="text-4xl font-extrabold text-white mb-4">{t('result_title')}</h2>
               <p className="text-zinc-400 max-w-md mx-auto mb-8">
-                Hemos enviado un desglose a tu correo. Aquí tienes un estimado para la configuración seleccionada:
+                {t('result_desc')}
               </p>
               
               <div className="bg-zinc-950 border border-[#7B2CBF]/30 p-8 rounded-2xl inline-block w-full max-w-md mb-8 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#7B2CBF] to-orange-500"></div>
                 
-                <div className="text-zinc-500 font-mono text-sm uppercase tracking-widest mb-2">Costo Total Estimado</div>
+                <div className="text-zinc-500 font-mono text-sm uppercase tracking-widest mb-2">{t('result_cost')}</div>
                 <div className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-[#ea580c] mb-2">
-                  ${finalPrice.toLocaleString('en-US')} <span className="text-xl text-zinc-500 font-medium">USD</span>
+                  ${finalPrice.toLocaleString('en-US')} <span className="text-xl text-zinc-500 font-medium">{t('result_currency')}</span>
                 </div>
                 <div className="text-zinc-400 text-sm">
-                  {billingCycle === 'ANNUAL' ? 'Por año (facturado anualmente con 15% OFF)' : 'Por mes'}
+                  {billingCycle === 'ANNUAL' ? t('result_annual') : t('result_monthly')}
                 </div>
               </div>
 
@@ -385,7 +403,7 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
                   onClick={() => setIsOpen(false)}
                   className="px-8 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors border border-zinc-700"
                 >
-                  Cerrar
+                  {t('btn_close')}
                 </button>
               </div>
             </div>
