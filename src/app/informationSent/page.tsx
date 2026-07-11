@@ -1,12 +1,17 @@
 "use client";
 
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { trackUserEvent } from '@/lib/trackEvent';
 
 function InformationSentContent() {
   const searchParams = useSearchParams();
   const type = searchParams.get('type');
+
+  useEffect(() => {
+    trackUserEvent("conversion_page_viewed", { quote_type: type || "unknown" });
+  }, [type]);
   const min = searchParams.get('min');
   const max = searchParams.get('max');
   const price = searchParams.get('price');
