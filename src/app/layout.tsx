@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import FirebaseAnalytics from "@/components/FirebaseAnalytics";
 
@@ -25,6 +26,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.variable} antialiased dark`} suppressHydrationWarning>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18314574374"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-18314574374');
+          `}
+        </Script>
+      </head>
       <body className="min-h-full flex flex-col font-sans text-zinc-300 tracking-tight bg-fixed bg-gradient-to-br from-black via-zinc-900 to-[#3b1a00]">
         <FirebaseAnalytics />
         <script
