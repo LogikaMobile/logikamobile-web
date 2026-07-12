@@ -197,6 +197,11 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
       });
 
       if (res.ok) {
+        const json = await res.json();
+        if (json.isBot) {
+          resetAndClose();
+          return;
+        }
         trackUserEvent("generate_lead", { product: "custom_software", preference: contactPreference });
         window.location.href = '/informationSent?type=custom&min=' + (quoteBand?.min || '') + '&max=' + (quoteBand?.max || '');
       } else {

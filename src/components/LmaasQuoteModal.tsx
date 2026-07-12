@@ -128,6 +128,11 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
       });
 
       if (response.ok) {
+        const json = await response.json();
+        if (json.isBot) {
+          resetAndClose();
+          return;
+        }
         trackUserEvent("generate_lead", { product: "lmaas", value: realTimeTotal });
         window.location.href = '/informationSent?type=lmaas&price=' + realTimeTotal + '&billing=' + billingCycle;
       } else {

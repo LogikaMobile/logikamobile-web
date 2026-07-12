@@ -41,7 +41,7 @@ export async function POST(req: Request) {
     // 1. Honeypot check
     if (websiteUrl) {
       console.log("Honeypot filled, silently dropping request.");
-      return NextResponse.json({ success: true }, { status: 200 });
+      return NextResponse.json({ success: true, isBot: true }, { status: 200 });
     }
 
     if (!contactName || !contactEmail) {
