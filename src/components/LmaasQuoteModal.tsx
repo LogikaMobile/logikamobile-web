@@ -130,7 +130,7 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
       if (response.ok) {
         const json = await response.json();
         if (json.isBot) {
-          resetAndClose();
+          setIsOpen(false);
           return;
         }
         trackUserEvent("generate_lead", { product: "lmaas", value: realTimeTotal });
