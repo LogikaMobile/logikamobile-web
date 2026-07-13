@@ -109,6 +109,7 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
     let cmb = basePrice + (infraAddon ? infraPrice : 0);
     let realTimeTotal = billingCycle === "ANNUAL" ? (cmb * 12 * 0.85) : cmb;
     realTimeTotal = Math.round(realTimeTotal);
+    const gclid = localStorage.getItem("gclid");
 
     try {
       const response = await fetch("/api/contact-lmaas", {
@@ -124,6 +125,7 @@ export default function LmaasQuoteModal({ trigger }: LmaasQuoteModalProps = {}) 
           billingCycle,
           finalPrice: realTimeTotal,
           websiteUrl,
+          gclid
         }),
       });
 

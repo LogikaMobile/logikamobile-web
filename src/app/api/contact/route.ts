@@ -35,7 +35,8 @@ export async function POST(req: Request) {
       integrationsText,
       urgencyText,
       rangeText,
-      websiteUrl
+      websiteUrl,
+      gclid
     } = data;
 
     // 1. Honeypot check
@@ -81,7 +82,7 @@ export async function POST(req: Request) {
       to: toEmail,
       replyTo: contactEmail,
       subject: `Nuevo Lead: ${contactName} - Cotización General`,
-      text: `Hola equipo,\n\nSe ha recibido una nueva solicitud de cotización.\n\nDatos de Contacto:\nNombre: ${contactName}\nCorreo: ${contactEmail}\nTeléfono: ${contactPhone}\nPreferencia de Contacto: ${contactPreference || "No especificada"}\n\nDescripción del Proyecto:\n${projectDescription || "No proporcionada"}\n\nDetalles de la cotización calculada:\nRango de Inversión Estimado: ${rangeText}\n\nEspecificaciones:\n- Origen: ${originText}\n- Tamaño de Empresa: ${companySizeText}\n- Tipo de Proyecto: ${typesText}\n- Complejidad: ${complexityText}\n- UX/UI: ${uxuiText}\n- Integraciones: ${integrationsText}\n- Urgencia: ${urgencyText}\n\nEste es un correo autogenerado desde LogikaMobileWeb.`,
+      text: `Hola equipo,\n\nSe ha recibido una nueva solicitud de cotización.\n\nDatos de Contacto:\nNombre: ${contactName}\nCorreo: ${contactEmail}\nTeléfono: ${contactPhone}\nPreferencia de Contacto: ${contactPreference || "No especificada"}\n\nDescripción del Proyecto:\n${projectDescription || "No proporcionada"}\n\nDetalles de la cotización calculada:\nRango de Inversión Estimado: ${rangeText}\n\nEspecificaciones:\n- Origen: ${originText}\n- Tamaño de Empresa: ${companySizeText}\n- Tipo de Proyecto: ${typesText}\n- Complejidad: ${complexityText}\n- UX/UI: ${uxuiText}\n- Integraciones: ${integrationsText}\n- Urgencia: ${urgencyText}\n\nTrazabilidad B2B:\n- Google Click ID (GCLID): ${gclid || "Orgánico / Directo"}\n\nEste es un correo autogenerado desde LogikaMobileWeb.`,
       html: `
         <h2>Nueva Solicitud de Cotización (General)</h2>
         <h3>Datos de Contacto:</h3>
@@ -109,6 +110,10 @@ export async function POST(req: Request) {
           <li><strong>Integraciones:</strong> ${integrationsText}</li>
           <li><strong>Urgencia:</strong> ${urgencyText}</li>
         </ul>
+        
+        <h3>Trazabilidad B2B:</h3>
+        <p><strong>Google Click ID (GCLID):</strong> <span style="font-family: monospace; background: #eee; padding: 2px 4px;">${gclid || "Orgánico / Directo"}</span></p>
+
         <hr/>
         <p><small>Este correo fue generado automáticamente desde la Landing Page de LogikaMobile.</small></p>
       `,

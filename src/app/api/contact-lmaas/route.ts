@@ -30,7 +30,8 @@ export async function POST(req: Request) {
       infraAddon,
       billingCycle,
       finalPrice,
-      websiteUrl
+      websiteUrl,
+      gclid
     } = data;
 
     // 1. Honeypot check
@@ -66,7 +67,7 @@ export async function POST(req: Request) {
       to: toEmail,
       replyTo: contactEmail,
       subject: `🔥 Nuevo Lead LMaaS: ${contactName}`,
-      text: `Hola equipo,\n\nSe ha recibido una nueva solicitud de suscripción para LMaaS.\n\nDatos de Contacto:\nNombre: ${contactName}\nCorreo: ${contactEmail}\nTeléfono: ${contactPhone || 'No proporcionado'}\nPreferencia: ${contactPreference || 'No especificada'}\n\nDetalles de la Suscripción:\n- Tamaño de Empresa: ${companySizeText}\n- Infraestructura y Soporte: ${infraAddon ? 'Sí' : 'No'}\n- Ciclo de Facturación: ${billingCycle}\n- Costo Calculado: $${finalPrice} USD / ${billingCycle === 'ANNUAL' ? 'año (con descuento del 15%)' : 'mes'}\n\nEste es un correo autogenerado desde la Landing Page de LMaaS.`,
+      text: `Hola equipo,\n\nSe ha recibido una nueva solicitud de suscripción para LMaaS.\n\nDatos de Contacto:\nNombre: ${contactName}\nCorreo: ${contactEmail}\nTeléfono: ${contactPhone || 'No proporcionado'}\nPreferencia: ${contactPreference || 'No especificada'}\n\nDetalles de la Suscripción:\n- Tamaño de Empresa: ${companySizeText}\n- Infraestructura y Soporte: ${infraAddon ? 'Sí' : 'No'}\n- Ciclo de Facturación: ${billingCycle}\n- Costo Calculado: $${finalPrice} USD / ${billingCycle === 'ANNUAL' ? 'año (con descuento del 15%)' : 'mes'}\n\nTrazabilidad B2B:\n- Google Click ID (GCLID): ${gclid || "Orgánico / Directo"}\n\nEste es un correo autogenerado desde la Landing Page de LMaaS.`,
       html: `
         <div style="font-family: sans-serif; color: #333;">
           <h2 style="color: #7B2CBF;">🔥 Nueva Solicitud de Suscripción LMaaS</h2>
@@ -89,6 +90,11 @@ export async function POST(req: Request) {
             ${billingCycle === 'ANNUAL' ? '<p style="color: #10b981; margin-top: 5px;">* Incluye descuento anual del 15%</p>' : ''}
           </div>
           
+          <div style="background-color: #f3f4f6; padding: 15px; border-left: 4px solid #10b981; margin-top: 20px;">
+            <h3 style="margin-top: 0;">Trazabilidad B2B:</h3>
+            <p style="margin-bottom: 0;"><strong>Google Click ID (GCLID):</strong> <span style="font-family: monospace; background: #eee; padding: 2px 4px;">${gclid || "Orgánico / Directo"}</span></p>
+          </div>
+
           <hr style="margin-top: 30px; border: none; border-top: 1px solid #ccc;" />
           <p><small>Este correo fue generado automáticamente desde LogikaMobileWeb (LMaaS).</small></p>
         </div>

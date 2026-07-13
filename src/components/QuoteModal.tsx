@@ -173,6 +173,7 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
 
     const selectedTypes = types.map(t => typesMap[t]).join(", ");
     const rangeText = quoteBand ? `$${quoteBand.min.toLocaleString()} - $${quoteBand.max.toLocaleString()} USD` : "";
+    const gclid = localStorage.getItem("gclid");
 
     try {
       const res = await fetch("/api/contact", {
@@ -192,7 +193,8 @@ export default function QuoteModal({ trigger }: QuoteModalProps = {}) {
           integrationsText: integrations ? intMap[integrations] : "",
           urgencyText: urgency ? urgMap[urgency] : "",
           rangeText,
-          websiteUrl
+          websiteUrl,
+          gclid
         }),
       });
 

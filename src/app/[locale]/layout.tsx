@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import "../globals.css";
 import FirebaseAnalytics from "@/components/FirebaseAnalytics";
+import GclidTracker from "@/components/GclidTracker";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -58,6 +59,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col font-sans text-zinc-300 tracking-tight bg-fixed bg-gradient-to-br from-black via-zinc-900 to-[#3b1a00]">
         <NextIntlClientProvider messages={messages}>
           <FirebaseAnalytics />
+          <GclidTracker />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
