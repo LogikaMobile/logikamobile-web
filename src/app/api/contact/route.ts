@@ -72,7 +72,7 @@ export async function POST(req: Request) {
     }
 
     // A quién queremos notificar (tu correo personal o el que prefieras)
-    const toEmail = process.env.SMTP_USER || "sales@logikamobile.com.mx"; 
+    const toEmail = process.env.SMTP_USER || process.env.SMTP_USER_MAIN || "info@logikamobile.com.mx"; 
 
     console.log("Enviando correo vía Nodemailer (MXRoute)...");
     
