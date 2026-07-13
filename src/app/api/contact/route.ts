@@ -121,6 +121,29 @@ export async function POST(req: Request) {
 
     console.log("Correo enviado con éxito vía MXRoute. Message ID:", info.messageId);
 
+    // 3. Send to Dashboard Webhook (if configured)
+    if (process.env.HK_API_URL && process.env.HK_SECURE) {
+      console.log("Enviando lead al Dashboard...");
+      try {
+        const webhookRes = await fetch(`${process.env.HK_API_URL}/api/webhooks/leads/traditional`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-API-KEY": process.env.HK_SECURE,
+          },
+          body: JSON.stringify(data),
+        });
+        
+        if (!webhookRes.ok) {
+          console.error("Error del Dashboard:", webhookRes.status, await webhookRes.text());
+        } else {
+          console.log("Lead enviado al Dashboard exitosamente.");
+        }
+      } catch (webhookError) {
+        console.error("Error de red al conectar con el Dashboard:", webhookError);
+      }
+    }
+
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
     console.error("=== ERROR CRÍTICO AL ENVIAR CORREO ===");
