@@ -233,16 +233,17 @@
     "intro_p1": "La mayoría de los proyectos de software a la medida fallan mucho antes de escribir la primera línea de código. No fallan por falta de talento técnico; fallan por falta de una planeación estructurada.",
     "intro_p2": "Cuando un desarrollo se basa en suposiciones, el resultado siempre es el mismo: retrasos, costos duplicados y sistemas que no resuelven el problema real del negocio.",
     "intro_p3": "En LogikaMobile eliminamos la ambigüedad desde la raíz. Nuestro método equilibra la estrategia de negocio con ingeniería de software de alta disponibilidad:",
-    "step1_title": "Entendimiento",
-    "step1_desc": "Escuchamos, mapeamos tus procesos actuales y eliminamos las zonas grises en las reglas de negocio antes de cotizar.",
-    "step2_title": "Validación Visual y Arquitectura",
-    "step2_desc": "Diseñamos diagramas de flujo, modelos de datos y pruebas de concepto para que veas cómo funcionará tu sistema antes de construirlo.",
-    "step3_title": "Automatización e Infraestructura",
-    "step3_desc": "El código no se sube \"a mano\". Todo nuestro desarrollo está respaldado por pruebas automatizadas y pipelines de despliegue continuo vía GitHub Actions.",
+    "step1_title": "Discovery y Entendimiento",
+    "step1_desc": "Escuchamos, mapeamos tus procesos actuales y eliminamos las zonas grises. Sin esta fase de Discovery, no hay estimaciones al aire ni firmas a ciegas.",
+    "step2_title": "Arquitectura y Contrato",
+    "step2_desc": "Diseñamos diagramas de flujo y modelos de datos. Solo cuando tienes visibilidad total de cómo funcionará el sistema, firmamos un contrato con alcance cerrado y costos exactos. Sin contrato, no hay desarrollo.",
+    "step3_title": "Desarrollo y Automatización",
+    "step3_desc": "Con el contrato firmado, arranca el código. Todo nuestro desarrollo está respaldado por pruebas automatizadas y pipelines de despliegue continuo vía GitHub Actions.",
     "step4_title": "Estabilidad Post-Lanzamiento",
     "step4_desc": "No desaparecemos tras el despliegue a producción; implementamos monitoreo para garantizar que la plataforma opere las 24 horas sin fricciones.",
     "outro_p1": "Desarrollar software a la medida no tiene por qué ser un salto al vacío.",
     "outro_p2": "Lógica exacta, ejecución en constante movimiento.",
-    "outro_cta": "Si estás listo para digitalizar la operación de tu empresa con un proceso de ingeniería transparente, hablemos."
+    "outro_cta": "Si estás listo para digitalizar la operación de tu empresa con un proceso de ingeniería transparente, hablemos.",
+    "commercial_milestone": "Hito Comercial: Firma de Contrato"
   }
 }

@@ -75,8 +75,20 @@ export default function WorkflowSection() {
       </div>
 
       <div className="relative border-l border-zinc-800/80 ml-6 md:ml-12 pl-10 md:pl-16 space-y-20 pb-20">
-        {steps.map((step) => (
+        {steps.map((step, index) => (
           <div key={step.id} className="relative group">
+            {/* Commercial Milestone (between step 2 and 3) */}
+            {index === 2 && (
+              <div className="absolute -top-10 left-[-42px] md:left-[-66px] w-[calc(100%+42px)] md:w-[calc(100%+66px)] flex items-center mb-10 z-10">
+                <div className="bg-orange-500 text-black font-extrabold text-xs md:text-sm tracking-widest uppercase py-1 px-3 md:px-4 flex items-center gap-2 shadow-[0_0_15px_rgba(249,115,22,0.4)] relative">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                  {t("commercial_milestone")}
+                  <div className="absolute top-1/2 -left-2 w-0 h-0 border-y-4 border-y-transparent border-r-8 border-r-orange-500 -translate-y-1/2"></div>
+                </div>
+                <div className="h-px bg-gradient-to-r from-orange-500 to-transparent flex-grow ml-2 opacity-50"></div>
+              </div>
+            )}
+
             {/* Timeline dot */}
             <div className="absolute -left-[58px] md:-left-[82px] top-1 w-12 h-12 rounded-full bg-black border-2 border-zinc-800 group-hover:border-orange-500 flex items-center justify-center transition-colors duration-500 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
               {step.icon}

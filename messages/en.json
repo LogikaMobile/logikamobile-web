@@ -233,16 +233,17 @@
     "intro_p1": "Most custom software projects fail long before the first line of code is written. They don't fail due to a lack of technical talent; they fail due to a lack of structured planning.",
     "intro_p2": "When development is based on assumptions, the result is always the same: delays, duplicated costs, and systems that don't solve the real business problem.",
     "intro_p3": "At LogikaMobile, we eliminate ambiguity from the root. Our method balances business strategy with high-availability software engineering:",
-    "step1_title": "Understanding",
-    "step1_desc": "We listen, map your current processes, and eliminate gray areas in business rules before quoting.",
-    "step2_title": "Visual Validation & Architecture",
-    "step2_desc": "We design flowcharts, data models, and proofs of concept so you can see how your system will work before we build it.",
-    "step3_title": "Automation & Infrastructure",
-    "step3_desc": "Code is not uploaded \"by hand\". All our development is backed by automated testing and continuous deployment pipelines via GitHub Actions.",
+    "step1_title": "Discovery & Understanding",
+    "step1_desc": "We listen, map your current processes, and eliminate gray areas. Without this Discovery phase, there are no wild guesses or blind signatures.",
+    "step2_title": "Architecture & Contract",
+    "step2_desc": "We design flowcharts and data models. Only when you have total visibility of how the system will work, we sign a contract with a closed scope and exact costs. No contract, no development.",
+    "step3_title": "Development & Automation",
+    "step3_desc": "With the contract signed, coding begins. All our development is backed by automated testing and continuous deployment pipelines via GitHub Actions.",
     "step4_title": "Post-Launch Stability",
     "step4_desc": "We don't disappear after deployment to production; we implement monitoring to ensure the platform operates 24/7 without friction.",
     "outro_p1": "Developing custom software doesn't have to be a leap of faith.",
     "outro_p2": "Exact logic, execution in constant motion.",
-    "outro_cta": "If you're ready to digitize your company's operation with a transparent engineering process, let's talk."
+    "outro_cta": "If you're ready to digitize your company's operation with a transparent engineering process, let's talk.",
+    "commercial_milestone": "Commercial Milestone: Contract Sign"
   }
 }
