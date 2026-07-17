@@ -1,17 +1,22 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { app } from "@/lib/firebase";
-import { getAnalytics, isSupported } from "firebase/analytics";
+import { getAnalytics, isSupported, logEvent, Analytics } from "firebase/analytics";
 import { trackUserEvent } from "@/lib/trackEvent";
+import { usePathname } from "next/navigation";
 
 export default function FirebaseAnalytics() {
+  const pathname = usePathname();
+  const [analyticsInstance, setAnalyticsInstance] = useState<Analytics | null>(null);
+
   useEffect(() => {
     // Inicializar Firebase Analytics solo una vez cuando el componente se monta en el cliente
     if (typeof window !== "undefined") {
       isSupported().then((supported) => {
         if (supported) {
-          getAnalytics(app);
+          const analytics = getAnalytics(app);
+          setAnalyticsInstance(analytics);
         }
       });
 
@@ -45,6 +50,14 @@ export default function FirebaseAnalytics() {
       return () => document.removeEventListener("click", handleGlobalClick);
     }
   }, []);
+
+  useEffect(() => {
+    if (analyticsInstance && pathname) {
+      logEvent(analyticsInstance, "page_view", {
+        page_path: pathname,
+      });
+    }
+  }, [pathname, analyticsInstance]);
 
   return null; // Este componente no renderiza nada en pantalla
 }
