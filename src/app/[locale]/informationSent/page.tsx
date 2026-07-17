@@ -13,6 +13,15 @@ function InformationSentContent() {
 
   useEffect(() => {
     trackUserEvent("conversion_page_viewed", { quote_type: type || "unknown" });
+    
+    // Google Ads Conversion Tag
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag('event', 'conversion', {
+        'send_to': 'AW-18314574374/GBroCPaV_tEcEKb0iJ1E',
+        'value': 1.0,
+        'currency': 'MXN'
+      });
+    }
   }, [type]);
   const min = searchParams.get('min');
   const max = searchParams.get('max');
