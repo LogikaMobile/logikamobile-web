@@ -12,7 +12,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/servicios',
     '/en/services',
     '/lmaas',
-    '/en/lmaas'
+    '/en/lmaas',
+    '/identidad',
+    '/en/identity',
+    '/manifiesto',
+    '/en/manifesto'
   ];
 
   return paths.map((path) => ({

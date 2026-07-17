@@ -25,6 +25,14 @@ export const routing = defineRouting({
     '/informationSent': {
       en: '/informationSent',
       es: '/informacionEnviada'
+    },
+    '/identidad': {
+      en: '/identity',
+      es: '/identidad'
+    },
+    '/manifiesto': {
+      en: '/manifesto',
+      es: '/manifiesto'
     }
   }
 });

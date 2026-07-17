@@ -245,5 +245,39 @@
     "outro_p2": "Lógica exacta, ejecución en constante movimiento.",
     "outro_cta": "Si estás listo para digitalizar la operación de tu empresa con un proceso de ingeniería transparente, hablemos.",
     "commercial_milestone": "Hito Comercial: Firma de Contrato"
+  },
+  "BlogIdentidad": {
+    "title": "De Principia Mathematica a la Ingeniería de Software: La Lógica Detrás de LogikaMobile",
+    "subtitle": "Por qué no dejamos espacio para las suposiciones en el desarrollo de sistemas.",
+    "h2_1": "El Axioma (Principia Mathematica)",
+    "p_1_1": "A principios del siglo XX, los matemáticos Alfred North Whitehead y Bertrand Russell emprendieron una obra monumental: Principia Mathematica. Su ambición era demostrar que absolutamente todas las verdades matemáticas podían derivarse de un conjunto cerrado y finito de axiomas lógicos. El objetivo final era erradicar las paradojas, las contradicciones y las suposiciones de las matemáticas para convertirlas en una ciencia exacta e infalible.",
+    "p_1_2": "En LogikaMobile operamos bajo este mismo rigor fundacional. Un desarrollo de software basado en suposiciones, estimaciones al aire y requerimientos ambiguos no es ingeniería, es un salto de fe. Para nosotros, un sistema fundamentado en lógica estructurada, reglas de negocio claras y diagramas de flujo precisos es una certeza matemática.",
+    "h2_2": "La Materialización (Lógica Booleana y la Máquina)",
+    "p_2_1": "La lógica simbólica que Principia ayudó a consolidar sentó las bases conceptuales para que, años más tarde, la Máquina Universal de Turing y el álgebra de Boole pudieran existir. Los postulados abstractos de \"verdadero\" y \"falso\" salieron del papel para convertirse en compuertas lógicas capaces de procesar información de manera física.",
+    "p_2_2": "El software moderno no es magia; es lógica pura aplicada. Ya sea que hablemos de un clúster de servidores en la nube, un navegador web complejo o un dispositivo móvil de última generación, el código debe ser una cadena inquebrantable de instrucciones deterministas. Ante los mismos inputs, el sistema siempre debe devolver los mismos outputs. Es este principio rector el que inspira nuestro manifiesto técnico y ético.",
+    "link_manifiesto": "nuestro manifiesto técnico y ético",
+    "h2_3": "La Arquitectura de la Certeza",
+    "p_3_1": "El dogma y la ambigüedad son los grandes enemigos de la estabilidad. Por eso, nuestra ingeniería se basa estrictamente en lenguajes y arquitecturas de tipado fuerte (como TypeScript y Kotlin). Los errores y las fallas de diseño deben resolverse en tiempo de compilación mediante una lógica rígida e implacable, y nunca reventar en tiempo de ejecución frente al usuario final.",
+    "p_3_2": "Bajo los preceptos de Clean Architecture (Arquitectura Limpia), determinamos que la lógica de negocio —el auténtico cerebro de tu empresa— debe permanecer aislada de la infraestructura, como la base de datos o la interfaz de usuario. Esto garantiza que el núcleo operativo del software sea inmutable y altamente testeable, manteniéndose robusto sin importar si mañana decide cambiar la tecnología de presentación.",
+    "h2_4": "Ejecución en Constante Movimiento",
+    "p_4_1": "Así como Principia Mathematica estandarizó el rigor matemático moderno, en LogikaMobile estandarizamos el rigor del despliegue tecnológico. No subimos código a producción de forma manual ni cruzando los dedos. Utilizamos rigurosas pruebas automatizadas y flujos de Integración y Despliegue Continuo (CI/CD) para garantizar que la transición del código, desde el repositorio hasta el producto final, esté completamente libre de errores humanos.",
+    "cta": "¿Tu arquitectura actual es una suposición o un teorema comprobado? Refactoricemos tu sistema y transformemos la duda en una certeza matemática."
+  },
+  "BlogManifiesto": {
+    "title": "El Manifiesto Turing: Inclusión Absoluta y la Filosofía \"Built to Fail\"",
+    "subtitle": "Lo que Alan Turing nos enseñó sobre la genialidad técnica y las pruebas de estrés.",
+    "h2_1": "El legado histórico y la Inclusión Absoluta",
+    "p_1_1": "Alan Turing es una de las mentes más brillantes que ha pisado este mundo. No solo formalizó los conceptos fundacionales del algoritmo y la computación con su modelo de la Máquina de Turing, sino que su intelecto salvó literalmente a millones de vidas al lograr descifrar los códigos de la máquina Enigma durante la Segunda Guerra Mundial. Sin embargo, su genialidad fue cruelmente castigada por su orientación sexual, llevándolo a un final trágico impulsado por el dogma, el prejuicio y la intolerancia brutal de su época.",
+    "p_1_2": "En LogikaMobile tenemos una postura inquebrantable al respecto: la computación es, en su esencia más pura, la igualadora definitiva. A un compilador no le importa en absoluto el género, la orientación sexual, la raza, la identidad o el estrato social de quien escribe el código; al compilador solo le importa que la lógica sea exacta, eficiente y elegante. Por ello, somos una compañía radicalmente incluyente. Creemos firmemente que el talento y la genialidad técnica solo florecen en entornos donde se elimina el dogma y se prioriza la capacidad humana.",
+    "h2_2": "El Test de Turing como la máxima auditoría",
+    "p_2_1": "El famoso \"Juego de la Imitación\" (hoy conocido como el Test de Turing) fue diseñado originalmente para evaluar si una máquina podía exhibir un comportamiento inteligente indistinguible del de un humano. Pero si analizamos el fondo de este ejercicio, el Test de Turing es en realidad una prueba de estrés adversarial: el interrogador (humano) está buscando activamente el fallo, intentando encontrar la grieta en la cadena lógica del sistema, buscando ese error sutil que delate a la máquina.",
+    "link_identidad": "la cadena lógica del sistema",
+    "p_2_2": "En la ingeniería de software tradicional, las pruebas suelen hacerse simplemente para demostrar que el código \"funciona\". En LogikaMobile consideramos que ese es un sesgo de confirmación sumamente peligroso. Nosotros hemos adoptado la filosofía del interrogador de Turing.",
+    "h2_3": "\"Built to Fail\" - Nuestra Cultura de Quality Assurance",
+    "p_3_1": "Nuestros entornos de Quality Assurance (QA) y nuestras suites de pruebas automatizadas están diseñados bajo una premisa innegociable: \"Built to Fail\" (Construido para Fallar). Nosotros no escribimos tests para validar el camino feliz (happy path); escribimos tests diseñados con la intención casi maliciosa de quebrar el sistema.",
+    "p_3_2": "¿Cómo lo hacemos? Inyectamos datos nulos, saturamos las peticiones de red mediante cargas concurrentes, simulamos caídas catastróficas de la base de datos e interrumpimos flujos transaccionales críticos a la mitad del proceso. Si el software logra sobrevivir a este escrutinio despiadado sin corromper los datos ni comprometer la seguridad, entonces —y solo entonces— es digno de pasar a producción.",
+    "h2_4": "El impacto en tu negocio",
+    "p_4_1": "La diversidad humana nos da las mejores mentes; la rigurosidad técnica nos da los mejores productos. Al aplicar la filosofía adversarial \"Built to Fail\" mediante metodologías como el TDD (Test-Driven Development) y pipelines automatizados de CI/CD, garantizamos que los peores escenarios y los fallos críticos ocurran únicamente en nuestros servidores de prueba cerrados, y jamás en la operación en vivo de tu empresa.",
+    "cta": "¿Tu sistema actual no pasaría una prueba de estrés? Hablemos de refactorización y arquitectura escalable."
   }
 }

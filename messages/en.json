@@ -245,5 +245,39 @@
     "outro_p2": "Exact logic, execution in constant motion.",
     "outro_cta": "If you're ready to digitize your company's operation with a transparent engineering process, let's talk.",
     "commercial_milestone": "Commercial Milestone: Contract Sign"
+  },
+  "BlogIdentidad": {
+    "title": "From Principia Mathematica to Software Engineering: The Logic Behind LogikaMobile",
+    "subtitle": "Why we leave no room for assumptions in software development.",
+    "h2_1": "The Axiom (Principia Mathematica)",
+    "p_1_1": "In the early 20th century, mathematicians Alfred North Whitehead and Bertrand Russell undertook a monumental work: Principia Mathematica. Their ambition was to prove that absolutely all mathematical truths could be derived from a closed and finite set of logical axioms. The ultimate goal was to eradicate paradoxes, contradictions, and assumptions from mathematics to turn it into an exact and infallible science.",
+    "p_1_2": "At LogikaMobile, we operate under this same foundational rigor. Software development based on assumptions, wild guesses, and ambiguous requirements is not engineering, it's a leap of faith. For us, a system based on structured logic, clear business rules, and precise flowcharts is a mathematical certainty.",
+    "h2_2": "Materialization (Boolean Logic and the Machine)",
+    "p_2_1": "The symbolic logic that Principia helped consolidate laid the conceptual foundations so that, years later, the Universal Turing Machine and Boolean algebra could exist. The abstract postulates of \"true\" and \"false\" left the paper to become logical gates capable of physically processing information.",
+    "p_2_2": "Modern software is not magic; it's applied pure logic. Whether we are talking about a cluster of cloud servers, a complex web browser, or a next-generation mobile device, the code must be an unbreakable chain of deterministic instructions. Given the same inputs, the system must always return the same outputs. It is this guiding principle that inspires our technical and ethical manifesto.",
+    "link_manifiesto": "our technical and ethical manifesto",
+    "h2_3": "The Architecture of Certainty",
+    "p_3_1": "Dogma and ambiguity are the great enemies of stability. That's why our engineering is strictly based on strongly typed languages and architectures (like TypeScript and Kotlin). Design errors and flaws must be resolved at compile time through rigid and relentless logic, and never blow up at runtime in front of the final user.",
+    "p_3_2": "Under the precepts of Clean Architecture, we determine that business logic —the true brain of your company— must remain isolated from infrastructure, like the database or the user interface. This guarantees that the operational core of the software is immutable and highly testable, remaining robust regardless of whether you decide to change the presentation technology tomorrow.",
+    "h2_4": "Execution in Constant Motion",
+    "p_4_1": "Just as Principia Mathematica standardized modern mathematical rigor, at LogikaMobile we standardize the rigor of technological deployment. We do not upload code to production manually or by crossing our fingers. We use rigorous automated testing and Continuous Integration and Deployment (CI/CD) pipelines to ensure that the transition of code, from the repository to the final product, is completely free of human errors.",
+    "cta": "Is your current architecture an assumption or a proven theorem? Let's refactor your system and turn doubt into mathematical certainty."
+  },
+  "BlogManifiesto": {
+    "title": "The Turing Manifesto: Absolute Inclusion and the \"Built to Fail\" Philosophy",
+    "subtitle": "What Alan Turing taught us about technical brilliance and stress testing.",
+    "h2_1": "The historical legacy and Absolute Inclusion",
+    "p_1_1": "Alan Turing is one of the most brilliant minds to have walked this world. He not only formalized the foundational concepts of algorithm and computation with his Turing Machine model, but his intellect literally saved millions of lives by successfully deciphering the Enigma machine codes during World War II. However, his brilliance was cruelly punished due to his sexual orientation, leading to a tragic end driven by the dogma, prejudice, and brutal intolerance of his time.",
+    "p_1_2": "At LogikaMobile we have an unwavering stance on this: computation is, in its purest essence, the ultimate equalizer. A compiler absolutely does not care about the gender, sexual orientation, race, identity, or social class of whoever writes the code; the compiler only cares that the logic is exact, efficient, and elegant. Therefore, we are a radically inclusive company. We firmly believe that talent and technical brilliance only flourish in environments where dogma is eliminated and human capacity is prioritized.",
+    "h2_2": "The Turing Test as the ultimate audit",
+    "p_2_1": "The famous \"Imitation Game\" (now known as the Turing Test) was originally designed to evaluate whether a machine could exhibit intelligent behavior indistinguishable from that of a human. But if we analyze the core of this exercise, the Turing Test is actually an adversarial stress test: the interrogator (human) is actively looking for the flaw, trying to find the crack in the logical chain of the system, looking for that subtle error that gives the machine away.",
+    "link_identidad": "the logical chain of the system",
+    "p_2_2": "In traditional software engineering, tests are usually done simply to prove that the code \"works\". At LogikaMobile we consider this to be a highly dangerous confirmation bias. We have adopted the philosophy of the Turing interrogator.",
+    "h2_3": "\"Built to Fail\" - Our Quality Assurance Culture",
+    "p_3_1": "Our Quality Assurance (QA) environments and our automated test suites are designed under a non-negotiable premise: \"Built to Fail\". We don't write tests to validate the happy path; we write tests designed with the almost malicious intent of breaking the system.",
+    "p_3_2": "How do we do it? We inject null data, we saturate network requests through concurrent loads, we simulate catastrophic database crashes, and we interrupt critical transactional flows halfway through the process. If the software manages to survive this ruthless scrutiny without corrupting data or compromising security, then —and only then— is it worthy of going into production.",
+    "h2_4": "The impact on your business",
+    "p_4_1": "Human diversity gives us the best minds; technical rigor gives us the best products. By applying the adversarial \"Built to Fail\" philosophy through methodologies like TDD (Test-Driven Development) and automated CI/CD pipelines, we guarantee that the worst scenarios and critical failures occur only on our closed test servers, and never in your company's live operation.",
+    "cta": "Would your current system fail a stress test? Let's talk about refactoring and scalable architecture."
   }
 }
