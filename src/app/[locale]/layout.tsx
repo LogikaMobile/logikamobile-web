@@ -4,6 +4,8 @@ import Script from "next/script";
 import "../globals.css";
 import FirebaseAnalytics from "@/components/FirebaseAnalytics";
 import GclidTracker from "@/components/GclidTracker";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -77,7 +79,11 @@ export default async function RootLayout({
               })
             }}
           />
-          {children}
+          <Navbar />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
