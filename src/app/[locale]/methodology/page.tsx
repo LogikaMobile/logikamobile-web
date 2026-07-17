@@ -7,7 +7,14 @@ export async function generateMetadata({ params }: any) {
   const t = await getTranslations({ locale, namespace: 'Navigation' });
   return {
     title: `LogikaMobile | ${t('workflow')}`,
-    description: "Nuestra metodología de desarrollo de software. Descubre cómo transformamos ideas en productos digitales de alta disponibilidad sin zonas grises."
+    description: "Nuestra metodología de desarrollo de software. Descubre cómo transformamos ideas en productos digitales de alta disponibilidad sin zonas grises.",
+    alternates: {
+      canonical: `/${locale}/methodology`,
+      languages: {
+        'es': '/es/methodology',
+        'en': '/en/methodology',
+      },
+    },
   };
 }
 

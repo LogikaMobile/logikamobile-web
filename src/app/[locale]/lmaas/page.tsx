@@ -12,7 +12,14 @@ export async function generateMetadata({ params }: any) {
     description: t('description'),
     icons: {
       icon: '/logos/LMaaSLogo.svg',
-    }
+    },
+    alternates: {
+      canonical: `/${locale}/lmaas`,
+      languages: {
+        'es': '/es/lmaas',
+        'en': '/en/lmaas',
+      },
+    },
   };
 }
 

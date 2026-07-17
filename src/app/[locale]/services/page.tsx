@@ -7,7 +7,14 @@ export async function generateMetadata({ params }: any) {
   const t = await getTranslations({ locale, namespace: 'Navigation' });
   return {
     title: `LogikaMobile | ${t('services')}`,
-    description: "Conoce nuestros servicios de ingeniería de software: Arquitectura Backend, Desarrollo Web y Móvil, y nuestro modelo único de CTO as a Service (LMaaS)."
+    description: "Conoce nuestros servicios de ingeniería de software: Arquitectura Backend, Desarrollo Web y Móvil, y nuestro modelo único de CTO as a Service (LMaaS).",
+    alternates: {
+      canonical: `/${locale}/services`,
+      languages: {
+        'es': '/es/services',
+        'en': '/en/services',
+      },
+    },
   };
 }
 

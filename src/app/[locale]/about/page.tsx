@@ -6,7 +6,14 @@ export async function generateMetadata({ params }: any) {
   const t = await getTranslations({ locale, namespace: 'Navigation' });
   return {
     title: `LogikaMobile | ${t('about')}`,
-    description: "Conoce más sobre LogikaMobile, nuestra misión y cómo desarrollamos software a la medida con altos estándares de calidad."
+    description: "Conoce más sobre LogikaMobile, nuestra misión y cómo desarrollamos software a la medida con altos estándares de calidad.",
+    alternates: {
+      canonical: `/${locale}/about`,
+      languages: {
+        'es': '/es/about',
+        'en': '/en/about',
+      },
+    },
   };
 }
 

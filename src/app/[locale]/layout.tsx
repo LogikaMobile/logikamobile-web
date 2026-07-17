@@ -15,9 +15,6 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://logikamobile.com.mx'),
-  alternates: {
-    canonical: '/',
-  },
   title: "LogikaMobile | Ingeniería de Software",
   description: "Ingeniería de software para escalar tu negocio. Desarrollo móvil y web con arquitecturas robustas y orientadas a resultados.",
 };

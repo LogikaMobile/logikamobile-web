@@ -8,7 +8,14 @@ export async function generateMetadata({ params }: any) {
   const t = await getTranslations({ locale, namespace: 'BlogManifiesto' });
   return {
     title: `LogikaMobile | ${t('title')}`,
-    description: t('subtitle')
+    description: t('subtitle'),
+    alternates: {
+      canonical: `/${locale}/manifiesto`,
+      languages: {
+        'es': '/es/manifiesto',
+        'en': '/en/manifiesto',
+      },
+    },
   };
 }
 
