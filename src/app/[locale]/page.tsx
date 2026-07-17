@@ -2,6 +2,7 @@ import Link from 'next/link';
 import TrackedLink from '@/components/TrackedLink';
 import QuoteModal from '@/components/QuoteModal';
 import AdminLogo from '@/components/AdminLogo';
+import WorkflowSection from '@/components/WorkflowSection';
 import { getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 
@@ -32,6 +33,7 @@ export default function Home() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-10 text-base font-bold uppercase tracking-widest text-zinc-400">
             <TrackedLink href="#about" targetName="about" className="hover:text-orange-500 hover: transition-colors duration-300">{t('Navigation.about')}</TrackedLink>
+            <TrackedLink href="#workflow" targetName="workflow" className="hover:text-orange-500 hover: transition-colors duration-300">{t('Navigation.workflow')}</TrackedLink>
             <TrackedLink href="#services" targetName="services" className="hover:text-orange-500 hover: transition-colors duration-300">{t('Navigation.services')}</TrackedLink>
             <TrackedLink href="#contact" targetName="contact" className="hover:text-orange-500 hover: transition-colors duration-300">{t('Navigation.contact')}</TrackedLink>
           </nav>
@@ -120,6 +122,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Workflow / Methodology */}
+        <WorkflowSection />
 
         {/* Servicios */}
         <section id="services" className="py-32 md:py-48 bg-black/60 border-t border-zinc-900/50 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">

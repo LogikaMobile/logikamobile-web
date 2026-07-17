@@ -7,7 +7,8 @@
     "about": "About",
     "services": "Services",
     "contact": "Contact",
-    "open_menu": "Open menu"
+    "open_menu": "Open menu",
+    "workflow": "Methodology"
   },
   "Hero": {
     "description": "Strategic software solutions to propel your business forward. We build scalable mobile and web platforms, focused on optimizing your operations and accelerating your growth."
@@ -225,5 +226,23 @@
     "result_annual": "Per year (billed annually with 15% OFF)",
     "result_monthly": "Per month",
     "btn_close": "Close"
+  },
+  "Workflow": {
+    "title_main": "System",
+    "title_highlight": "Workflow",
+    "intro_p1": "Most custom software projects fail long before the first line of code is written. They don't fail due to a lack of technical talent; they fail due to a lack of structured planning.",
+    "intro_p2": "When development is based on assumptions, the result is always the same: delays, duplicated costs, and systems that don't solve the real business problem.",
+    "intro_p3": "At LogikaMobile, we eliminate ambiguity from the root. Our method balances business strategy with high-availability software engineering:",
+    "step1_title": "Understanding",
+    "step1_desc": "We listen, map your current processes, and eliminate gray areas in business rules before quoting.",
+    "step2_title": "Visual Validation & Architecture",
+    "step2_desc": "We design flowcharts, data models, and proofs of concept so you can see how your system will work before we build it.",
+    "step3_title": "Automation & Infrastructure",
+    "step3_desc": "Code is not uploaded \"by hand\". All our development is backed by automated testing and continuous deployment pipelines via GitHub Actions.",
+    "step4_title": "Post-Launch Stability",
+    "step4_desc": "We don't disappear after deployment to production; we implement monitoring to ensure the platform operates 24/7 without friction.",
+    "outro_p1": "Developing custom software doesn't have to be a leap of faith.",
+    "outro_p2": "Exact logic, execution in constant motion.",
+    "outro_cta": "If you're ready to digitize your company's operation with a transparent engineering process, let's talk."
   }
 }
