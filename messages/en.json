@@ -8,7 +8,10 @@
     "services": "Services",
     "contact": "Contact",
     "open_menu": "Open menu",
-    "workflow": "Methodology"
+    "workflow": "Methodology",
+    "manifesto": "Our Manifesto",
+    "identity": "Our Identity",
+    "vision": "Our Vision"
   },
   "Hero": {
     "description": "Strategic software solutions to propel your business forward. We build scalable mobile and web platforms, focused on optimizing your operations and accelerating your growth."
