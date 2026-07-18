@@ -64,11 +64,14 @@ export default async function RootLayout({
             dangerouslySetInnerHTML={{
               __html: JSON.stringify({
                 "@context": "https://schema.org",
-                "@type": "SoftwareBusiness",
+                "@type": "Organization",
                 "name": "LogikaMobile",
                 "url": "https://logikamobile.com.mx",
                 "logo": "https://logikamobile.com.mx/logos/Logo.svg",
                 "description": "Especialistas en desarrollo de software a la medida y modernización de sistemas legacy.",
+                "sameAs": [
+                  "https://www.linkedin.com/company/logikamobile"
+                ],
                 "address": {
                   "@type": "PostalAddress",
                   "addressCountry": "MX"
