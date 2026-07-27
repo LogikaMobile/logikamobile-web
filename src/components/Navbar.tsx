@@ -33,6 +33,7 @@ export default function Navbar() {
           </div>
           <TrackedLink href="/methodology" targetName="workflow" className="hover:text-orange-500 hover: transition-colors duration-300">{t('Navigation.workflow')}</TrackedLink>
           <TrackedLink href="/services" targetName="services" className="hover:text-orange-500 hover: transition-colors duration-300">{t('Navigation.services')}</TrackedLink>
+          <TrackedLink href="/business-center" targetName="portal" className="hover:text-orange-500 hover: transition-colors duration-300">{t('Navigation.portal')}</TrackedLink>
           <TrackedLink href="/#contact" targetName="contact" className="hover:text-orange-500 hover: transition-colors duration-300">{t('Navigation.contact')}</TrackedLink>
         </nav>
 

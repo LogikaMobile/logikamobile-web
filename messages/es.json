@@ -11,7 +11,8 @@
     "workflow": "Método",
     "manifesto": "Nuestro Manifiesto",
     "identity": "Nuestra Identidad",
-    "vision": "Nuestra Visión"
+    "vision": "Nuestra Visión",
+    "portal": "Business Center"
   },
   "Hero": {
     "description": "Soluciones de software estratégico para impulsar tu negocio. Construimos plataformas móviles y web escalables, enfocadas en optimizar tus operaciones y acelerar tu crecimiento."
@@ -288,5 +289,25 @@
     "h2_4": "El impacto en tu negocio",
     "p_4_1": "La diversidad humana nos da las mejores mentes; la rigurosidad técnica nos da los mejores productos. Al aplicar la filosofía adversarial \"Built to Fail\" mediante metodologías como el TDD y pipelines automatizados de CI/CD, garantizamos que los peores escenarios y los fallos críticos ocurran únicamente en nuestros servidores de prueba cerrados, y jamás en la operación en vivo de tu empresa.",
     "cta": "¿Tu sistema actual no pasaría una prueba de estrés? Hablemos de refactorización y arquitectura escalable."
+  },
+  "BusinessCenter": {
+    "title_main": "LogikaMobile",
+    "title_highlight": "Business Center",
+    "intro_p1": "Revolucionamos la forma en que atendemos a nuestros clientes.",
+    "intro_p2": "LogikaMobile Business Center es tu portal exclusivo para reportar incidencias, medir el rendimiento de tus proyectos y mantener comunicación en tiempo real con nuestro equipo de expertos, todo desde una interfaz moderna, segura y fácil de usar.",
+    "feature_1_title": "Gestión Integral de Tickets (Help Desk)",
+    "feature_1_desc": "Creación y seguimiento de tickets de soporte técnico y desarrollo en tiempo real. Sistema de mensajería bidireccional dentro de cada ticket para evitar cadenas de correos perdidas. Estados de resolución claros.",
+    "feature_2_title": "Bolsa de Horas de Soporte",
+    "feature_2_desc": "Seguimiento automatizado del tiempo invertido. Visualiza en todo momento tu cuota de horas contratadas y cuántas han consumido, garantizando 100% de transparencia en la facturación.",
+    "feature_3_title": "Arquitectura Multi-Empresa",
+    "feature_3_desc": "Privacidad total. Cada cliente solo tiene acceso a sus propios proyectos, empleados y tickets, manteniendo la información estratégica aislada y blindada.",
+    "feature_4_title": "Panel de Mando (Dashboard)",
+    "feature_4_desc": "Un centro de mando visual para evaluar de un vistazo el estado de todos los proyectos, cuellos de botella en tickets abiertos y la eficiencia en la resolución de problemas.",
+    "feature_5_title": "Organización por Proyectos",
+    "feature_5_desc": "Clasifica las incidencias no solo por empresa, sino por proyectos específicos, manteniendo el soporte estructurado para múltiples desarrollos activos.",
+    "feature_6_title": "Seguridad de Nivel Empresarial",
+    "feature_6_desc": "Construido con estándares modernos: Tokens JWT, encriptación BCrypt y cifrado SSL de punto a punto.",
+    "cta_login": "Iniciar Sesión",
+    "cta_contact": "Solicitar Acceso"
   }
 }

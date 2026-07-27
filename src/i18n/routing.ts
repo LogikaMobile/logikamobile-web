@@ -33,6 +33,10 @@ export const routing = defineRouting({
     '/manifiesto': {
       en: '/manifesto',
       es: '/manifiesto'
+    },
+    '/business-center': {
+      en: '/business-center',
+      es: '/business-center'
     }
   }
 });

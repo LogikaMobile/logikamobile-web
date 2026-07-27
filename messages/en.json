@@ -11,7 +11,8 @@
     "workflow": "Methodology",
     "manifesto": "Our Manifesto",
     "identity": "Our Identity",
-    "vision": "Our Vision"
+    "vision": "Our Vision",
+    "portal": "Client Portal"
   },
   "Hero": {
     "description": "Strategic software solutions to propel your business forward. We build scalable mobile and web platforms, focused on optimizing your operations and accelerating your growth."
@@ -288,5 +289,25 @@
     "h2_4": "The impact on your business",
     "p_4_1": "Human diversity gives us the best minds; technical rigor gives us the best products. By applying the adversarial \"Built to Fail\" philosophy through methodologies like TDD and automated CI/CD pipelines, we guarantee that the worst scenarios and critical failures occur only on our closed test servers, and never in your company's live operation.",
     "cta": "Would your current system fail a stress test? Let's talk about refactoring and scalable architecture."
+  },
+  "BusinessCenter": {
+    "title_main": "LogikaMobile",
+    "title_highlight": "Business Center",
+    "intro_p1": "We revolutionize the way we serve our clients.",
+    "intro_p2": "LogikaMobile Business Center is your exclusive portal to report incidents, measure the performance of your projects and maintain real-time communication with our team of experts, all from a modern, secure and easy-to-use interface.",
+    "feature_1_title": "Comprehensive Ticket Management (Help Desk)",
+    "feature_1_desc": "Creation and tracking of technical support and development tickets in real time. Two-way messaging system within each ticket to avoid lost email chains. Clear resolution statuses.",
+    "feature_2_title": "Support Hours Control",
+    "feature_2_desc": "Automated tracking of invested time. Visualise at all times your quota of contracted support hours and how many have been consumed, guaranteeing 100% transparency in billing.",
+    "feature_3_title": "Multi-Tenant Architecture",
+    "feature_3_desc": "Total privacy. Each client only has access to their own projects, employees and tickets, keeping strategic information isolated and shielded.",
+    "feature_4_title": "Dashboard & Metrics",
+    "feature_4_desc": "A visual command center to evaluate at a glance the status of all projects, bottlenecks in open tickets and efficiency in problem resolution.",
+    "feature_5_title": "Project Organization",
+    "feature_5_desc": "Classify incidents not only by company, but by specific projects, keeping support structured for multiple active developments.",
+    "feature_6_title": "Enterprise-Grade Security",
+    "feature_6_desc": "Built with modern standards: JWT Tokens, BCrypt encryption, and end-to-end SSL encryption.",
+    "cta_login": "Login to Portal",
+    "cta_contact": "Request Access"
   }
 }
