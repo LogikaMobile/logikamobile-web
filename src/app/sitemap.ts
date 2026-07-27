@@ -4,20 +4,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://logikamobile.com.mx';
 
   const paths = [
-    '',
-    '/nosotros',
+    '/es',
+    '/en',
+    '/es/nosotros',
     '/en/about',
-    '/metodologia',
+    '/es/metodologia',
     '/en/methodology',
-    '/servicios',
+    '/es/servicios',
     '/en/services',
-    '/lmaas',
+    '/es/lmaas',
     '/en/lmaas',
-    '/identidad',
+    '/es/identidad',
     '/en/identity',
-    '/manifiesto',
+    '/es/manifiesto',
     '/en/manifesto',
-    '/business-center',
+    '/es/business-center',
     '/en/business-center'
   ];
 
@@ -25,6 +26,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${path}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
-    priority: path === '' ? 1 : 0.8,
+    priority: (path === '/es' || path === '/en') ? 1 : 0.8,
   }));
 }
