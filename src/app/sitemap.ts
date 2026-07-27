@@ -16,7 +16,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/identidad',
     '/en/identity',
     '/manifiesto',
-    '/en/manifesto'
+    '/en/manifesto',
+    '/business-center',
+    '/en/business-center'
   ];
 
   return paths.map((path) => ({
