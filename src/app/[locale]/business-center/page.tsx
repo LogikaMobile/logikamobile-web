@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
+import TrackedLink from '@/components/TrackedLink';
 
 export async function generateMetadata({ params }: any) {
   const { locale } = await params;
@@ -37,16 +38,16 @@ export default function BusinessCenterPage() {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="https://portal.logikamobile.com.mx" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center px-8 py-4 bg-[#7B2CBF] text-white font-bold text-lg rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(123,44,191,0.5)] w-full sm:w-auto">
+          <TrackedLink href="https://portal.logikamobile.com.mx" target="_blank" rel="noopener noreferrer" targetName="b2b_login" className="group relative inline-flex items-center justify-center px-8 py-4 bg-[#7B2CBF] text-white font-bold text-lg rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(123,44,191,0.5)] w-full sm:w-auto">
             <span className="relative z-10 flex items-center gap-2">
               {t('cta_login')}
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-[#7B2CBF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </a>
-          <a href="/#contact" className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-300 font-bold text-lg rounded-full hover:bg-zinc-800 hover:text-white transition-colors duration-300 w-full sm:w-auto">
+          </TrackedLink>
+          <TrackedLink href="/#contact" targetName="b2b_contact" className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-300 font-bold text-lg rounded-full hover:bg-zinc-800 hover:text-white transition-colors duration-300 w-full sm:w-auto">
             {t('cta_contact')}
-          </a>
+          </TrackedLink>
         </div>
       </section>
 
