@@ -10,10 +10,10 @@ export async function generateMetadata({ params }: any) {
     title: `LogikaMobile | ${t('title')}`,
     description: t('subtitle'),
     alternates: {
-      canonical: `/${locale}/identidad`,
+      canonical: locale === 'es' ? '/es/identidad' : '/en/identity',
       languages: {
         'es': '/es/identidad',
-        'en': '/en/identidad',
+        'en': '/en/identity',
       },
     },
   };

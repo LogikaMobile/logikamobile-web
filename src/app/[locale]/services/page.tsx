@@ -9,9 +9,9 @@ export async function generateMetadata({ params }: any) {
     title: `LogikaMobile | ${t('services')}`,
     description: "Conoce nuestros servicios de ingeniería de software: Arquitectura Backend, Desarrollo Web y Móvil, y nuestro modelo único de CTO as a Service (LMaaS).",
     alternates: {
-      canonical: `/${locale}/services`,
+      canonical: locale === 'es' ? '/es/servicios' : '/en/services',
       languages: {
-        'es': '/es/services',
+        'es': '/es/servicios',
         'en': '/en/services',
       },
     },

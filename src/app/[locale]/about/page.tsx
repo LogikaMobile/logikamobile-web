@@ -8,9 +8,9 @@ export async function generateMetadata({ params }: any) {
     title: `LogikaMobile | ${t('about')}`,
     description: "Conoce más sobre LogikaMobile, nuestra misión y cómo desarrollamos software a la medida con altos estándares de calidad.",
     alternates: {
-      canonical: `/${locale}/about`,
+      canonical: locale === 'es' ? '/es/nosotros' : '/en/about',
       languages: {
-        'es': '/es/about',
+        'es': '/es/nosotros',
         'en': '/en/about',
       },
     },

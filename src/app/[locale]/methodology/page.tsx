@@ -9,9 +9,9 @@ export async function generateMetadata({ params }: any) {
     title: `LogikaMobile | ${t('workflow')}`,
     description: "Nuestra metodología de desarrollo de software. Descubre cómo transformamos ideas en productos digitales de alta disponibilidad sin zonas grises.",
     alternates: {
-      canonical: `/${locale}/methodology`,
+      canonical: locale === 'es' ? '/es/metodologia' : '/en/methodology',
       languages: {
-        'es': '/es/methodology',
+        'es': '/es/metodologia',
         'en': '/en/methodology',
       },
     },
