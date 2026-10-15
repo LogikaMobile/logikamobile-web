@@ -129,8 +129,8 @@ export default function LogikaFiskalPage() {
                 <span className="text-xs font-mono font-bold text-orange-400 uppercase tracking-widest block mb-4">
                   {t("layer1_level")}
                 </span>
-                <TrackedLink href="/sekurita" targetName="fiskal_arch_sekurita_logo" className="block w-16 h-16 mb-6 p-2 rounded-xl bg-black/60 border border-orange-500/20 flex items-center justify-center group-hover:border-orange-500/40 group-hover:scale-110 transition-all duration-300">
-                  <img src="/logos/sekurita_logo.svg" alt="SeKurita Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.3)]" />
+                <TrackedLink href="/sekurita" targetName="fiskal_arch_sekurita_logo" className="block w-24 h-24 md:w-28 md:h-28 mb-6 p-3 rounded-2xl bg-black/60 border border-orange-500/20 flex items-center justify-center group-hover:border-orange-500/40 group-hover:scale-110 transition-all duration-300 shadow-[0_0_25px_rgba(249,115,22,0.15)]">
+                  <img src="/logos/sekurita_logo.svg" alt="SeKurita Logo" className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
                 </TrackedLink>
                 <h3 className="text-3xl font-black text-white mb-4 group-hover:text-orange-400 transition-colors">
                   <TrackedLink href="/sekurita" targetName="fiskal_arch_sekurita_title" className="hover:underline inline-flex items-center gap-2">
@@ -156,8 +156,8 @@ export default function LogikaFiskalPage() {
                 <span className="text-xs font-mono font-bold text-[#6CD3D3] uppercase tracking-widest block mb-4">
                   {t("layer2_level")}
                 </span>
-                <div className="w-16 h-16 mb-6 p-2 rounded-xl bg-black/60 border border-[#6CD3D3]/20 flex items-center justify-center text-[#6CD3D3] group-hover:border-[#6CD3D3]/40 group-hover:scale-110 transition-all duration-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_0_12px_rgba(108,211,211,0.4)]">
+                <div className="w-24 h-24 md:w-28 md:h-28 mb-6 p-3 rounded-2xl bg-black/60 border border-[#6CD3D3]/20 flex items-center justify-center text-[#6CD3D3] group-hover:border-[#6CD3D3]/40 group-hover:scale-110 transition-all duration-300 shadow-[0_0_25px_rgba(108,211,211,0.15)]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_0_15px_rgba(108,211,211,0.5)]">
                     <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
                     <path d="M12 12v9" />
                     <path d="m8 17 4 4 4-4" />
@@ -181,8 +181,8 @@ export default function LogikaFiskalPage() {
                 <span className="text-xs font-mono font-bold text-[#7B2CBF] uppercase tracking-widest block mb-4">
                   {t("layer3_level")}
                 </span>
-                <div className="w-16 h-16 mb-6 p-2 rounded-xl bg-black/60 border border-[#7B2CBF]/30 flex items-center justify-center group-hover:border-[#7B2CBF]/60 group-hover:scale-110 transition-all duration-300">
-                  <img src="/logos/logikont_logo.svg" alt="LogiKont Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(123,44,191,0.5)]" />
+                <div className="w-24 h-24 md:w-28 md:h-28 mb-6 p-3 rounded-2xl bg-black/60 border border-[#7B2CBF]/30 flex items-center justify-center group-hover:border-[#7B2CBF]/60 group-hover:scale-110 transition-all duration-300 shadow-[0_0_25px_rgba(123,44,191,0.25)]">
+                  <img src="/logos/logikont_logo.svg" alt="LogiKont Logo" className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(123,44,191,0.6)]" />
                 </div>
                 <h3 className="text-3xl font-black text-white mb-4 group-hover:text-purple-300 transition-colors">
                   {t("layer3_title")}
@@ -324,8 +324,8 @@ export default function LogikaFiskalPage() {
           <div className="mb-20 bg-zinc-950/60 border border-zinc-800/80 rounded-3xl p-8 md:p-12 relative overflow-hidden">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
               <div className="flex items-center gap-5">
-                <TrackedLink href="/sekurita" targetName="fiskal_detail_sekurita_logo" className="w-16 h-16 md:w-20 md:h-20 p-2.5 rounded-2xl bg-black/80 border border-orange-500/30 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(249,115,22,0.2)] hover:border-orange-500 transition-all hover:scale-105">
-                  <img src="/logos/sekurita_logo.svg" alt="SeKurita Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.4)]" />
+                <TrackedLink href="/sekurita" targetName="fiskal_detail_sekurita_logo" className="w-24 h-24 md:w-32 md:h-32 p-3 rounded-3xl bg-black/80 border border-orange-500/30 flex items-center justify-center shrink-0 shadow-[0_0_25px_rgba(249,115,22,0.25)] hover:border-orange-500 transition-all hover:scale-105">
+                  <img src="/logos/sekurita_logo.svg" alt="SeKurita Logo" className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(249,115,22,0.5)]" />
                 </TrackedLink>
                 <div>
                   <span className="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block mr-2"></span>
@@ -411,8 +411,8 @@ export default function LogikaFiskalPage() {
           {/* Module 3: LogiKont */}
           <div className="bg-zinc-950/60 border border-zinc-800/80 rounded-3xl p-8 md:p-12 relative overflow-hidden">
             <div className="flex items-center gap-5 mb-6">
-              <div className="w-16 h-16 md:w-20 md:h-20 p-2.5 rounded-2xl bg-black/80 border border-[#7B2CBF]/40 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(123,44,191,0.3)]">
-                <img src="/logos/logikont_logo.svg" alt="LogiKont Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(123,44,191,0.5)]" />
+              <div className="w-24 h-24 md:w-32 md:h-32 p-3 rounded-3xl bg-black/80 border border-[#7B2CBF]/40 flex items-center justify-center shrink-0 shadow-[0_0_25px_rgba(123,44,191,0.35)]">
+                <img src="/logos/logikont_logo.svg" alt="LogiKont Logo" className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(123,44,191,0.6)]" />
               </div>
               <div>
                 <span className="w-2.5 h-2.5 rounded-full bg-[#7B2CBF] inline-block mr-2"></span>

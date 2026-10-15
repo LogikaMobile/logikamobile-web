@@ -37,8 +37,8 @@ export default function SeKuritaPage() {
         <header className="text-center max-w-5xl mx-auto mb-28">
           
           {/* SeKurita Shield Logo */}
-          <div className="w-28 h-28 md:w-36 md:h-36 mx-auto mb-8 p-3 rounded-3xl bg-black/80 border border-orange-500/30 flex items-center justify-center shadow-[0_0_50px_rgba(249,115,22,0.25)] hover:scale-105 transition-transform duration-300">
-            <img src="/logos/sekurita_logo.svg" alt="SeKurita Logo" className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
+          <div className="w-40 h-40 md:w-56 md:h-56 mx-auto mb-10 p-4 rounded-3xl bg-black/80 border border-orange-500/30 flex items-center justify-center shadow-[0_0_60px_rgba(249,115,22,0.3)] hover:scale-105 transition-transform duration-300">
+            <img src="/logos/sekurita_logo.svg" alt="SeKurita Logo" className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(249,115,22,0.5)]" />
           </div>
 
           <div className="inline-flex flex-wrap items-center justify-center gap-3 px-5 py-2 rounded-full bg-zinc-900/80 border border-cyan-500/30 text-cyan-300 text-xs md:text-sm font-mono tracking-wider mb-8 shadow-[0_0_25px_rgba(66,200,198,0.15)]">
