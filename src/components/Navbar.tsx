@@ -13,17 +13,17 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
         <div className="flex items-center">
           {/* Logo Text */}
-          <Link id="nav-logo" href="/" className="flex items-center gap-2 font-extrabold text-2xl md:text-3xl lg:text-4xl tracking-widest text-[#7B2CBF]" aria-label="LogikaMobile Home">
+          <Link id="nav-logo" href="/" className="inline-block font-extrabold text-2xl md:text-3xl lg:text-4xl tracking-widest text-[#7B2CBF] shrink-0" aria-label="LogikaMobile Home">
             LOGIKA<span className="text-orange-500">MOBILE</span>
           </Link>
         </div>
         
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm xl:text-base font-bold uppercase tracking-wider text-zinc-400">
-          <div className="relative group">
-            <span className="cursor-pointer hover:text-orange-500 transition-colors duration-300 py-4 flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-8 text-xs xl:text-sm 2xl:text-base font-bold uppercase tracking-wider text-zinc-400 whitespace-nowrap">
+          <div className="relative group shrink-0">
+            <span className="cursor-pointer hover:text-orange-500 transition-colors duration-300 py-4 flex items-center gap-1 whitespace-nowrap">
               {t('Navigation.about')}
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:rotate-180">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:rotate-180">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </span>
@@ -33,18 +33,18 @@ export default function Navbar() {
               <TrackedLink href="/about" targetName="nav_vision" className="px-5 py-3 hover:bg-zinc-900 hover:text-orange-500 transition-colors duration-200 border-t border-zinc-800/50">{t('Navigation.vision')}</TrackedLink>
             </div>
           </div>
-          <TrackedLink href="/methodology" targetName="workflow" className="hover:text-orange-500 transition-colors duration-300">{t('Navigation.workflow')}</TrackedLink>
-          <TrackedLink href="/services" targetName="services" className="hover:text-orange-500 transition-colors duration-300">{t('Navigation.services')}</TrackedLink>
-          <TrackedLink href="/logikafiskal" targetName="nav_logikafiskal" className="hover:text-orange-500 transition-colors duration-300 flex items-center gap-1.5 group">
+          <TrackedLink href="/methodology" targetName="workflow" className="hover:text-orange-500 transition-colors duration-300 whitespace-nowrap">{t('Navigation.workflow')}</TrackedLink>
+          <TrackedLink href="/services" targetName="services" className="hover:text-orange-500 transition-colors duration-300 whitespace-nowrap">{t('Navigation.services')}</TrackedLink>
+          <TrackedLink href="/logikafiskal" targetName="nav_logikafiskal" className="hover:text-orange-500 transition-colors duration-300 flex items-center gap-1.5 group whitespace-nowrap">
             <span>Logika<span className="text-orange-500 group-hover:text-orange-400">Fiskal</span></span>
             <span className="text-[10px] font-mono bg-orange-500/10 text-orange-400 border border-orange-500/30 px-1.5 py-0.5 rounded tracking-normal">{t('Navigation.badge_new')}</span>
           </TrackedLink>
-          <TrackedLink href="/sekurita" targetName="nav_sekurita" className="hover:text-orange-500 transition-colors duration-300 flex items-center gap-1.5 group">
+          <TrackedLink href="/sekurita" targetName="nav_sekurita" className="hover:text-orange-500 transition-colors duration-300 flex items-center gap-1.5 group whitespace-nowrap">
             <span>SeKurita</span>
             <span className="text-[10px] font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 px-1.5 py-0.5 rounded tracking-normal">ISO 27001</span>
           </TrackedLink>
-          <TrackedLink href="/business-center" targetName="portal" className="hover:text-orange-500 transition-colors duration-300">{t('Navigation.portal')}</TrackedLink>
-          <TrackedLink href="/#contact" targetName="contact" className="hover:text-orange-500 transition-colors duration-300">{t('Navigation.contact')}</TrackedLink>
+          <TrackedLink href="/business-center" targetName="portal" className="hover:text-orange-500 transition-colors duration-300 whitespace-nowrap">{t('Navigation.portal')}</TrackedLink>
+          <TrackedLink href="/#contact" targetName="contact" className="hover:text-orange-500 transition-colors duration-300 whitespace-nowrap">{t('Navigation.contact')}</TrackedLink>
         </nav>
 
         {/* Mobile Menu Icon */}
