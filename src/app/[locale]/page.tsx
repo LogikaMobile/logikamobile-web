@@ -3,6 +3,7 @@ import AdminLogo from '@/components/AdminLogo';
 import { getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import LogikaFiskalSection from '@/components/LogikaFiskalSection';
 
 export async function generateMetadata({ params }: any) {
   const { locale } = await params;
@@ -114,6 +115,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* LogikaFiskal Featured Section */}
+      <LogikaFiskalSection />
     </div>
   );
 }

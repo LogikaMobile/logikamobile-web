@@ -37,6 +37,10 @@ export const routing = defineRouting({
     '/business-center': {
       en: '/business-center',
       es: '/business-center'
+    },
+    '/logikafiskal': {
+      en: '/logikafiskal',
+      es: '/logikafiskal'
     }
   }
 });
