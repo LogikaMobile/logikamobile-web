@@ -39,6 +39,10 @@ export default function Navbar() {
             <span>Logika<span className="text-orange-500 group-hover:text-orange-400">Fiskal</span></span>
             <span className="text-[10px] font-mono bg-orange-500/10 text-orange-400 border border-orange-500/30 px-1.5 py-0.5 rounded tracking-normal">{t('Navigation.badge_new')}</span>
           </TrackedLink>
+          <TrackedLink href="/sekurita" targetName="nav_sekurita" className="hover:text-orange-500 transition-colors duration-300 flex items-center gap-1.5 group">
+            <span>SeKurita</span>
+            <span className="text-[10px] font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 px-1.5 py-0.5 rounded tracking-normal">ISO 27001</span>
+          </TrackedLink>
           <TrackedLink href="/business-center" targetName="portal" className="hover:text-orange-500 transition-colors duration-300">{t('Navigation.portal')}</TrackedLink>
           <TrackedLink href="/#contact" targetName="contact" className="hover:text-orange-500 transition-colors duration-300">{t('Navigation.contact')}</TrackedLink>
         </nav>
@@ -72,6 +76,10 @@ export default function Navbar() {
           <TrackedLink href="/logikafiskal" targetName="nav_mobile_logikafiskal" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between text-orange-400 py-2 border-b border-zinc-900">
             <span>LogikaFiskal</span>
             <span className="text-[10px] font-mono bg-orange-500/20 text-orange-300 border border-orange-500/40 px-2 py-0.5 rounded">{t('Navigation.badge_new_upper')}</span>
+          </TrackedLink>
+          <TrackedLink href="/sekurita" targetName="nav_mobile_sekurita" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between text-cyan-400 py-2 border-b border-zinc-900">
+            <span>SeKurita</span>
+            <span className="text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 px-2 py-0.5 rounded">ISO 27001 SDK</span>
           </TrackedLink>
           <TrackedLink href="/services" targetName="nav_mobile_services" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-zinc-900 hover:text-orange-500">
             {t('Navigation.services')}

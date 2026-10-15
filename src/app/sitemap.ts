@@ -21,7 +21,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/es/business-center',
     '/en/business-center',
     '/es/logikafiskal',
-    '/en/logikafiskal'
+    '/en/logikafiskal',
+    '/es/sekurita',
+    '/en/sekurita'
   ];
 
   return paths.map((path) => ({

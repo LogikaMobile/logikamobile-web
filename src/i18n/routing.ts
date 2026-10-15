@@ -41,6 +41,10 @@ export const routing = defineRouting({
     '/logikafiskal': {
       en: '/logikafiskal',
       es: '/logikafiskal'
+    },
+    '/sekurita': {
+      en: '/sekurita',
+      es: '/sekurita'
     }
   }
 });

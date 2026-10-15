@@ -90,18 +90,24 @@ export default function LogikaFiskalSection() {
                   {t("layer1_tag")}
                 </span>
               </div>
-              <div className="w-16 h-16 mb-6 p-2 rounded-xl bg-black/60 border border-orange-500/20 flex items-center justify-center group-hover:border-orange-500/40 group-hover:scale-110 transition-all duration-300">
+              <TrackedLink href="/sekurita" targetName="home_layer1_sekurita_logo" className="block w-16 h-16 mb-6 p-2 rounded-xl bg-black/60 border border-orange-500/20 flex items-center justify-center group-hover:border-orange-500/40 group-hover:scale-110 transition-all duration-300">
                 <img src="/logos/sekurita_logo.svg" alt="SeKurita Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.3)]" />
-              </div>
+              </TrackedLink>
               <h3 className="text-2xl font-black text-white mb-4 group-hover:text-orange-400 transition-colors">
-                {t("layer1_title")}
+                <TrackedLink href="/sekurita" targetName="home_layer1_sekurita_title" className="hover:underline inline-flex items-center gap-2">
+                  <span>{t("layer1_title")}</span>
+                  <span className="text-sm font-mono text-orange-400">→</span>
+                </TrackedLink>
               </h3>
               <p className="text-zinc-400 text-sm md:text-base leading-relaxed text-justify font-light">
                 {t("layer1_desc")}
               </p>
             </div>
-            <div className="pt-6 mt-6 border-t border-zinc-900 flex items-center text-xs font-mono text-zinc-500">
-              <span>Google Cloud KMS · Tink 1.7 · Kotlin</span>
+            <div className="pt-6 mt-6 border-t border-zinc-900 flex items-center justify-between text-xs font-mono text-zinc-500">
+              <span>Google Cloud KMS · Tink 1.7</span>
+              <TrackedLink href="/sekurita" targetName="home_layer1_sekurita_link" className="text-orange-400 hover:text-orange-300 font-bold underline">
+                Ver SeKurita →
+              </TrackedLink>
             </div>
           </div>
 

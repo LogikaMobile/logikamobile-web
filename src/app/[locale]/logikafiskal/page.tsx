@@ -129,18 +129,24 @@ export default function LogikaFiskalPage() {
                 <span className="text-xs font-mono font-bold text-orange-400 uppercase tracking-widest block mb-4">
                   {t("layer1_level")}
                 </span>
-                <div className="w-16 h-16 mb-6 p-2 rounded-xl bg-black/60 border border-orange-500/20 flex items-center justify-center group-hover:border-orange-500/40 group-hover:scale-110 transition-all duration-300">
+                <TrackedLink href="/sekurita" targetName="fiskal_arch_sekurita_logo" className="block w-16 h-16 mb-6 p-2 rounded-xl bg-black/60 border border-orange-500/20 flex items-center justify-center group-hover:border-orange-500/40 group-hover:scale-110 transition-all duration-300">
                   <img src="/logos/sekurita_logo.svg" alt="SeKurita Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.3)]" />
-                </div>
+                </TrackedLink>
                 <h3 className="text-3xl font-black text-white mb-4 group-hover:text-orange-400 transition-colors">
-                  {t("layer1_title")}
+                  <TrackedLink href="/sekurita" targetName="fiskal_arch_sekurita_title" className="hover:underline inline-flex items-center gap-2">
+                    <span>{t("layer1_title")}</span>
+                    <span className="text-sm font-mono text-orange-400 font-normal">→</span>
+                  </TrackedLink>
                 </h3>
                 <p className="text-zinc-400 leading-relaxed font-light text-justify mb-6">
                   {t("layer1_desc")}
                 </p>
               </div>
-              <div className="pt-4 border-t border-zinc-900 text-xs font-mono text-orange-400/90 font-medium">
-                {t("layer1_role")}
+              <div className="pt-4 border-t border-zinc-900 flex items-center justify-between text-xs font-mono">
+                <span className="text-orange-400/90 font-medium">{t("layer1_role")}</span>
+                <TrackedLink href="/sekurita" targetName="fiskal_arch_sekurita_link" className="text-orange-400 hover:text-orange-300 font-bold underline">
+                  Ver Framework →
+                </TrackedLink>
               </div>
             </div>
 
@@ -218,7 +224,12 @@ export default function LogikaFiskalPage() {
               </thead>
               <tbody className="divide-y divide-zinc-900 text-zinc-300">
                 <tr className="hover:bg-zinc-900/40 transition-colors">
-                  <td className="py-6 px-6 font-black text-orange-400 text-lg">SeKurita</td>
+                  <td className="py-6 px-6 font-black text-orange-400 text-lg">
+                    <TrackedLink href="/sekurita" targetName="fiskal_tech_sekurita" className="hover:underline inline-flex items-center gap-1.5 group/link">
+                      <span>SeKurita</span>
+                      <span className="text-xs font-mono text-zinc-400 group-hover/link:text-orange-400 transition-colors">↗</span>
+                    </TrackedLink>
+                  </td>
                   <td className="py-6 px-6 font-mono text-xs md:text-sm">{t("sekurita_stack")}</td>
                   <td className="py-6 px-6 font-mono text-xs md:text-sm">{t("sekurita_persistence")}</td>
                   <td className="py-6 px-6 text-xs md:text-sm">{t("sekurita_security")}</td>
@@ -269,7 +280,12 @@ export default function LogikaFiskalPage() {
                 <tr className="hover:bg-zinc-900/40 transition-colors">
                   <td className="py-6 px-6 font-bold text-white">{t("comp_row1_vector")}</td>
                   <td className="py-6 px-6 text-zinc-400 font-light">{t("comp_row1_trad")}</td>
-                  <td className="py-6 px-6 text-emerald-300 font-medium bg-emerald-950/10">{t("comp_row1_lf")}</td>
+                  <td className="py-6 px-6 text-emerald-300 font-medium bg-emerald-950/10">
+                    <TrackedLink href="/sekurita" targetName="fiskal_comp_sekurita" className="text-orange-400 hover:text-orange-300 underline font-bold mr-1">
+                      SeKurita:
+                    </TrackedLink>
+                    <span>{t("comp_row1_lf").replace(/^SeKurita:\s*/, "")}</span>
+                  </td>
                 </tr>
                 <tr className="hover:bg-zinc-900/40 transition-colors">
                   <td className="py-6 px-6 font-bold text-white">{t("comp_row2_vector")}</td>
@@ -306,17 +322,29 @@ export default function LogikaFiskalPage() {
 
           {/* Module 1: SeKurita */}
           <div className="mb-20 bg-zinc-950/60 border border-zinc-800/80 rounded-3xl p-8 md:p-12 relative overflow-hidden">
-            <div className="flex items-center gap-5 mb-6">
-              <div className="w-16 h-16 md:w-20 md:h-20 p-2.5 rounded-2xl bg-black/80 border border-orange-500/30 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(249,115,22,0.2)]">
-                <img src="/logos/sekurita_logo.svg" alt="SeKurita Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.4)]" />
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
+              <div className="flex items-center gap-5">
+                <TrackedLink href="/sekurita" targetName="fiskal_detail_sekurita_logo" className="w-16 h-16 md:w-20 md:h-20 p-2.5 rounded-2xl bg-black/80 border border-orange-500/30 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(249,115,22,0.2)] hover:border-orange-500 transition-all hover:scale-105">
+                  <img src="/logos/sekurita_logo.svg" alt="SeKurita Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.4)]" />
+                </TrackedLink>
+                <div>
+                  <span className="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block mr-2"></span>
+                  <span className="text-xs font-mono font-bold text-orange-400 uppercase tracking-widest">MÓDULO DE SEGURIDAD CRIPTOGRÁFICA</span>
+                  <h3 className="text-3xl md:text-4xl font-extrabold text-white mt-1">
+                    <TrackedLink href="/sekurita" targetName="fiskal_detail_sekurita_title" className="hover:text-orange-400 transition-colors">
+                      SeKurita
+                    </TrackedLink>: <span className="text-orange-400 font-light">Cimientos de Grado Militar (ISO/IEC 27001:2022)</span>
+                  </h3>
+                </div>
               </div>
-              <div>
-                <span className="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block mr-2"></span>
-                <span className="text-xs font-mono font-bold text-orange-400 uppercase tracking-widest">MÓDULO DE SEGURIDAD CRIPTOGRÁFICA</span>
-                <h3 className="text-3xl md:text-4xl font-extrabold text-white mt-1">
-                  SeKurita: <span className="text-orange-400 font-light">Cimientos de Grado Militar (ISO/IEC 27001:2022)</span>
-                </h3>
-              </div>
+              <TrackedLink 
+                href="/sekurita" 
+                targetName="fiskal_detail_sekurita_btn"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 hover:bg-orange-500/20 text-xs font-mono tracking-wider transition-all self-start md:self-auto font-bold shrink-0"
+              >
+                <span>Dossier SeKurita</span>
+                <span>→</span>
+              </TrackedLink>
             </div>
             <p className="text-orange-400/90 italic font-mono text-sm md:text-base mb-10 pl-6 border-l-2 border-orange-500">
               {t("sekurita_quote")}
@@ -461,10 +489,17 @@ export default function LogikaFiskalPage() {
               <p className="text-zinc-400 text-sm leading-relaxed font-light">{t("flow_step5_desc")}</p>
             </div>
 
-            <div className="bg-black/50 border border-zinc-800/80 p-8 rounded-2xl relative overflow-hidden group hover:border-[#7B2CBF]/70 transition-colors">
-              <span className="text-3xl font-mono font-black text-[#7B2CBF]/50 block mb-4 group-hover:text-purple-400 transition-colors">06</span>
-              <h3 className="text-xl font-bold text-white mb-3">{t("flow_step6_title")}</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed font-light">{t("flow_step6_desc")}</p>
+            <div className="bg-black/50 border border-zinc-800/80 p-8 rounded-2xl relative overflow-hidden group hover:border-[#7B2CBF]/70 transition-colors flex flex-col justify-between">
+              <div>
+                <span className="text-3xl font-mono font-black text-[#7B2CBF]/50 block mb-4 group-hover:text-purple-400 transition-colors">06</span>
+                <h3 className="text-xl font-bold text-white mb-3">{t("flow_step6_title")}</h3>
+                <p className="text-zinc-400 text-sm leading-relaxed font-light">{t("flow_step6_desc")}</p>
+              </div>
+              <div className="pt-4 mt-4 border-t border-zinc-900">
+                <TrackedLink href="/sekurita" targetName="fiskal_flow_sekurita" className="text-xs font-mono text-orange-400 hover:text-orange-300 underline font-bold inline-flex items-center gap-1">
+                  <span>AuditLedgerEngine en SeKurita →</span>
+                </TrackedLink>
+              </div>
             </div>
           </div>
         </section>
@@ -495,6 +530,11 @@ export default function LogikaFiskalPage() {
                   {t("comm_row1_arg")}
                 </p>
               </div>
+              <div className="pt-6 mt-6 border-t border-zinc-900">
+                <TrackedLink href="/sekurita" targetName="fiskal_comm_sekurita_card1" className="text-xs font-mono text-orange-400 hover:text-orange-300 underline font-bold inline-flex items-center gap-1">
+                  <span>Capa Criptográfica SeKurita →</span>
+                </TrackedLink>
+              </div>
             </div>
 
             <div className="bg-zinc-950/80 border border-zinc-800 p-8 rounded-2xl flex flex-col justify-between hover:border-[#6CD3D3]/60 transition-colors">
@@ -522,6 +562,11 @@ export default function LogikaFiskalPage() {
                 <p className="text-zinc-400 text-sm leading-relaxed text-justify font-light">
                   {t("comm_row3_arg")}
                 </p>
+              </div>
+              <div className="pt-6 mt-6 border-t border-zinc-900">
+                <TrackedLink href="/sekurita" targetName="fiskal_comm_sekurita_card3" className="text-xs font-mono text-orange-400 hover:text-orange-300 underline font-bold inline-flex items-center gap-1">
+                  <span>Adquirir SeKurita SDK B2B →</span>
+                </TrackedLink>
               </div>
             </div>
           </div>
