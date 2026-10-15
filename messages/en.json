@@ -312,7 +312,7 @@
     "cta_contact": "Request Access"
   },
   "LogikaFiskalHome": {
-    "badge": "OFFICIAL SUITE V2.0 · ISO/IEC 27001:2022",
+    "badge": "OFFICIAL SUITE V1.0 · ISO/IEC 27001:2022",
     "title_prefix": "Logika",
     "title_highlight": "Fiskal",
     "title_dot": ".",
@@ -345,7 +345,7 @@
   "LogikaFiskal": {
     "metadata_title": "LogikaFiskal Suite | Three-Layer Fiscal Fortress & ISO 27001",
     "metadata_desc": "Unified Fiscal Accounting SaaS Suite, SAT Bulk Extraction and ISO/IEC 27001:2022 Cryptographic Vault. Modules: SeKurita, FisKalApi, and LogiKont.",
-    "header_version": "OFFICIAL VERSION 2.0 · OCTOBER 2026",
+    "header_version": "OFFICIAL VERSION 1.0 · OCTOBER 2026",
     "header_status": "STATUS: 100% IMPLEMENTED AND VERIFIED",
     "title_main": "Logika",
     "title_highlight": "Fiskal",

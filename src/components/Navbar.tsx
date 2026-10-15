@@ -37,7 +37,7 @@ export default function Navbar() {
           <TrackedLink href="/services" targetName="services" className="hover:text-orange-500 transition-colors duration-300">{t('Navigation.services')}</TrackedLink>
           <TrackedLink href="/logikafiskal" targetName="nav_logikafiskal" className="hover:text-orange-500 transition-colors duration-300 flex items-center gap-1.5 group">
             <span>Logika<span className="text-orange-500 group-hover:text-orange-400">Fiskal</span></span>
-            <span className="text-[10px] font-mono bg-orange-500/10 text-orange-400 border border-orange-500/30 px-1.5 py-0.5 rounded tracking-normal">v2.0</span>
+            <span className="text-[10px] font-mono bg-orange-500/10 text-orange-400 border border-orange-500/30 px-1.5 py-0.5 rounded tracking-normal">v1.0</span>
           </TrackedLink>
           <TrackedLink href="/business-center" targetName="portal" className="hover:text-orange-500 transition-colors duration-300">{t('Navigation.portal')}</TrackedLink>
           <TrackedLink href="/#contact" targetName="contact" className="hover:text-orange-500 transition-colors duration-300">{t('Navigation.contact')}</TrackedLink>
@@ -71,7 +71,7 @@ export default function Navbar() {
         <div className="lg:hidden border-t border-zinc-900 bg-black/95 backdrop-blur-xl px-6 py-8 flex flex-col gap-6 text-base font-bold uppercase tracking-widest text-zinc-300">
           <TrackedLink href="/logikafiskal" targetName="nav_mobile_logikafiskal" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between text-orange-400 py-2 border-b border-zinc-900">
             <span>LogikaFiskal</span>
-            <span className="text-[10px] font-mono bg-orange-500/20 text-orange-300 border border-orange-500/40 px-2 py-0.5 rounded">v2.0 OFICIAL</span>
+            <span className="text-[10px] font-mono bg-orange-500/20 text-orange-300 border border-orange-500/40 px-2 py-0.5 rounded">v1.0 OFICIAL</span>
           </TrackedLink>
           <TrackedLink href="/services" targetName="nav_mobile_services" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-zinc-900 hover:text-orange-500">
             {t('Navigation.services')}
