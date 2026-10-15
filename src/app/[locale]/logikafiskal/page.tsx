@@ -35,8 +35,9 @@ export default function LogikaFiskalPage() {
 
         {/* HERO HEADER */}
         <header className="text-center max-w-5xl mx-auto mb-28">
-          <div className="inline-flex flex-wrap items-center justify-center gap-3 px-4 py-2 rounded-full bg-zinc-900/80 border border-orange-500/30 text-orange-400 text-xs md:text-sm font-mono tracking-wider mb-8 shadow-[0_0_25px_rgba(249,115,22,0.15)]">
-            <span>{t("header_version")}</span>
+          <div className="inline-flex flex-wrap items-center justify-center gap-3 px-5 py-2 rounded-full bg-zinc-900/80 border border-orange-500/30 text-orange-400 text-xs md:text-sm font-mono tracking-wider mb-8 shadow-[0_0_25px_rgba(249,115,22,0.15)]">
+            <span className="px-2 py-0.5 rounded bg-orange-500/20 text-orange-300 font-bold uppercase">{t("badge_new")}</span>
+            <span className="text-zinc-200">{t("header_version")}</span>
             <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 hidden sm:inline-block"></span>
             <span className="text-emerald-400 font-bold flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>

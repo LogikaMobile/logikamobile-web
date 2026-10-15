@@ -13,7 +13,9 @@
     "identity": "Nuestra Identidad",
     "vision": "Nuestra Visión",
     "portal": "Business Center",
-    "logikafiskal": "LogikaFiskal"
+    "logikafiskal": "LogikaFiskal",
+    "badge_new": "Nuevo",
+    "badge_new_upper": "NUEVO"
   },
   "Hero": {
     "description": "Soluciones de software estratégico para impulsar tu negocio. Construimos plataformas móviles y web escalables, enfocadas en optimizar tus operaciones y acelerar tu crecimiento."
@@ -312,13 +314,13 @@
     "cta_contact": "Solicitar Acceso"
   },
   "LogikaFiskalHome": {
-    "badge": "SUITE OFICIAL V1.0 · ISO/IEC 27001:2022",
+    "badge": "NUEVO · DICIEMBRE 2026 · PREVENTA FUNDADORES",
     "title_prefix": "Logika",
     "title_highlight": "Fiskal",
     "title_dot": ".",
     "tagline": "Fortaleza Fiscal de Tres Capas",
     "desc": "La administración fiscal moderna en México unificada en una plataforma de grado bancario: extracción masiva SAT (CFDI 3.3 y 4.0), resguardo criptográfico bajo norma ISO 27001 con purga en RAM, y contabilización automatizada con Inteligencia Artificial generativa.",
-    "status_verified": "100% IMPLEMENTADO Y VERIFICADO",
+    "status_verified": "ESTATUS: PREVENTA FUNDADORES",
     "layer1_level": "NIVEL 1 · LOS CIMIENTOS",
     "layer1_title": "SeKurita (ISO 27001)",
     "layer1_desc": "Bóveda criptográfica y marco de ciberseguridad. Envelope Encryption (DEK/KEK) con Google Cloud KMS, cifrado Tink Streaming AEAD (1 MB), purga de RAM a ceros (0x00) con MemoryWiper y ledger CEF inmutable.",
@@ -345,8 +347,8 @@
   "LogikaFiskal": {
     "metadata_title": "LogikaFiskal Suite | Fortaleza Fiscal de Tres Capas e ISO 27001",
     "metadata_desc": "Suite Unificada de Contabilidad Fiscal SaaS, Extracción Masiva SAT y Bóveda Criptográfica ISO/IEC 27001:2022. Módulos: SeKurita, FisKalApi y LogiKont.",
-    "header_version": "VERSIÓN 1.0 OFICIAL · OCTUBRE 2026",
-    "header_status": "ESTATUS: 100% IMPLEMENTADO Y VERIFICADO",
+    "header_version": "Diciembre 2026",
+    "header_status": "Estatus: Preventa fundadores",
     "title_main": "Logika",
     "title_highlight": "Fiskal",
     "subtitle": "Fortaleza Fiscal de Tres Capas",
@@ -498,6 +500,7 @@
     "cta_banner_title": "¿Listo para blindar y automatizar tu operación fiscal?",
     "cta_banner_subtitle": "Agenda una demostración técnica con nuestros arquitectos y experimenta el poder de LogikaFiskal.",
     "btn_contact": "Contactar Especialista",
-    "btn_back_home": "Volver al Inicio"
+    "btn_back_home": "Volver al Inicio",
+    "badge_new": "Nuevo"
   }
 }
