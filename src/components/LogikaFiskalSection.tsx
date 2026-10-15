@@ -90,6 +90,9 @@ export default function LogikaFiskalSection() {
                   {t("layer1_tag")}
                 </span>
               </div>
+              <div className="w-16 h-16 mb-6 p-2 rounded-xl bg-black/60 border border-orange-500/20 flex items-center justify-center group-hover:border-orange-500/40 group-hover:scale-110 transition-all duration-300">
+                <img src="/logos/sekurita_logo.svg" alt="SeKurita Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.3)]" />
+              </div>
               <h3 className="text-2xl font-black text-white mb-4 group-hover:text-orange-400 transition-colors">
                 {t("layer1_title")}
               </h3>
@@ -114,6 +117,13 @@ export default function LogikaFiskalSection() {
                   {t("layer2_tag")}
                 </span>
               </div>
+              <div className="w-16 h-16 mb-6 p-2 rounded-xl bg-black/60 border border-[#6CD3D3]/20 flex items-center justify-center text-[#6CD3D3] group-hover:border-[#6CD3D3]/40 group-hover:scale-110 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_0_12px_rgba(108,211,211,0.4)]">
+                  <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+                  <path d="M12 12v9" />
+                  <path d="m8 17 4 4 4-4" />
+                </svg>
+              </div>
               <h3 className="text-2xl font-black text-white mb-4 group-hover:text-[#6CD3D3] transition-colors">
                 {t("layer2_title")}
               </h3>
@@ -137,6 +147,9 @@ export default function LogikaFiskalSection() {
                 <span className="text-[11px] font-mono px-2.5 py-1 rounded bg-[#7B2CBF]/10 text-[#7B2CBF] border border-[#7B2CBF]/30">
                   {t("layer3_tag")}
                 </span>
+              </div>
+              <div className="w-16 h-16 mb-6 p-2 rounded-xl bg-black/60 border border-[#7B2CBF]/30 flex items-center justify-center group-hover:border-[#7B2CBF]/60 group-hover:scale-110 transition-all duration-300">
+                <img src="/logos/logikont_logo.svg" alt="LogiKont Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(123,44,191,0.5)]" />
               </div>
               <h3 className="text-2xl font-black text-white mb-4 group-hover:text-purple-300 transition-colors">
                 {t("layer3_title")}

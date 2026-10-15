@@ -128,6 +128,9 @@ export default function LogikaFiskalPage() {
                 <span className="text-xs font-mono font-bold text-orange-400 uppercase tracking-widest block mb-4">
                   {t("layer1_level")}
                 </span>
+                <div className="w-16 h-16 mb-6 p-2 rounded-xl bg-black/60 border border-orange-500/20 flex items-center justify-center group-hover:border-orange-500/40 group-hover:scale-110 transition-all duration-300">
+                  <img src="/logos/sekurita_logo.svg" alt="SeKurita Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.3)]" />
+                </div>
                 <h3 className="text-3xl font-black text-white mb-4 group-hover:text-orange-400 transition-colors">
                   {t("layer1_title")}
                 </h3>
@@ -146,6 +149,13 @@ export default function LogikaFiskalPage() {
                 <span className="text-xs font-mono font-bold text-[#6CD3D3] uppercase tracking-widest block mb-4">
                   {t("layer2_level")}
                 </span>
+                <div className="w-16 h-16 mb-6 p-2 rounded-xl bg-black/60 border border-[#6CD3D3]/20 flex items-center justify-center text-[#6CD3D3] group-hover:border-[#6CD3D3]/40 group-hover:scale-110 transition-all duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_0_12px_rgba(108,211,211,0.4)]">
+                    <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+                    <path d="M12 12v9" />
+                    <path d="m8 17 4 4 4-4" />
+                  </svg>
+                </div>
                 <h3 className="text-3xl font-black text-white mb-4 group-hover:text-[#6CD3D3] transition-colors">
                   {t("layer2_title")}
                 </h3>
@@ -164,6 +174,9 @@ export default function LogikaFiskalPage() {
                 <span className="text-xs font-mono font-bold text-[#7B2CBF] uppercase tracking-widest block mb-4">
                   {t("layer3_level")}
                 </span>
+                <div className="w-16 h-16 mb-6 p-2 rounded-xl bg-black/60 border border-[#7B2CBF]/30 flex items-center justify-center group-hover:border-[#7B2CBF]/60 group-hover:scale-110 transition-all duration-300">
+                  <img src="/logos/logikont_logo.svg" alt="LogiKont Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(123,44,191,0.5)]" />
+                </div>
                 <h3 className="text-3xl font-black text-white mb-4 group-hover:text-purple-300 transition-colors">
                   {t("layer3_title")}
                 </h3>
@@ -292,11 +305,17 @@ export default function LogikaFiskalPage() {
 
           {/* Module 1: SeKurita */}
           <div className="mb-20 bg-zinc-950/60 border border-zinc-800/80 rounded-3xl p-8 md:p-12 relative overflow-hidden">
-            <div className="flex items-center gap-4 mb-4">
-              <span className="w-3 h-3 rounded-full bg-orange-500"></span>
-              <h3 className="text-3xl md:text-4xl font-extrabold text-white">
-                SeKurita: <span className="text-orange-400 font-light">Cimientos de Grado Militar (ISO/IEC 27001:2022)</span>
-              </h3>
+            <div className="flex items-center gap-5 mb-6">
+              <div className="w-16 h-16 md:w-20 md:h-20 p-2.5 rounded-2xl bg-black/80 border border-orange-500/30 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(249,115,22,0.2)]">
+                <img src="/logos/sekurita_logo.svg" alt="SeKurita Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.4)]" />
+              </div>
+              <div>
+                <span className="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block mr-2"></span>
+                <span className="text-xs font-mono font-bold text-orange-400 uppercase tracking-widest">MÓDULO DE SEGURIDAD CRIPTOGRÁFICA</span>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-white mt-1">
+                  SeKurita: <span className="text-orange-400 font-light">Cimientos de Grado Militar (ISO/IEC 27001:2022)</span>
+                </h3>
+              </div>
             </div>
             <p className="text-orange-400/90 italic font-mono text-sm md:text-base mb-10 pl-6 border-l-2 border-orange-500">
               {t("sekurita_quote")}
@@ -362,11 +381,17 @@ export default function LogikaFiskalPage() {
 
           {/* Module 3: LogiKont */}
           <div className="bg-zinc-950/60 border border-zinc-800/80 rounded-3xl p-8 md:p-12 relative overflow-hidden">
-            <div className="flex items-center gap-4 mb-4">
-              <span className="w-3 h-3 rounded-full bg-[#7B2CBF]"></span>
-              <h3 className="text-3xl md:text-4xl font-extrabold text-white">
-                LogiKont: <span className="text-purple-300 font-light">Acabados de Lujo, Multi-Tenant e Inteligencia Artificial</span>
-              </h3>
+            <div className="flex items-center gap-5 mb-6">
+              <div className="w-16 h-16 md:w-20 md:h-20 p-2.5 rounded-2xl bg-black/80 border border-[#7B2CBF]/40 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(123,44,191,0.3)]">
+                <img src="/logos/logikont_logo.svg" alt="LogiKont Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(123,44,191,0.5)]" />
+              </div>
+              <div>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#7B2CBF] inline-block mr-2"></span>
+                <span className="text-xs font-mono font-bold text-purple-400 uppercase tracking-widest">ERP MULTI-TENANT CON IA</span>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-white mt-1">
+                  LogiKont: <span className="text-purple-300 font-light">Acabados de Lujo, Multi-Tenant e Inteligencia Artificial</span>
+                </h3>
+              </div>
             </div>
             <p className="text-purple-300/90 italic font-mono text-sm md:text-base mb-10 pl-6 border-l-2 border-[#7B2CBF]">
               {t("logikont_quote")}
