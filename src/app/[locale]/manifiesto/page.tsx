@@ -68,6 +68,14 @@ export default function ManifiestoPage() {
           <p>{t('p_4_1')}</p>
         </section>
 
+        <section>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#7B2CBF] mb-4">
+            {t('h2_5')}
+          </h2>
+          <p className="mb-4">{t('p_5_1')}</p>
+          <p>{t('p_5_2')}</p>
+        </section>
+
         <div className="mt-16 pt-8 border-t border-zinc-800 bg-zinc-900/30 p-8 rounded-2xl">
           <p className="text-xl md:text-2xl text-white font-medium mb-6 text-center">
             {t('cta')}

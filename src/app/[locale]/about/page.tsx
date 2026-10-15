@@ -5,8 +5,8 @@ export async function generateMetadata({ params }: any) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Navigation' });
   return {
-    title: `LogikaMobile | ${t('about')}`,
-    description: "Conoce más sobre LogikaMobile, nuestra misión y cómo desarrollamos software a la medida con altos estándares de calidad.",
+    title: `LogikaMobile | ${t('vision')}`,
+    description: "Conoce más sobre LogikaMobile, nuestra visión de ingeniería y cómo desarrollamos software a la medida con altos estándares de calidad y resiliencia.",
     alternates: {
       canonical: locale === 'es' ? '/es/nosotros' : '/en/about',
       languages: {
@@ -23,7 +23,7 @@ export default function AboutPage() {
   return (
     <article className="min-h-screen pt-32 pb-20 px-6 max-w-7xl mx-auto selection:bg-orange-500/30 selection:text-orange-200">
       <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-[#7B2CBF] mb-16 text-center">
-        {t('Navigation.about')}
+        {t('Navigation.vision')}
       </h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">

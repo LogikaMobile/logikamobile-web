@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import TrackedLink from '@/components/TrackedLink';
+import BusinessCenterMockup from '@/components/BusinessCenterMockup';
 
 export async function generateMetadata({ params }: any) {
   const { locale } = await params;
@@ -25,7 +26,7 @@ export default function BusinessCenterPage() {
     <article className="min-h-screen pt-32 pb-48 px-6 max-w-7xl mx-auto selection:bg-orange-500/30 selection:text-orange-200">
       
       {/* Hero Section */}
-      <section className="text-center max-w-4xl mx-auto mb-24">
+      <section className="text-center max-w-4xl mx-auto mb-16">
         <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
           <span className="text-zinc-100">{t('title_main')}</span> <br/>
           <span className="text-[#7B2CBF]">{t('title_highlight')}</span>
@@ -49,6 +50,11 @@ export default function BusinessCenterPage() {
             {t('cta_contact')}
           </TrackedLink>
         </div>
+      </section>
+
+      {/* Interactive UI Mockup Showcase */}
+      <section className="mb-24">
+        <BusinessCenterMockup />
       </section>
 
       {/* Features Grid */}

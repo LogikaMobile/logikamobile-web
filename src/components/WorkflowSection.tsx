@@ -104,6 +104,48 @@ export default function WorkflowSection() {
               <p className="text-zinc-400 text-lg md:text-xl font-light leading-relaxed">
                 {step.desc}
               </p>
+
+              {/* Tangible Deliverables for Step 01 */}
+              {step.id === 1 && (
+                <div className="mt-6 pt-6 border-t border-zinc-800/80">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-orange-400 block mb-3">
+                    {t('step1_deliverables_label')}
+                  </span>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2 text-sm text-zinc-300 font-mono">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                      {t('step1_deliv_1')}
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-zinc-300 font-mono">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                      {t('step1_deliv_2')}
+                    </li>
+                  </ul>
+                </div>
+              )}
+
+              {/* Tangible Deliverables for Step 02 */}
+              {step.id === 2 && (
+                <div className="mt-6 pt-6 border-t border-zinc-800/80">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#6CD3D3] block mb-3">
+                    {t('step2_deliverables_label')}
+                  </span>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2 text-sm text-zinc-300 font-mono">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#6CD3D3]"></span>
+                      {t('step2_deliv_1')}
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-zinc-300 font-mono">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#6CD3D3]"></span>
+                      {t('step2_deliv_2')}
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-zinc-300 font-mono">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#6CD3D3]"></span>
+                      {t('step2_deliv_3')}
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         ))}

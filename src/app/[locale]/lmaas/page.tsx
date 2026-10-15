@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import LmaasQuoteModal from '@/components/LmaasQuoteModal';
@@ -34,18 +33,7 @@ export default function LMaasPage() {
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#3b1a00]/30 blur-[150px] rounded-full mix-blend-screen"></div>
       </div>
 
-      {/* Navbar Minimalista */}
-      <nav className="relative z-10 w-full p-6 flex justify-between items-center border-b border-zinc-900/50 bg-black/50 backdrop-blur-md">
-        <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#6CD3D3]">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-          <span className="font-mono text-sm text-zinc-400">{t('back')}</span>
-        </Link>
-      </nav>
-
-      <main className="relative z-10 max-w-5xl mx-auto px-6 py-20 md:py-32 flex flex-col items-center">
+      <main className="relative z-10 max-w-5xl mx-auto px-6 pt-32 pb-20 md:pb-32 flex flex-col items-center">
         
         {/* Header Section */}
         <div className="flex flex-col items-center text-center w-full mb-24">
@@ -226,6 +214,126 @@ export default function LMaasPage() {
           </div>
         </div>
         
+        {/* Matriz Comparativa de Planes */}
+        <section className="w-full mb-28">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 bg-[#7B2CBF]/10 border border-[#7B2CBF]/30 text-[#6CD3D3] font-mono text-xs rounded-full uppercase tracking-widest mb-4">
+              {t('matrix_col_feature')}
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-4">
+              {t('matrix_title')}
+            </h2>
+            <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+              {t('matrix_subtitle')}
+            </p>
+          </div>
+
+          <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-zinc-950/80 shadow-2xl backdrop-blur-sm">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="border-b border-zinc-800 bg-zinc-900/50">
+                  <th className="p-5 md:p-6 text-sm font-mono uppercase tracking-wider text-zinc-400 w-1/4">
+                    {t('matrix_col_feature')}
+                  </th>
+                  <th className="p-5 md:p-6 text-base font-bold text-zinc-200 w-1/4 border-l border-zinc-800/80">
+                    <span className="text-zinc-400 font-mono text-xs block mb-1 uppercase tracking-widest">{t('consult_plan')}</span>
+                    {t('matrix_col_consult')}
+                  </th>
+                  <th className="p-5 md:p-6 text-base font-bold text-white w-1/4 border-l border-zinc-800/80 bg-[#7B2CBF]/10 relative">
+                    <span className="text-[#6CD3D3] font-mono text-xs block mb-1 uppercase tracking-widest">{t('core_tag')}</span>
+                    {t('matrix_col_core')}
+                  </th>
+                  <th className="p-5 md:p-6 text-base font-bold text-zinc-200 w-1/4 border-l border-zinc-800/80">
+                    <span className="text-orange-400 font-mono text-xs block mb-1 uppercase tracking-widest">{t('infra_plan')}</span>
+                    {t('matrix_col_addon')}
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-zinc-800/60 text-sm md:text-base font-light">
+                {/* Row 1: Tickets */}
+                <tr className="hover:bg-zinc-900/40 transition-colors">
+                  <td className="p-5 md:p-6 font-medium text-white">
+                    {t('feature_tickets')}
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-400 border-l border-zinc-800/80">
+                    {t('feature_tickets_consult')}
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-200 font-medium border-l border-zinc-800/80 bg-[#7B2CBF]/5">
+                    {t('feature_tickets_core')}
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-400 border-l border-zinc-800/80">
+                    {t('feature_tickets_addon')}
+                  </td>
+                </tr>
+
+                {/* Row 2: SLA */}
+                <tr className="hover:bg-zinc-900/40 transition-colors">
+                  <td className="p-5 md:p-6 font-medium text-white">
+                    {t('feature_sla')}
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-400 border-l border-zinc-800/80">
+                    <span className="font-mono text-orange-400 font-semibold">{t('feature_sla_consult')}</span>
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-200 border-l border-zinc-800/80 bg-[#7B2CBF]/5">
+                    <span className="font-mono text-[#6CD3D3] font-bold">{t('feature_sla_core')}</span>
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-400 border-l border-zinc-800/80">
+                    <span className="font-mono text-green-400 font-bold">{t('feature_sla_addon')}</span>
+                  </td>
+                </tr>
+
+                {/* Row 3: Auditorías */}
+                <tr className="hover:bg-zinc-900/40 transition-colors">
+                  <td className="p-5 md:p-6 font-medium text-white">
+                    {t('feature_audit')}
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-400 border-l border-zinc-800/80">
+                    {t('feature_audit_consult')}
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-200 font-medium border-l border-zinc-800/80 bg-[#7B2CBF]/5">
+                    {t('feature_audit_core')}
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-400 border-l border-zinc-800/80">
+                    {t('feature_audit_addon')}
+                  </td>
+                </tr>
+
+                {/* Row 4: Cloud & Deploy */}
+                <tr className="hover:bg-zinc-900/40 transition-colors">
+                  <td className="p-5 md:p-6 font-medium text-white">
+                    {t('feature_infra')}
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-400 border-l border-zinc-800/80">
+                    {t('feature_infra_consult')}
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-200 font-medium border-l border-zinc-800/80 bg-[#7B2CBF]/5">
+                    {t('feature_infra_core')}
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-400 border-l border-zinc-800/80">
+                    {t('feature_infra_addon')}
+                  </td>
+                </tr>
+
+                {/* Row 5: Portal */}
+                <tr className="hover:bg-zinc-900/40 transition-colors">
+                  <td className="p-5 md:p-6 font-medium text-white">
+                    {t('feature_portal')}
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-400 border-l border-zinc-800/80">
+                    {t('feature_portal_consult')}
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-200 font-medium border-l border-zinc-800/80 bg-[#7B2CBF]/5">
+                    <span className="text-[#6CD3D3] font-semibold">{t('feature_portal_core')}</span>
+                  </td>
+                  <td className="p-5 md:p-6 text-zinc-400 border-l border-zinc-800/80">
+                    {t('feature_portal_addon')}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         {/* Call to action */}
         <div className="text-center">
           <LmaasQuoteModal trigger={

@@ -3,6 +3,9 @@ import AdminLogo from '@/components/AdminLogo';
 import { getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import HomeServicesSection from '@/components/HomeServicesSection';
+import HomeMethodologySection from '@/components/HomeMethodologySection';
+import HomeBusinessCenterSection from '@/components/HomeBusinessCenterSection';
 import LogikaFiskalSection from '@/components/LogikaFiskalSection';
 
 export async function generateMetadata({ params }: any) {
@@ -116,7 +119,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* LogikaFiskal Featured Section */}
+      {/* 02. Pilares de Servicio (4 Servicios + LMaaS) */}
+      <HomeServicesSection />
+
+      {/* 03. Método (Workflow teaser: 4 pasos + Built to Fail) */}
+      <HomeMethodologySection />
+
+      {/* 04. Portal B2B (Business Center Preview) */}
+      <HomeBusinessCenterSection />
+
+      {/* 05. Suite Fiscal (LogikaFiskal + SeKurita) */}
       <LogikaFiskalSection />
     </div>
   );
