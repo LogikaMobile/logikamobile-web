@@ -12,11 +12,15 @@
     "manifesto": "Nuestro Manifiesto",
     "identity": "Nuestra Identidad",
     "vision": "Nuestra Visión",
+    "products": "Productos",
     "portal": "Business Center",
+    "portal_desc": "Portal exclusivo para clientes",
     "logikafiskal": "LogikaFiskal",
+    "logikafiskal_desc": "Suite fiscal B2B SaaS con IA",
     "badge_new": "Nuevo",
     "badge_new_upper": "NUEVO",
-    "sekurita": "SeKurita"
+    "sekurita": "SeKurita",
+    "sekurita_desc": "Marco de ciberseguridad ISO 27001"
   },
   "Hero": {
     "description": "Soluciones de software estratégico para impulsar tu negocio. Construimos plataformas móviles y web escalables, enfocadas en optimizar tus operaciones y acelerar tu crecimiento."
