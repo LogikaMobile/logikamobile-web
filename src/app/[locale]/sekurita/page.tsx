@@ -115,7 +115,7 @@ export default function SeKuritaPage() {
           </div>
         </section>
 
-        {/* 02. ESTRUCTURA DEL MONOREPO Y DISTRIBUCIÓN DE MÓDULOS */}
+        {/* 02. DISTRIBUCIÓN MODULAR: CORE, BACKEND, SDK Y WEB */}
         <section className="mb-32">
           <div className="flex items-center gap-3 mb-6">
             <span className="text-xs md:text-sm font-mono font-bold text-orange-400 tracking-widest uppercase">
