@@ -110,25 +110,27 @@ export default function HomeServicesSection() {
             </p>
           </div>
           <div className="shrink-0">
-            <Link
+            <TrackedLink
               href="/lmaas"
+              targetName="home_services_lmaas_cta"
               className="inline-flex items-center gap-3 px-8 py-4 bg-[#7B2CBF] hover:bg-orange-500 text-white font-bold rounded-xl shadow-[0_0_20px_rgba(123,44,191,0.5)] hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all duration-300 hover:scale-105"
             >
               <span>{t('HomeSections.lmaas_card_cta')}</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </div>
 
       <div className="text-center">
-        <Link
+        <TrackedLink
           href="/services"
+          targetName="home_services_explore_all"
           className="inline-flex items-center gap-2 text-sm font-mono text-zinc-400 hover:text-orange-400 transition-colors uppercase tracking-widest"
         >
           <span>{t('HomeSections.explore_all_services')}</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </Link>
+        </TrackedLink>
       </div>
     </section>
   );

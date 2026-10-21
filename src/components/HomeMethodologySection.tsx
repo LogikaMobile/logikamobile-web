@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
+import TrackedLink from '@/components/TrackedLink';
 
 export default function HomeMethodologySection() {
   const t = useTranslations();
@@ -84,18 +84,20 @@ export default function HomeMethodologySection() {
 
       {/* CTAs to Methodology and Turing Manifesto */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-        <Link
+        <TrackedLink
           href="/methodology"
+          targetName="home_methodology_cta"
           className="w-full sm:w-auto px-8 py-4 bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm tracking-widest uppercase transition-colors duration-300 text-center"
         >
           {t('HomeSections.workflow_cta_method')}
-        </Link>
-        <Link
+        </TrackedLink>
+        <TrackedLink
           href="/manifiesto"
+          targetName="home_manifesto_cta"
           className="w-full sm:w-auto px-8 py-4 border border-[#7B2CBF] text-[#7B2CBF] hover:bg-[#7B2CBF]/10 font-bold text-sm tracking-widest uppercase transition-colors duration-300 text-center"
         >
           {t('HomeSections.workflow_cta_manifesto')}
-        </Link>
+        </TrackedLink>
       </div>
     </section>
   );

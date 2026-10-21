@@ -23,6 +23,7 @@ export default function Footer() {
           <QuoteModal trigger={
             <button 
               type="button"
+              id="footer_start_profiling_btn"
               className="group relative inline-flex flex-col items-center justify-center px-10 md:px-16 py-6 bg-gradient-to-r from-orange-600 to-[#7B2CBF] hover:from-orange-500 hover:to-[#9D4EDD] text-white font-extrabold text-xl md:text-2xl rounded-2xl shadow-[0_0_50px_rgba(249,115,22,0.4)] hover:shadow-[0_0_80px_rgba(123,44,191,0.6)] transition-all duration-300 hover:scale-105 cursor-pointer border border-white/20"
             >
               <span className="flex items-center gap-3">
@@ -45,6 +46,7 @@ export default function Footer() {
             {t('Contact.or_write_directly')}{' '}
             <a 
               href="mailto:contacto@logikamobile.com" 
+              id="footer_direct_email_link"
               className="text-orange-400 hover:text-orange-300 font-mono font-medium underline underline-offset-4 transition-colors"
             >
               contacto@logikamobile.com

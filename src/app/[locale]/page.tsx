@@ -45,18 +45,20 @@ export default function Home() {
         </p>
 
         <div className="flex flex-col md:flex-row gap-6 relative z-10 mt-8">
-          <Link 
+          <TrackedLink 
             href="/services" 
+            targetName="hero_services_btn"
             className="px-10 py-4 bg-orange-600 hover:bg-orange-500 text-white font-bold tracking-widest uppercase text-sm transition-colors duration-300 flex items-center justify-center gap-2"
           >
             {t('Navigation.services')}
-          </Link>
-          <Link 
+          </TrackedLink>
+          <TrackedLink 
             href="/methodology" 
+            targetName="hero_workflow_btn"
             className="px-10 py-4 border border-[#7B2CBF] text-[#7B2CBF] hover:bg-[#7B2CBF]/10 font-bold tracking-widest uppercase text-sm transition-colors duration-300 flex items-center justify-center gap-2"
           >
             {t('Navigation.workflow')}
-          </Link>
+          </TrackedLink>
         </div>
       </section>
 

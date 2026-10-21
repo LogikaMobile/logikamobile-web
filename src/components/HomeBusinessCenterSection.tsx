@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
 import TrackedLink from '@/components/TrackedLink';
 
 export default function HomeBusinessCenterSection() {
@@ -29,13 +28,14 @@ export default function HomeBusinessCenterSection() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <Link
+            <TrackedLink
               href="/business-center"
+              targetName="home_b2b_explore"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#7B2CBF] hover:bg-[#6824a3] text-white font-bold text-sm tracking-wider uppercase rounded-xl transition-colors shadow-[0_0_25px_rgba(123,44,191,0.4)]"
             >
               <span>{t('HomeSections.portal_cta_view')}</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </Link>
+            </TrackedLink>
 
             <TrackedLink
               href="https://portal.logikamobile.com.mx"
