@@ -61,11 +61,13 @@ export default function LogikaFiskalPage() {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <TrackedLink 
-              href="/#contact" 
-              targetName="fiskal_page_contact"
+              href="https://logikont.logikamobile.com.mx/registro" 
+              target="_blank"
+              rel="noopener noreferrer"
+              targetName="fiskal_page_register"
               className="px-10 py-4 bg-orange-600 hover:bg-orange-500 text-white font-bold tracking-widest uppercase text-sm transition-all duration-300 shadow-[0_0_30px_rgba(249,115,22,0.35)] hover:shadow-[0_0_40px_rgba(249,115,22,0.6)] flex items-center justify-center gap-2 w-full sm:w-auto"
             >
-              <span>{t("btn_contact")}</span>
+              <span>{t("btn_register")}</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </TrackedLink>
 
@@ -181,18 +183,42 @@ export default function LogikaFiskalPage() {
                 <span className="text-xs font-mono font-bold text-[#7B2CBF] uppercase tracking-widest block mb-4">
                   {t("layer3_level")}
                 </span>
-                <div className="w-24 h-24 md:w-28 md:h-28 mb-6 p-3 rounded-2xl bg-black/60 border border-[#7B2CBF]/30 flex items-center justify-center group-hover:border-[#7B2CBF]/60 group-hover:scale-110 transition-all duration-300 shadow-[0_0_25px_rgba(123,44,191,0.25)]">
+                <TrackedLink 
+                  href="https://logikont.logikamobile.com.mx/registro" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  targetName="fiskal_arch_logikont_logo" 
+                  className="block w-24 h-24 md:w-28 md:h-28 mb-6 p-3 rounded-2xl bg-black/60 border border-[#7B2CBF]/30 flex items-center justify-center group-hover:border-[#7B2CBF]/60 group-hover:scale-110 transition-all duration-300 shadow-[0_0_25px_rgba(123,44,191,0.25)]"
+                >
                   <img src="/logos/logikont_logo.svg" alt="LogiKont Logo" className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(123,44,191,0.6)]" />
-                </div>
+                </TrackedLink>
                 <h3 className="text-3xl font-black text-white mb-4 group-hover:text-purple-300 transition-colors">
-                  {t("layer3_title")}
+                  <TrackedLink 
+                    href="https://logikont.logikamobile.com.mx/registro" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    targetName="fiskal_arch_logikont_title" 
+                    className="hover:underline inline-flex items-center gap-2"
+                  >
+                    <span>{t("layer3_title")}</span>
+                    <span className="text-sm font-mono text-purple-400">→</span>
+                  </TrackedLink>
                 </h3>
                 <p className="text-zinc-400 leading-relaxed font-light text-justify mb-6">
                   {t("layer3_desc")}
                 </p>
               </div>
-              <div className="pt-4 border-t border-zinc-900 text-xs font-mono text-purple-400 font-medium">
-                {t("layer3_role")}
+              <div className="pt-4 border-t border-zinc-900 flex items-center justify-between text-xs font-mono">
+                <span className="text-purple-400 font-medium">{t("layer3_role")}</span>
+                <TrackedLink 
+                  href="https://logikont.logikamobile.com.mx/registro" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  targetName="fiskal_arch_logikont_link" 
+                  className="text-purple-400 hover:text-purple-300 font-bold underline"
+                >
+                  Registrarse →
+                </TrackedLink>
               </div>
             </div>
           </div>
@@ -410,17 +436,42 @@ export default function LogikaFiskalPage() {
 
           {/* Module 3: LogiKont */}
           <div className="bg-zinc-950/60 border border-zinc-800/80 rounded-3xl p-8 md:p-12 relative overflow-hidden">
-            <div className="flex items-center gap-5 mb-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 p-3 rounded-3xl bg-black/80 border border-[#7B2CBF]/40 flex items-center justify-center shrink-0 shadow-[0_0_25px_rgba(123,44,191,0.35)]">
-                <img src="/logos/logikont_logo.svg" alt="LogiKont Logo" className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(123,44,191,0.6)]" />
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 mb-6">
+              <div className="flex items-center gap-5">
+                <TrackedLink 
+                  href="https://logikont.logikamobile.com.mx/registro" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  targetName="fiskal_detail_logikont_logo" 
+                  className="w-24 h-24 md:w-32 md:h-32 p-3 rounded-3xl bg-black/80 border border-[#7B2CBF]/40 flex items-center justify-center shrink-0 shadow-[0_0_25px_rgba(123,44,191,0.35)] hover:border-[#7B2CBF] transition-all hover:scale-105"
+                >
+                  <img src="/logos/logikont_logo.svg" alt="LogiKont Logo" className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(123,44,191,0.6)]" />
+                </TrackedLink>
+                <div>
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#7B2CBF] inline-block mr-2"></span>
+                  <span className="text-xs font-mono font-bold text-purple-400 uppercase tracking-widest">ERP MULTI-TENANT CON IA</span>
+                  <h3 className="text-3xl md:text-4xl font-extrabold text-white mt-1">
+                    <TrackedLink 
+                      href="https://logikont.logikamobile.com.mx/registro" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      targetName="fiskal_detail_logikont_title" 
+                      className="hover:text-purple-300 transition-colors"
+                    >
+                      LogiKont: <span className="text-purple-300 font-light">Acabados de Lujo, Multi-Tenant e Inteligencia Artificial</span>
+                    </TrackedLink>
+                  </h3>
+                </div>
               </div>
-              <div>
-                <span className="w-2.5 h-2.5 rounded-full bg-[#7B2CBF] inline-block mr-2"></span>
-                <span className="text-xs font-mono font-bold text-purple-400 uppercase tracking-widest">ERP MULTI-TENANT CON IA</span>
-                <h3 className="text-3xl md:text-4xl font-extrabold text-white mt-1">
-                  LogiKont: <span className="text-purple-300 font-light">Acabados de Lujo, Multi-Tenant e Inteligencia Artificial</span>
-                </h3>
-              </div>
+              <TrackedLink 
+                href="https://logikont.logikamobile.com.mx/registro" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                targetName="fiskal_detail_logikont_btn" 
+                className="self-start md:self-center px-6 py-3 bg-[#7B2CBF]/20 hover:bg-[#7B2CBF] text-purple-200 hover:text-white border border-[#7B2CBF]/50 rounded-xl font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-[0_0_15px_rgba(123,44,191,0.2)] shrink-0"
+              >
+                Registrarse en LogiKont →
+              </TrackedLink>
             </div>
             <p className="text-purple-300/90 italic font-mono text-sm md:text-base mb-10 pl-6 border-l-2 border-[#7B2CBF]">
               {t("logikont_quote")}
@@ -530,7 +581,16 @@ export default function LogikaFiskalPage() {
                   {t("comm_row1_arg")}
                 </p>
               </div>
-              <div className="pt-6 mt-6 border-t border-zinc-900">
+              <div className="pt-6 mt-6 border-t border-zinc-900 flex flex-wrap gap-4 items-center justify-between">
+                <TrackedLink 
+                  href="https://logikont.logikamobile.com.mx/registro" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  targetName="fiskal_comm_logikont_register" 
+                  className="text-xs font-mono text-purple-400 hover:text-purple-300 underline font-bold inline-flex items-center gap-1"
+                >
+                  <span>Registrarse en LogiKont →</span>
+                </TrackedLink>
                 <TrackedLink href="/sekurita" targetName="fiskal_comm_sekurita_card1" className="text-xs font-mono text-orange-400 hover:text-orange-300 underline font-bold inline-flex items-center gap-1">
                   <span>Capa Criptográfica SeKurita →</span>
                 </TrackedLink>
@@ -653,11 +713,13 @@ export default function LogikaFiskalPage() {
               {t("cta_banner_subtitle")}
             </p>
             <TrackedLink 
-              href="/#contact" 
-              targetName="fiskal_bottom_contact"
+              href="https://logikont.logikamobile.com.mx/registro" 
+              target="_blank"
+              rel="noopener noreferrer"
+              targetName="fiskal_bottom_register"
               className="inline-flex items-center gap-3 px-12 py-5 bg-orange-600 hover:bg-orange-500 text-white font-bold tracking-widest uppercase text-base rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(249,115,22,0.4)] hover:shadow-[0_0_50px_rgba(249,115,22,0.7)] hover:scale-105"
             >
-              <span>{t("btn_contact")}</span>
+              <span>{t("btn_register")}</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </TrackedLink>
           </div>

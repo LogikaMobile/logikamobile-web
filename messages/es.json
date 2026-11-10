@@ -413,7 +413,8 @@
     "metric_4_val": "Gemini AI",
     "metric_4_label": "Conciliación Multimodal",
     "btn_explore": "Explorar Arquitectura y Ficha Técnica",
-    "btn_quote": "Solicitar Demostración"
+    "btn_quote": "Registrarse en LogiKont",
+    "btn_register": "Registrarse en LogiKont"
   },
   "LogikaFiskal": {
     "metadata_title": "LogikaFiskal Suite | Fortaleza Fiscal de Tres Capas e ISO 27001",
@@ -569,8 +570,9 @@
     "norm_row8_entity": "SAT (México)",
     "norm_row8_mech": "Generación y validación XSD de XMLs versión 1.3 de Catálogo de Cuentas, Balanza de Comprobación y Pólizas sellados con FIEL, más layout TXT oficial para DIOT.",
     "cta_banner_title": "¿Listo para blindar y automatizar tu operación fiscal?",
-    "cta_banner_subtitle": "Agenda una demostración técnica con nuestros arquitectos y experimenta el poder de LogikaFiskal.",
-    "btn_contact": "Contactar Especialista",
+    "cta_banner_subtitle": "Regístrate hoy en LogiKont y accede a la suite fiscal con inteligencia artificial y bóveda criptográfica ISO 27001.",
+    "btn_contact": "Registrarse en LogiKont",
+    "btn_register": "Registrarse en LogiKont",
     "btn_back_home": "Volver al Inicio",
     "badge_new": "Nuevo"
   },

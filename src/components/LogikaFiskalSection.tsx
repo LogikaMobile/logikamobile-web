@@ -154,18 +154,42 @@ export default function LogikaFiskalSection() {
                   {t("layer3_tag")}
                 </span>
               </div>
-              <div className="w-24 h-24 md:w-28 md:h-28 mb-6 p-3 rounded-2xl bg-black/60 border border-[#7B2CBF]/30 flex items-center justify-center group-hover:border-[#7B2CBF]/60 group-hover:scale-110 transition-all duration-300 shadow-[0_0_25px_rgba(123,44,191,0.25)]">
+              <TrackedLink 
+                href="https://logikont.logikamobile.com.mx/registro" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                targetName="home_layer3_logikont_logo"
+                className="block w-24 h-24 md:w-28 md:h-28 mb-6 p-3 rounded-2xl bg-black/60 border border-[#7B2CBF]/30 flex items-center justify-center group-hover:border-[#7B2CBF]/60 group-hover:scale-110 transition-all duration-300 shadow-[0_0_25px_rgba(123,44,191,0.25)]"
+              >
                 <img src="/logos/logikont_logo.svg" alt="LogiKont Logo" className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(123,44,191,0.6)]" />
-              </div>
+              </TrackedLink>
               <h3 className="text-2xl font-black text-white mb-4 group-hover:text-purple-300 transition-colors">
-                {t("layer3_title")}
+                <TrackedLink 
+                  href="https://logikont.logikamobile.com.mx/registro" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  targetName="home_layer3_logikont_title"
+                  className="hover:underline inline-flex items-center gap-2"
+                >
+                  <span>{t("layer3_title")}</span>
+                  <span className="text-sm font-mono text-purple-400">→</span>
+                </TrackedLink>
               </h3>
               <p className="text-zinc-400 text-sm md:text-base leading-relaxed text-justify font-light">
                 {t("layer3_desc")}
               </p>
             </div>
-            <div className="pt-6 mt-6 border-t border-zinc-900 flex items-center text-xs font-mono text-zinc-500">
-              <span>Schema-per-Tenant · Next.js 16 · Gemini AI</span>
+            <div className="pt-6 mt-6 border-t border-zinc-900 flex items-center justify-between text-xs font-mono text-zinc-500">
+              <span>Schema-per-Tenant · Gemini AI</span>
+              <TrackedLink 
+                href="https://logikont.logikamobile.com.mx/registro" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                targetName="home_layer3_logikont_link" 
+                className="text-purple-400 hover:text-purple-300 font-bold underline"
+              >
+                Registrarse →
+              </TrackedLink>
             </div>
           </div>
 
@@ -186,11 +210,13 @@ export default function LogikaFiskalSection() {
           </TrackedLink>
 
           <TrackedLink 
-            href="/#contact" 
-            targetName="home_fiskal_quote"
+            href="https://logikont.logikamobile.com.mx/registro" 
+            target="_blank"
+            rel="noopener noreferrer"
+            targetName="home_fiskal_register"
             className="px-10 py-4 border border-[#7B2CBF] text-[#7B2CBF] hover:bg-[#7B2CBF]/10 font-bold tracking-widest uppercase text-sm transition-colors duration-300 flex items-center justify-center gap-2 w-full sm:w-auto"
           >
-            {t("btn_quote")}
+            {t("btn_register")}
           </TrackedLink>
         </div>
 
