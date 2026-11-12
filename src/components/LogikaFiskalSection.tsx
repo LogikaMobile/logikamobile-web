@@ -104,7 +104,7 @@ export default function LogikaFiskalSection() {
               </p>
             </div>
             <div className="pt-6 mt-6 border-t border-zinc-900 flex items-center justify-between text-xs font-mono text-zinc-500">
-              <span>Google Cloud KMS · Tink 1.7</span>
+              <span>Google Cloud KMS · ISO 27001</span>
               <TrackedLink href="/sekurita" targetName="home_layer1_sekurita_link" className="text-orange-400 hover:text-orange-300 font-bold underline">
                 Ver SeKurita →
               </TrackedLink>
@@ -138,7 +138,7 @@ export default function LogikaFiskalSection() {
               </p>
             </div>
             <div className="pt-6 mt-6 border-t border-zinc-900 flex items-center text-xs font-mono text-zinc-500">
-              <span>FlowSAT SOAP · Playwright · FlowBD Proxy</span>
+              <span>Descarga Continua SAT · Escudo Anti-Bloqueos</span>
             </div>
           </div>
 
@@ -180,7 +180,7 @@ export default function LogikaFiskalSection() {
               </p>
             </div>
             <div className="pt-6 mt-6 border-t border-zinc-900 flex items-center justify-between text-xs font-mono text-zinc-500">
-              <span>Schema-per-Tenant · Gemini AI</span>
+              <span>Bases Privadas · Gemini AI</span>
               <TrackedLink 
                 href="https://logikont.logikamobile.com.mx/registro" 
                 target="_blank" 
