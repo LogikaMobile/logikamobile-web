@@ -78,9 +78,10 @@ export default function SeKuritaPage() {
             <TrackedLink 
               href="/logikafiskal" 
               targetName="sekurita_page_to_fiskal"
-              className="px-8 py-4 border border-[#7B2CBF] text-purple-300 hover:bg-[#7B2CBF]/10 font-bold tracking-widest uppercase text-sm transition-colors duration-300 w-full sm:w-auto text-center"
+              className="px-8 py-4 border border-[#7B2CBF] text-purple-300 hover:bg-[#7B2CBF]/10 font-bold tracking-widest uppercase text-sm transition-colors duration-300 w-full sm:w-auto text-center inline-flex items-center justify-center gap-2.5"
             >
-              {t("btn_fiskal")}
+              <img src="/logos/logikafiskal_icon.png" alt="LogikaFiskal" className="w-5 h-5 object-contain" />
+              <span>{t("btn_fiskal")}</span>
             </TrackedLink>
           </div>
         </header>
@@ -419,6 +420,7 @@ export default function SeKuritaPage() {
                 targetName="sekurita_bottom_to_fiskal"
                 className="inline-flex items-center gap-3 px-8 py-5 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-bold tracking-widest uppercase text-base rounded-full transition-all duration-300"
               >
+                <img src="/logos/logikafiskal_icon.png" alt="LogikaFiskal" className="w-6 h-6 object-contain" />
                 <span>{t("btn_fiskal")}</span>
               </TrackedLink>
             </div>

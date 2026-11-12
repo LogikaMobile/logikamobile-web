@@ -44,59 +44,74 @@ export default function Navbar() {
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </span>
-            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-80 bg-black/95 backdrop-blur-xl border border-zinc-800 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden flex flex-col z-50 divide-y divide-zinc-900">
+            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-92 bg-black/95 backdrop-blur-xl border border-zinc-800 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden flex flex-col z-50 divide-y divide-zinc-900">
               <TrackedLink 
                 href="/logikafiskal" 
                 targetName="nav_dropdown_logikafiskal" 
-                className="p-4 hover:bg-zinc-900/80 transition-colors flex flex-col group/item"
+                className="p-4 hover:bg-zinc-900/80 transition-colors flex items-start gap-3.5 group/item"
               >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-bold text-white group-hover/item:text-orange-400 transition-colors">
-                    Logika<span className="text-orange-500">Fiskal</span>
-                  </span>
-                  <span className="text-[10px] font-mono bg-orange-500/15 text-orange-400 border border-orange-500/30 px-1.5 py-0.5 rounded tracking-normal">
-                    {t('Navigation.badge_new')}
+                <div className="w-10 h-10 rounded-xl bg-black/70 border border-orange-500/30 p-1.5 flex items-center justify-center shrink-0 group-hover/item:border-orange-500/60 shadow-[0_0_15px_rgba(249,115,22,0.15)] transition-all">
+                  <img src="/logos/logikafiskal_icon.png" alt="LogikaFiskal" className="w-full h-full object-contain" />
+                </div>
+                <div className="flex flex-col flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-white group-hover/item:text-orange-400 transition-colors">
+                      Logika<span className="text-orange-500">Fiskal</span>
+                    </span>
+                    <span className="text-[10px] font-mono bg-orange-500/15 text-orange-400 border border-orange-500/30 px-1.5 py-0.5 rounded tracking-normal">
+                      {t('Navigation.badge_new')}
+                    </span>
+                  </div>
+                  <span className="text-xs text-zinc-400 font-normal normal-case leading-relaxed">
+                    {t('Navigation.logikafiskal_desc')}
                   </span>
                 </div>
-                <span className="text-xs text-zinc-400 font-normal normal-case leading-relaxed">
-                  {t('Navigation.logikafiskal_desc')}
-                </span>
               </TrackedLink>
 
               <TrackedLink 
                 href="/sekurita" 
                 targetName="nav_dropdown_sekurita" 
-                className="p-4 hover:bg-zinc-900/80 transition-colors flex flex-col group/item"
+                className="p-4 hover:bg-zinc-900/80 transition-colors flex items-start gap-3.5 group/item"
               >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-bold text-white group-hover/item:text-cyan-400 transition-colors">
-                    SeKurita
-                  </span>
-                  <span className="text-[10px] font-mono bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 px-1.5 py-0.5 rounded tracking-normal">
-                    ISO 27001
+                <div className="w-10 h-10 rounded-xl bg-black/70 border border-cyan-500/30 p-1.5 flex items-center justify-center shrink-0 group-hover/item:border-cyan-500/60 shadow-[0_0_15px_rgba(66,200,198,0.15)] transition-all">
+                  <img src="/logos/sekurita_logo.svg" alt="SeKurita" className="w-full h-full object-contain" />
+                </div>
+                <div className="flex flex-col flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-white group-hover/item:text-cyan-400 transition-colors">
+                      SeKurita
+                    </span>
+                    <span className="text-[10px] font-mono bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 px-1.5 py-0.5 rounded tracking-normal">
+                      ISO 27001
+                    </span>
+                  </div>
+                  <span className="text-xs text-zinc-400 font-normal normal-case leading-relaxed">
+                    {t('Navigation.sekurita_desc')}
                   </span>
                 </div>
-                <span className="text-xs text-zinc-400 font-normal normal-case leading-relaxed">
-                  {t('Navigation.sekurita_desc')}
-                </span>
               </TrackedLink>
 
               <TrackedLink 
                 href="/business-center" 
                 targetName="nav_dropdown_portal" 
-                className="p-4 hover:bg-zinc-900/80 transition-colors flex flex-col group/item"
+                className="p-4 hover:bg-zinc-900/80 transition-colors flex items-start gap-3.5 group/item"
               >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-bold text-white group-hover/item:text-purple-400 transition-colors">
-                    Business Center
-                  </span>
-                  <span className="text-[10px] font-mono bg-purple-500/15 text-purple-400 border border-purple-500/30 px-1.5 py-0.5 rounded tracking-normal">
-                    B2B
+                <div className="w-10 h-10 rounded-xl bg-black/70 border border-purple-500/30 p-2 flex items-center justify-center shrink-0 group-hover/item:border-purple-500/60 shadow-[0_0_15px_rgba(123,44,191,0.2)] transition-all text-[#7B2CBF]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                </div>
+                <div className="flex flex-col flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-white group-hover/item:text-purple-400 transition-colors">
+                      Business Center
+                    </span>
+                    <span className="text-[10px] font-mono bg-purple-500/15 text-purple-400 border border-purple-500/30 px-1.5 py-0.5 rounded tracking-normal">
+                      B2B
+                    </span>
+                  </div>
+                  <span className="text-xs text-zinc-400 font-normal normal-case leading-relaxed">
+                    {t('Navigation.portal_desc')}
                   </span>
                 </div>
-                <span className="text-xs text-zinc-400 font-normal normal-case leading-relaxed">
-                  {t('Navigation.portal_desc')}
-                </span>
               </TrackedLink>
             </div>
           </div>
@@ -135,17 +150,32 @@ export default function Navbar() {
             <span className="text-xs font-mono font-bold text-zinc-500 tracking-widest uppercase block mb-3">
               {t('Navigation.products')}
             </span>
-            <div className="flex flex-col gap-3 pl-2">
-              <TrackedLink href="/logikafiskal" targetName="nav_mobile_logikafiskal" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between text-orange-400 hover:text-orange-300 py-1">
-                <span>LogikaFiskal</span>
+            <div className="flex flex-col gap-3 pl-1">
+              <TrackedLink href="/logikafiskal" targetName="nav_mobile_logikafiskal" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between text-orange-400 hover:text-orange-300 py-1.5">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-6 h-6 rounded bg-black/60 border border-orange-500/30 p-0.5 flex items-center justify-center shrink-0">
+                    <img src="/logos/logikafiskal_icon.png" alt="LogikaFiskal" className="w-full h-full object-contain" />
+                  </div>
+                  <span>LogikaFiskal</span>
+                </div>
                 <span className="text-[10px] font-mono bg-orange-500/20 text-orange-300 border border-orange-500/40 px-2 py-0.5 rounded">{t('Navigation.badge_new_upper')}</span>
               </TrackedLink>
-              <TrackedLink href="/sekurita" targetName="nav_mobile_sekurita" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between text-cyan-400 hover:text-cyan-300 py-1">
-                <span>SeKurita</span>
+              <TrackedLink href="/sekurita" targetName="nav_mobile_sekurita" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between text-cyan-400 hover:text-cyan-300 py-1.5">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-6 h-6 rounded bg-black/60 border border-cyan-500/30 p-0.5 flex items-center justify-center shrink-0">
+                    <img src="/logos/sekurita_logo.svg" alt="SeKurita" className="w-full h-full object-contain" />
+                  </div>
+                  <span>SeKurita</span>
+                </div>
                 <span className="text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 px-2 py-0.5 rounded">ISO 27001</span>
               </TrackedLink>
-              <TrackedLink href="/business-center" targetName="nav_mobile_portal" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between text-purple-400 hover:text-purple-300 py-1">
-                <span>Business Center</span>
+              <TrackedLink href="/business-center" targetName="nav_mobile_portal" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between text-purple-400 hover:text-purple-300 py-1.5">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-6 h-6 rounded bg-black/60 border border-purple-500/30 p-1 flex items-center justify-center shrink-0 text-[#7B2CBF]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/></svg>
+                  </div>
+                  <span>Business Center</span>
+                </div>
                 <span className="text-[10px] font-mono bg-purple-500/20 text-purple-300 border border-purple-500/40 px-2 py-0.5 rounded">B2B</span>
               </TrackedLink>
             </div>

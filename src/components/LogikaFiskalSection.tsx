@@ -21,6 +21,19 @@ export default function LogikaFiskalSection() {
             {t("badge")}
           </div>
 
+          {/* LogikaFiskal Emblem Showcase */}
+          <TrackedLink 
+            href="/logikafiskal" 
+            targetName="home_fiskal_hero_logo"
+            className="w-28 h-28 md:w-36 md:h-36 mb-8 p-4 rounded-3xl bg-black/70 border border-orange-500/25 flex items-center justify-center shadow-[0_0_40px_rgba(249,115,22,0.2)] hover:border-orange-500/50 hover:scale-105 transition-all duration-300 group cursor-pointer"
+          >
+            <img 
+              src="/logos/logikafiskal_icon.png" 
+              alt="LogikaFiskal Logo" 
+              className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(249,115,22,0.4)] group-hover:drop-shadow-[0_0_30px_rgba(30,169,176,0.5)] transition-all duration-300" 
+            />
+          </TrackedLink>
+
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6">
             <span className="text-[#7B2CBF]">{t("title_prefix")}</span>
             <span className="text-orange-500">{t("title_highlight")}</span>

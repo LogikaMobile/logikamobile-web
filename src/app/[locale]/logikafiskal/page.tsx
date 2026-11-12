@@ -16,6 +16,16 @@ export async function generateMetadata({ params }: any) {
         en: "/en/logikafiskal",
       },
     },
+    openGraph: {
+      images: [
+        {
+          url: "/logos/logikafiskal_logo.png",
+          width: 1024,
+          height: 815,
+          alt: "LogikaFiskal Logo",
+        },
+      ],
+    },
   };
 }
 
@@ -35,6 +45,16 @@ export default function LogikaFiskalPage() {
 
         {/* HERO HEADER */}
         <header className="text-center max-w-5xl mx-auto mb-28">
+          
+          {/* LogikaFiskal 3D Arrow Emblem */}
+          <div className="w-40 h-40 md:w-56 md:h-56 mx-auto mb-10 p-5 rounded-3xl bg-black/80 border border-orange-500/30 flex items-center justify-center shadow-[0_0_60px_rgba(249,115,22,0.3)] hover:scale-105 transition-transform duration-300 group">
+            <img 
+              src="/logos/logikafiskal_icon.png" 
+              alt="LogikaFiskal Logo" 
+              className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(249,115,22,0.5)] group-hover:drop-shadow-[0_0_35px_rgba(30,169,176,0.6)] transition-all duration-300" 
+            />
+          </div>
+
           <div className="inline-flex flex-wrap items-center justify-center gap-3 px-5 py-2 rounded-full bg-zinc-900/80 border border-orange-500/30 text-orange-400 text-xs md:text-sm font-mono tracking-wider mb-8 shadow-[0_0_25px_rgba(249,115,22,0.15)]">
             <span className="px-2 py-0.5 rounded bg-orange-500/20 text-orange-300 font-bold uppercase">{t("badge_new")}</span>
             <span className="text-zinc-200">{t("header_version")}</span>
@@ -706,6 +726,9 @@ export default function LogikaFiskalPage() {
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-orange-600/20 rounded-full blur-[120px] pointer-events-none"></div>
 
           <div className="relative z-10 max-w-3xl mx-auto">
+            <div className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-6 p-3 rounded-2xl bg-black/70 border border-orange-500/30 flex items-center justify-center shadow-[0_0_30px_rgba(249,115,22,0.25)]">
+              <img src="/logos/logikafiskal_icon.png" alt="LogikaFiskal" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.4)]" />
+            </div>
             <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
               {t("cta_banner_title")}
             </h2>
