@@ -178,12 +178,8 @@ export default function LogikaFiskalPage() {
                 <span className="text-xs font-mono font-bold text-[#6CD3D3] uppercase tracking-widest block mb-4">
                   {t("layer2_level")}
                 </span>
-                <div className="w-24 h-24 md:w-28 md:h-28 mb-6 p-3 rounded-2xl bg-black/60 border border-[#6CD3D3]/20 flex items-center justify-center text-[#6CD3D3] group-hover:border-[#6CD3D3]/40 group-hover:scale-110 transition-all duration-300 shadow-[0_0_25px_rgba(108,211,211,0.15)]">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_0_15px_rgba(108,211,211,0.5)]">
-                    <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
-                    <path d="M12 12v9" />
-                    <path d="m8 17 4 4 4-4" />
-                  </svg>
+                <div className="w-24 h-24 md:w-28 md:h-28 mb-6 p-3 rounded-2xl bg-black/60 border border-[#6CD3D3]/20 flex items-center justify-center group-hover:border-[#6CD3D3]/40 group-hover:scale-110 transition-all duration-300 shadow-[0_0_25px_rgba(108,211,211,0.15)]">
+                  <img src="/logos/fiskalapi_logo.svg" alt="FisKalApi Logo" className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(108,211,211,0.5)]" />
                 </div>
                 <h3 className="text-3xl font-black text-white mb-4 group-hover:text-[#6CD3D3] transition-colors">
                   {t("layer2_title")}
@@ -271,7 +267,8 @@ export default function LogikaFiskalPage() {
               <tbody className="divide-y divide-zinc-900 text-zinc-300">
                 <tr className="hover:bg-zinc-900/40 transition-colors">
                   <td className="py-6 px-6 font-black text-orange-400 text-lg">
-                    <TrackedLink href="/sekurita" targetName="fiskal_tech_sekurita" className="hover:underline inline-flex items-center gap-1.5 group/link">
+                    <TrackedLink href="/sekurita" targetName="fiskal_tech_sekurita" className="hover:underline inline-flex items-center gap-2 group/link">
+                      <img src="/logos/sekurita_logo.svg" alt="SeKurita" className="w-6 h-6 object-contain shrink-0" />
                       <span>SeKurita</span>
                       <span className="text-xs font-mono text-zinc-400 group-hover/link:text-orange-400 transition-colors">↗</span>
                     </TrackedLink>
@@ -282,14 +279,31 @@ export default function LogikaFiskalPage() {
                   <td className="py-6 px-6 text-xs md:text-sm text-zinc-400 font-medium">{t("sekurita_role")}</td>
                 </tr>
                 <tr className="hover:bg-zinc-900/40 transition-colors">
-                  <td className="py-6 px-6 font-black text-[#6CD3D3] text-lg">FisKalApi</td>
+                  <td className="py-6 px-6 font-black text-[#6CD3D3] text-lg">
+                    <div className="inline-flex items-center gap-2">
+                      <img src="/logos/fiskalapi_logo.svg" alt="FisKalApi" className="w-6 h-6 object-contain shrink-0" />
+                      <span>FisKalApi</span>
+                    </div>
+                  </td>
                   <td className="py-6 px-6 font-mono text-xs md:text-sm">{t("fiskalapi_stack")}</td>
                   <td className="py-6 px-6 font-mono text-xs md:text-sm">{t("fiskalapi_persistence")}</td>
                   <td className="py-6 px-6 text-xs md:text-sm">{t("fiskalapi_security")}</td>
                   <td className="py-6 px-6 text-xs md:text-sm text-zinc-400 font-medium">{t("fiskalapi_role")}</td>
                 </tr>
                 <tr className="hover:bg-zinc-900/40 transition-colors">
-                  <td className="py-6 px-6 font-black text-[#7B2CBF] text-lg">LogiKont</td>
+                  <td className="py-6 px-6 font-black text-[#7B2CBF] text-lg">
+                    <TrackedLink 
+                      href="https://logikont.logikamobile.com.mx/registro" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      targetName="fiskal_tech_logikont" 
+                      className="hover:underline inline-flex items-center gap-2 group/link"
+                    >
+                      <img src="/logos/logikont_logo.svg" alt="LogiKont" className="w-6 h-6 object-contain shrink-0" />
+                      <span>LogiKont</span>
+                      <span className="text-xs font-mono text-zinc-400 group-hover/link:text-purple-400 transition-colors">↗</span>
+                    </TrackedLink>
+                  </td>
                   <td className="py-6 px-6 font-mono text-xs md:text-sm">{t("logikont_stack")}</td>
                   <td className="py-6 px-6 font-mono text-xs md:text-sm">{t("logikont_persistence")}</td>
                   <td className="py-6 px-6 text-xs md:text-sm">{t("logikont_security")}</td>
@@ -421,11 +435,19 @@ export default function LogikaFiskalPage() {
 
           {/* Module 2: FisKalApi */}
           <div className="mb-20 bg-zinc-950/60 border border-zinc-800/80 rounded-3xl p-8 md:p-12 relative overflow-hidden">
-            <div className="flex items-center gap-4 mb-4">
-              <span className="w-3 h-3 rounded-full bg-[#6CD3D3]"></span>
-              <h3 className="text-3xl md:text-4xl font-extrabold text-white">
-                FisKalApi: <span className="text-[#6CD3D3] font-light">Ingeniería de Alta Velocidad y Extracción SAT</span>
-              </h3>
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
+              <div className="flex items-center gap-5">
+                <div className="w-24 h-24 md:w-32 md:h-32 p-3 rounded-3xl bg-black/80 border border-[#6CD3D3]/30 flex items-center justify-center shrink-0 shadow-[0_0_25px_rgba(108,211,211,0.25)] hover:border-[#6CD3D3] transition-all hover:scale-105">
+                  <img src="/logos/fiskalapi_logo.svg" alt="FisKalApi Logo" className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(108,211,211,0.5)]" />
+                </div>
+                <div>
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#6CD3D3] inline-block mr-2"></span>
+                  <span className="text-xs font-mono font-bold text-[#6CD3D3] uppercase tracking-widest">MOTOR DE EXTRACCIÓN Y API PAAS</span>
+                  <h3 className="text-3xl md:text-4xl font-extrabold text-white mt-1">
+                    FisKalApi: <span className="text-[#6CD3D3] font-light">Ingeniería de Alta Velocidad y Extracción SAT</span>
+                  </h3>
+                </div>
+              </div>
             </div>
             <p className="text-[#6CD3D3]/90 italic font-mono text-sm md:text-base mb-10 pl-6 border-l-2 border-[#6CD3D3]">
               {t("fiskalapi_quote")}

@@ -136,12 +136,8 @@ export default function LogikaFiskalSection() {
                   {t("layer2_tag")}
                 </span>
               </div>
-              <div className="w-24 h-24 md:w-28 md:h-28 mb-6 p-3 rounded-2xl bg-black/60 border border-[#6CD3D3]/20 flex items-center justify-center text-[#6CD3D3] group-hover:border-[#6CD3D3]/40 group-hover:scale-110 transition-all duration-300 shadow-[0_0_25px_rgba(108,211,211,0.15)]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_0_15px_rgba(108,211,211,0.5)]">
-                  <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
-                  <path d="M12 12v9" />
-                  <path d="m8 17 4 4 4-4" />
-                </svg>
+              <div className="w-24 h-24 md:w-28 md:h-28 mb-6 p-3 rounded-2xl bg-black/60 border border-[#6CD3D3]/20 flex items-center justify-center group-hover:border-[#6CD3D3]/40 group-hover:scale-110 transition-all duration-300 shadow-[0_0_25px_rgba(108,211,211,0.15)]">
+                <img src="/logos/fiskalapi_logo.svg" alt="FisKalApi Logo" className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(108,211,211,0.5)]" />
               </div>
               <h3 className="text-2xl font-black text-white mb-4 group-hover:text-[#6CD3D3] transition-colors">
                 {t("layer2_title")}
