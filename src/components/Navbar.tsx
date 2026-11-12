@@ -27,10 +27,21 @@ export default function Navbar() {
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </span>
-            <div className="absolute top-full left-0 mt-0 w-56 bg-black/95 backdrop-blur-md border border-zinc-800 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden flex flex-col z-50">
-              <TrackedLink href="/manifiesto" targetName="nav_manifiesto" className="px-5 py-3 hover:bg-zinc-900 hover:text-orange-500 transition-colors duration-200">{t('Navigation.manifesto')}</TrackedLink>
-              <TrackedLink href="/identidad" targetName="nav_identidad" className="px-5 py-3 hover:bg-zinc-900 hover:text-orange-500 transition-colors duration-200 border-t border-zinc-800/50">{t('Navigation.identity')}</TrackedLink>
-              <TrackedLink href="/about" targetName="nav_vision" className="px-5 py-3 hover:bg-zinc-900 hover:text-orange-500 transition-colors duration-200 border-t border-zinc-800/50">{t('Navigation.vision')}</TrackedLink>
+            <div className="absolute top-full left-0 pt-2 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="bg-zinc-950/95 backdrop-blur-2xl border border-zinc-800/90 rounded-2xl p-2 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.06)] flex flex-col gap-1 text-sm font-sans normal-case tracking-normal">
+                <TrackedLink href="/manifiesto" targetName="nav_manifiesto" className="px-4 py-2.5 rounded-xl hover:bg-white/[0.05] hover:text-orange-400 text-zinc-300 font-medium transition-colors duration-200 flex items-center justify-between group/link">
+                  <span>{t('Navigation.manifesto')}</span>
+                  <svg className="w-3.5 h-3.5 text-zinc-600 group-hover/link:text-orange-400 group-hover/link:translate-x-0.5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </TrackedLink>
+                <TrackedLink href="/identidad" targetName="nav_identidad" className="px-4 py-2.5 rounded-xl hover:bg-white/[0.05] hover:text-orange-400 text-zinc-300 font-medium transition-colors duration-200 flex items-center justify-between group/link">
+                  <span>{t('Navigation.identity')}</span>
+                  <svg className="w-3.5 h-3.5 text-zinc-600 group-hover/link:text-orange-400 group-hover/link:translate-x-0.5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </TrackedLink>
+                <TrackedLink href="/about" targetName="nav_vision" className="px-4 py-2.5 rounded-xl hover:bg-white/[0.05] hover:text-orange-400 text-zinc-300 font-medium transition-colors duration-200 flex items-center justify-between group/link">
+                  <span>{t('Navigation.vision')}</span>
+                  <svg className="w-3.5 h-3.5 text-zinc-600 group-hover/link:text-orange-400 group-hover/link:translate-x-0.5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </TrackedLink>
+              </div>
             </div>
           </div>
           <TrackedLink href="/methodology" targetName="workflow" className="hover:text-orange-500 transition-colors duration-300 whitespace-nowrap">{t('Navigation.workflow')}</TrackedLink>
@@ -44,75 +55,110 @@ export default function Navbar() {
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </span>
-            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-92 bg-black/95 backdrop-blur-xl border border-zinc-800 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden flex flex-col z-50 divide-y divide-zinc-900">
-              <TrackedLink 
-                href="/logikafiskal" 
-                targetName="nav_dropdown_logikafiskal" 
-                className="p-4 hover:bg-zinc-900/80 transition-colors flex items-start gap-3.5 group/item"
-              >
-                <div className="w-10 h-10 rounded-xl bg-black/70 border border-orange-500/30 p-1.5 flex items-center justify-center shrink-0 group-hover/item:border-orange-500/60 shadow-[0_0_15px_rgba(249,115,22,0.15)] transition-all">
-                  <img src="/logos/logikafiskal_icon.png" alt="LogikaFiskal" className="w-full h-full object-contain" />
-                </div>
-                <div className="flex flex-col flex-1">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="font-bold text-white group-hover/item:text-orange-400 transition-colors">
-                      Logika<span className="text-orange-500">Fiskal</span>
-                    </span>
-                    <span className="text-[10px] font-mono bg-orange-500/15 text-orange-400 border border-orange-500/30 px-1.5 py-0.5 rounded tracking-normal">
-                      {t('Navigation.badge_new')}
-                    </span>
+            
+            {/* Dropdown panel with invisible hover bridge */}
+            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[460px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="bg-zinc-950/95 backdrop-blur-2xl border border-zinc-800/90 rounded-2xl p-2.5 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.06)] flex flex-col gap-1.5 normal-case font-sans tracking-normal">
+                {/* LogikaFiskal */}
+                <TrackedLink 
+                  href="/logikafiskal" 
+                  targetName="nav_dropdown_logikafiskal" 
+                  className="group/item flex items-start gap-3.5 p-3 rounded-xl hover:bg-white/[0.05] border border-transparent hover:border-orange-500/20 transition-all duration-200"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-orange-500/10 border border-orange-500/25 p-2 flex items-center justify-center shrink-0 group-hover/item:border-orange-500/60 group-hover/item:bg-orange-500/15 group-hover/item:shadow-[0_0_20px_rgba(249,115,22,0.25)] transition-all">
+                    <img src="/logos/logikafiskal_icon.png" alt="LogikaFiskal" className="w-full h-full object-contain" />
                   </div>
-                  <span className="text-xs text-zinc-400 font-normal normal-case leading-relaxed">
-                    {t('Navigation.logikafiskal_desc')}
-                  </span>
-                </div>
-              </TrackedLink>
+                  <div className="flex flex-col flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-2 mb-0.5">
+                      <span className="text-sm font-bold text-white group-hover/item:text-orange-400 transition-colors tracking-tight flex items-center gap-1">
+                        Logika<span className="text-orange-500">Fiskal</span>
+                      </span>
+                      <span className="text-[10px] font-mono font-semibold uppercase px-2 py-0.5 rounded-full bg-orange-500/15 text-orange-400 border border-orange-500/30 shrink-0">
+                        {t('Navigation.badge_new')}
+                      </span>
+                    </div>
+                    <p className="text-xs text-zinc-400 font-normal leading-relaxed whitespace-normal group-hover/item:text-zinc-300 transition-colors">
+                      {t('Navigation.logikafiskal_desc')}
+                    </p>
+                  </div>
+                  <svg className="w-4 h-4 text-zinc-600 group-hover/item:text-orange-400 group-hover/item:translate-x-0.5 transition-all shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </TrackedLink>
 
-              <TrackedLink 
-                href="/sekurita" 
-                targetName="nav_dropdown_sekurita" 
-                className="p-4 hover:bg-zinc-900/80 transition-colors flex items-start gap-3.5 group/item"
-              >
-                <div className="w-10 h-10 rounded-xl bg-black/70 border border-cyan-500/30 p-1.5 flex items-center justify-center shrink-0 group-hover/item:border-cyan-500/60 shadow-[0_0_15px_rgba(66,200,198,0.15)] transition-all">
-                  <img src="/logos/sekurita_logo.svg" alt="SeKurita" className="w-full h-full object-contain" />
-                </div>
-                <div className="flex flex-col flex-1">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="font-bold text-white group-hover/item:text-cyan-400 transition-colors">
-                      SeKurita
-                    </span>
-                    <span className="text-[10px] font-mono bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 px-1.5 py-0.5 rounded tracking-normal">
-                      ISO 27001
-                    </span>
+                {/* SeKurita */}
+                <TrackedLink 
+                  href="/sekurita" 
+                  targetName="nav_dropdown_sekurita" 
+                  className="group/item flex items-start gap-3.5 p-3 rounded-xl hover:bg-white/[0.05] border border-transparent hover:border-cyan-500/20 transition-all duration-200"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/25 p-2 flex items-center justify-center shrink-0 group-hover/item:border-cyan-500/60 group-hover/item:bg-cyan-500/15 group-hover/item:shadow-[0_0_20px_rgba(66,200,198,0.25)] transition-all">
+                    <img src="/logos/sekurita_logo.svg" alt="SeKurita" className="w-full h-full object-contain" />
                   </div>
-                  <span className="text-xs text-zinc-400 font-normal normal-case leading-relaxed">
-                    {t('Navigation.sekurita_desc')}
-                  </span>
-                </div>
-              </TrackedLink>
+                  <div className="flex flex-col flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-2 mb-0.5">
+                      <span className="text-sm font-bold text-white group-hover/item:text-cyan-400 transition-colors tracking-tight">
+                        SeKurita
+                      </span>
+                      <span className="text-[10px] font-mono font-semibold uppercase px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 shrink-0">
+                        ISO 27001
+                      </span>
+                    </div>
+                    <p className="text-xs text-zinc-400 font-normal leading-relaxed whitespace-normal group-hover/item:text-zinc-300 transition-colors">
+                      {t('Navigation.sekurita_desc')}
+                    </p>
+                  </div>
+                  <svg className="w-4 h-4 text-zinc-600 group-hover/item:text-cyan-400 group-hover/item:translate-x-0.5 transition-all shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </TrackedLink>
 
-              <TrackedLink 
-                href="/business-center" 
-                targetName="nav_dropdown_portal" 
-                className="p-4 hover:bg-zinc-900/80 transition-colors flex items-start gap-3.5 group/item"
-              >
-                <div className="w-10 h-10 rounded-xl bg-black/70 border border-purple-500/30 p-2 flex items-center justify-center shrink-0 group-hover/item:border-purple-500/60 shadow-[0_0_15px_rgba(123,44,191,0.2)] transition-all text-[#7B2CBF]">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-                </div>
-                <div className="flex flex-col flex-1">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="font-bold text-white group-hover/item:text-purple-400 transition-colors">
-                      Business Center
-                    </span>
-                    <span className="text-[10px] font-mono bg-purple-500/15 text-purple-400 border border-purple-500/30 px-1.5 py-0.5 rounded tracking-normal">
-                      B2B
-                    </span>
+                {/* Business Center */}
+                <TrackedLink 
+                  href="/business-center" 
+                  targetName="nav_dropdown_portal" 
+                  className="group/item flex items-start gap-3.5 p-3 rounded-xl hover:bg-white/[0.05] border border-transparent hover:border-purple-500/20 transition-all duration-200"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/25 p-2 flex items-center justify-center shrink-0 group-hover/item:border-purple-500/60 group-hover/item:bg-purple-500/15 group-hover/item:shadow-[0_0_20px_rgba(123,44,191,0.3)] transition-all text-[#7B2CBF] group-hover/item:text-purple-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect width="18" height="18" x="3" y="3" rx="2"/>
+                      <path d="M3 9h18"/>
+                      <path d="M9 21V9"/>
+                    </svg>
                   </div>
-                  <span className="text-xs text-zinc-400 font-normal normal-case leading-relaxed">
-                    {t('Navigation.portal_desc')}
+                  <div className="flex flex-col flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-2 mb-0.5">
+                      <span className="text-sm font-bold text-white group-hover/item:text-purple-400 transition-colors tracking-tight">
+                        Business Center
+                      </span>
+                      <span className="text-[10px] font-mono font-semibold uppercase px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-400 border border-purple-500/30 shrink-0">
+                        B2B
+                      </span>
+                    </div>
+                    <p className="text-xs text-zinc-400 font-normal leading-relaxed whitespace-normal group-hover/item:text-zinc-300 transition-colors">
+                      {t('Navigation.portal_desc')}
+                    </p>
+                  </div>
+                  <svg className="w-4 h-4 text-zinc-600 group-hover/item:text-purple-400 group-hover/item:translate-x-0.5 transition-all shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </TrackedLink>
+
+                {/* Bottom Ecosystem Bar */}
+                <div className="mt-1 pt-2.5 pb-0.5 px-3 border-t border-zinc-900/90 flex items-center justify-between text-[11px] text-zinc-500 font-sans normal-case">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Ecosistema LogikaMobile
                   </span>
+                  <TrackedLink 
+                    href="/services" 
+                    targetName="nav_dropdown_all_services" 
+                    className="text-zinc-400 hover:text-orange-400 transition-colors font-medium flex items-center gap-1"
+                  >
+                    {t('Navigation.services')} →
+                  </TrackedLink>
                 </div>
-              </TrackedLink>
+              </div>
             </div>
           </div>
 
@@ -146,37 +192,69 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-zinc-900 bg-black/95 backdrop-blur-xl px-6 py-8 flex flex-col gap-6 text-base font-bold uppercase tracking-widest text-zinc-300">
           {/* Productos Section in Mobile */}
-          <div className="border-b border-zinc-900 pb-4">
+          <div className="border-b border-zinc-900 pb-5">
             <span className="text-xs font-mono font-bold text-zinc-500 tracking-widest uppercase block mb-3">
               {t('Navigation.products')}
             </span>
-            <div className="flex flex-col gap-3 pl-1">
-              <TrackedLink href="/logikafiskal" targetName="nav_mobile_logikafiskal" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between text-orange-400 hover:text-orange-300 py-1.5">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-6 h-6 rounded bg-black/60 border border-orange-500/30 p-0.5 flex items-center justify-center shrink-0">
+            <div className="flex flex-col gap-2.5 normal-case tracking-normal">
+              <TrackedLink 
+                href="/logikafiskal" 
+                targetName="nav_mobile_logikafiskal" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className="flex items-center justify-between p-3 rounded-xl bg-zinc-950/80 border border-zinc-800/80 hover:border-orange-500/40 text-white transition-colors"
+              >
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/25 p-1.5 flex items-center justify-center shrink-0">
                     <img src="/logos/logikafiskal_icon.png" alt="LogikaFiskal" className="w-full h-full object-contain" />
                   </div>
-                  <span>LogikaFiskal</span>
+                  <div className="min-w-0">
+                    <span className="font-bold text-sm text-white block">Logika<span className="text-orange-500">Fiskal</span></span>
+                    <span className="text-xs text-zinc-400 font-normal truncate block">{t('Navigation.logikafiskal_desc')}</span>
+                  </div>
                 </div>
-                <span className="text-[10px] font-mono bg-orange-500/20 text-orange-300 border border-orange-500/40 px-2 py-0.5 rounded">{t('Navigation.badge_new_upper')}</span>
+                <span className="text-[10px] font-mono font-semibold uppercase px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30 shrink-0 ml-2">
+                  {t('Navigation.badge_new')}
+                </span>
               </TrackedLink>
-              <TrackedLink href="/sekurita" targetName="nav_mobile_sekurita" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between text-cyan-400 hover:text-cyan-300 py-1.5">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-6 h-6 rounded bg-black/60 border border-cyan-500/30 p-0.5 flex items-center justify-center shrink-0">
+
+              <TrackedLink 
+                href="/sekurita" 
+                targetName="nav_mobile_sekurita" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className="flex items-center justify-between p-3 rounded-xl bg-zinc-950/80 border border-zinc-800/80 hover:border-cyan-500/40 text-white transition-colors"
+              >
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/25 p-1.5 flex items-center justify-center shrink-0">
                     <img src="/logos/sekurita_logo.svg" alt="SeKurita" className="w-full h-full object-contain" />
                   </div>
-                  <span>SeKurita</span>
-                </div>
-                <span className="text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 px-2 py-0.5 rounded">ISO 27001</span>
-              </TrackedLink>
-              <TrackedLink href="/business-center" targetName="nav_mobile_portal" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between text-purple-400 hover:text-purple-300 py-1.5">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-6 h-6 rounded bg-black/60 border border-purple-500/30 p-1 flex items-center justify-center shrink-0 text-[#7B2CBF]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/></svg>
+                  <div className="min-w-0">
+                    <span className="font-bold text-sm text-white block">SeKurita</span>
+                    <span className="text-xs text-zinc-400 font-normal truncate block">{t('Navigation.sekurita_desc')}</span>
                   </div>
-                  <span>Business Center</span>
                 </div>
-                <span className="text-[10px] font-mono bg-purple-500/20 text-purple-300 border border-purple-500/40 px-2 py-0.5 rounded">B2B</span>
+                <span className="text-[10px] font-mono font-semibold uppercase px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 shrink-0 ml-2">
+                  ISO 27001
+                </span>
+              </TrackedLink>
+
+              <TrackedLink 
+                href="/business-center" 
+                targetName="nav_mobile_portal" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className="flex items-center justify-between p-3 rounded-xl bg-zinc-950/80 border border-zinc-800/80 hover:border-purple-500/40 text-white transition-colors"
+              >
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-9 h-9 rounded-lg bg-purple-500/10 border border-purple-500/25 p-1.5 flex items-center justify-center shrink-0 text-[#7B2CBF]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                  </div>
+                  <div className="min-w-0">
+                    <span className="font-bold text-sm text-white block">Business Center</span>
+                    <span className="text-xs text-zinc-400 font-normal truncate block">{t('Navigation.portal_desc')}</span>
+                  </div>
+                </div>
+                <span className="text-[10px] font-mono font-semibold uppercase px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30 shrink-0 ml-2">
+                  B2B
+                </span>
               </TrackedLink>
             </div>
           </div>
