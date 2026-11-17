@@ -80,7 +80,10 @@
     "desc": "Contact our team of specialists and discover how our technology can scale your business to the next level.",
     "btn_start_profiling": "Start Project Profiling",
     "btn_start_profiling_sub": "Interactive 7-step estimation · Instant scope & investment calculation",
-    "or_write_directly": "Or if you prefer a direct channel, email us at",
+    "or_write_directly": "Or if you prefer a direct channel, contact us:",
+    "or_direct_channels": "Or if you prefer immediate assistance via direct channels:",
+    "whatsapp_label": "Corporate WhatsApp",
+    "call_label": "Direct Call",
     "sla_response": "Guaranteed technical response within 24 business hours."
   },
   "LmaasMetadata": {

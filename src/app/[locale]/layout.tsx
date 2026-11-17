@@ -69,6 +69,23 @@ export default async function RootLayout({
                 "url": "https://logikamobile.com.mx",
                 "logo": "https://logikamobile.com.mx/logos/Logo.svg",
                 "description": "Especialistas en desarrollo de software a la medida y modernización de sistemas legacy.",
+                "telephone": "+52-221-259-2266",
+                "contactPoint": [
+                  {
+                    "@type": "ContactPoint",
+                    "telephone": "+52-221-259-2266",
+                    "contactType": "sales",
+                    "areaServed": "MX",
+                    "availableLanguage": ["Spanish", "English"]
+                  },
+                  {
+                    "@type": "ContactPoint",
+                    "telephone": "+52-221-259-2266",
+                    "contactType": "customer service",
+                    "areaServed": "MX",
+                    "availableLanguage": ["Spanish", "English"]
+                  }
+                ],
                 "sameAs": [
                   "https://www.linkedin.com/company/logikamobile"
                 ],

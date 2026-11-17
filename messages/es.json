@@ -80,7 +80,10 @@
     "desc": "Contacta a nuestro equipo de especialistas y descubre cómo nuestra tecnología puede escalar tu negocio al siguiente nivel.",
     "btn_start_profiling": "Iniciar Perfilamiento de Proyecto",
     "btn_start_profiling_sub": "Cotización interactiva en 7 pasos · Alcance y estimación de inversión al instante",
-    "or_write_directly": "O si prefieres un canal directo, escríbenos a",
+    "or_write_directly": "O si prefieres un canal directo, contáctanos:",
+    "or_direct_channels": "O si prefieres atención inmediata por canales directos:",
+    "whatsapp_label": "WhatsApp Corporativo",
+    "call_label": "Llamada Directa",
     "sla_response": "Respuesta técnica garantizada en menos de 24 horas hábiles."
   },
   "LmaasMetadata": {
